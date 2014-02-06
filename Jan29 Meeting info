@@ -1,0 +1,90 @@
+Meeting with Matt Wednesday January 29th 1-1:45pm. Discussed project details.
+Start Screen: initial screen
+  - Static screen with 3 buttons(Login, Register, help)
+  - Logo and App title also on page
+  
+Registration Screen: from Register on on Start screen
+  - 3 text fields( Name, password, email)
+  - 2 dropdown menus( state, city)
+  - 2 buttons(submit, cancel)
+  
+Login Screen: from Login button on Start screen
+  - 2 text fields ( email, password)
+  - 2 buttons(login, cancel)
+  
+Main screen: from Login button on Login screen
+  - 5 buttons( Find , My Events, Create event, Help, Logout)
+  
+Events screen: from find Events button on Main Screen
+  - title at top of screen
+  - back button
+  - mutlple buttons for various sports in list format (Soccer, jousting, basketball)
+  - Each button contains a pic and title
+  
+Sport Screen: from Sports button on Events screen
+  - May be different depending on the sport selected
+  - Back button 
+  - Title of sport at top of screen
+  - Multiple buttons for different options (Professional, pick up, all)
+  
+All Events screen: from All Events button on Sport Screen
+  - Multiple small buttons with location, time for specific event
+  - back button
+  - "All Events" title at top of screen
+  
+Pick up Screen: from Pick Up button on Sport screen
+  - Multiple small buttons with location, time for specific event
+  - Back button
+  - "Pick Up" title at top of screen
+  
+Profession Games screen: from Professional Games button on Sport Screen
+  - Multple small buttons with location, time for specific event
+  - Back button
+  - "Professional Games" title at tope of screen
+  
+Create Event screen: from Create Event button on Main Screen
+  - Back button
+  - "Create Event" title at top of screen
+  - 2 text fields for location, title
+  - 3 drop down menus for start time, end time, numbers of players
+  - Check boxes for any gear required
+  - 2 buttons at bottom of (Create Event, Cancel)
+  
+Event Information screen: from event buttons from Pick Up, All Events, Professional screens, Event buttons from My Events screen
+  - Back button
+  - Title of event at top of screen
+  - Map of area of location
+  - Text fields containing location, time, number of players wanted, players signed up, gear required
+  - Join button at bottom of screen if not joined
+  - Unjoin button at bottom of screen if joined
+  - Delete Event button if event host/creator
+  
+My Events screen: from My Events button from Main Screen
+  - Back button
+  - "My Events" title at top of screen
+  - Multiple buttons for each event joined - linked to Event Information screen
+  
+Help Screen: from Help button from Main or Start Screen
+  - Back button
+  - "Help Section" title at top of screen
+  - Text field containing basic functionality and contact information
+  
+All screens only show events whose end time is later that the current time
+If no events available, button exists but is disabled (greyed out)
+Back button returns user to page linked from level above current node
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
