@@ -73,6 +73,60 @@ All screens only show events whose end time is later that the current time
 If no events available, button exists but is disabled (greyed out)
 Back button returns user to page linked from level above current node
   
+  --------------------------------------------------------------------------------------------------------------------
+  Feb 4th Meeting
+  
+  10:30am February 4th started meeting and ended at 12pm
+
+Ran through base framework of project so that all members are on track
+
+Planned schedules of all group members to allot time for meetings
+
+Meeting Tuesdays and Thursdays 10:30 - 12pm in ECS 122
+Information meetings
+
+Work done outside of those times at individual times due to busy and varying schedules.
+
+JOBS -
+  - Views (13 screens)
+  - Mapping (GPS coord, local sites)
+  - Database
+  - Connections to external sites (Link to Timbers sites)
+  - Pictures (Backdrop .png)
+
+Use an issues file to divide up jobs keeps track of assignments
+
+Added Info from Customers critique
+
+  - Team Events
+  - Search screen/ Easier to find sports
+  - Main screen should have a search button where there
+    are drop down menus to choose time, and so on
+    
+  --------------------------------------------------------------------------------------------------------------------
+
+Feb 11th Meeting from 10:30am to 11:30am. Brought team members up to speed on all events and project ideas.
+
+------------------------------------------------------------------------------------------------------------------------
+
+Feb 25th meeting 10:30am to 11:15am
+
+Ethan and Clarissa Finished 13 use cases.
+
+To Do: 2 use cases, state diagrams and class diagrams still left to do.
+
+Friday: Ethan, Jen 1-2 lobby. 3-4:30 Home (J+M)
+  Work on State/Class Diagrams
+  
+Finish 2 use case diagrams by tonight (2/25/14)
+
+By Friday night the group will touch base via Skype - 7PM
+
+Finish milestone 2 Friday night
+
+Project GUI Testing on Feb 11
+
+Mar 6,7,10 work on models (GUIs)
   
   
   
