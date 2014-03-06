@@ -1,18 +1,18 @@
 //
-//  AmericaFirstViewController.m
+//  PickUpFirstViewController.m
 //  PickUp
 //
 //  Created by Matthew Steven Pessa on 3/6/14.
 //  Copyright (c) 2014 Amnesiacs. All rights reserved.
 //
 
-#import "AmericaFirstViewController.h"
+#import "PickUpFirstViewController.h"
 
-@interface AmericaFirstViewController ()
+@interface PickUpFirstViewController ()
 
 @end
 
-@implementation AmericaFirstViewController
+@implementation PickUpFirstViewController
 
 - (void)viewDidLoad
 {

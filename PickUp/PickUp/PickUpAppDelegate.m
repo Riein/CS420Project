@@ -1,14 +1,14 @@
 //
-//  AmericaAppDelegate.m
+//  PickUpAppDelegate.m
 //  PickUp
 //
 //  Created by Matthew Steven Pessa on 3/6/14.
 //  Copyright (c) 2014 Amnesiacs. All rights reserved.
 //
 
-#import "AmericaAppDelegate.h"
+#import "PickUpAppDelegate.h"
 
-@implementation AmericaAppDelegate
+@implementation PickUpAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AmericaAppDelegate.h"
+#import "PickUpAppDelegate.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AmericaAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([PickUpAppDelegate class]));
     }
 }

@@ -1,5 +1,5 @@
 //
-//  AmericaSecondViewController.h
+//  PickUpFirstViewController.h
 //  PickUp
 //
 //  Created by Matthew Steven Pessa on 3/6/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AmericaSecondViewController : UIViewController
+@interface PickUpFirstViewController : UIViewController
 
 @end

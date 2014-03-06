@@ -1,5 +1,5 @@
 //
-//  AmericaAppDelegate.h
+//  PickUpSecondViewController.h
 //  PickUp
 //
 //  Created by Matthew Steven Pessa on 3/6/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AmericaAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface PickUpSecondViewController : UIViewController
 
 @end

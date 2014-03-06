@@ -1,18 +1,18 @@
 //
-//  AmericaSecondViewController.m
+//  PickUpSecondViewController.m
 //  PickUp
 //
 //  Created by Matthew Steven Pessa on 3/6/14.
 //  Copyright (c) 2014 Amnesiacs. All rights reserved.
 //
 
-#import "AmericaSecondViewController.h"
+#import "PickUpSecondViewController.h"
 
-@interface AmericaSecondViewController ()
+@interface PickUpSecondViewController ()
 
 @end
 
-@implementation AmericaSecondViewController
+@implementation PickUpSecondViewController
 
 - (void)viewDidLoad
 {
