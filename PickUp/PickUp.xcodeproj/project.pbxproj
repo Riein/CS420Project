@@ -23,6 +23,11 @@
 		D512D66C18C91B9300E788E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D64818C91B9300E788E1 /* UIKit.framework */; };
 		D512D67418C91B9300E788E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D512D67218C91B9300E788E1 /* InfoPlist.strings */; };
 		D512D67618C91B9300E788E1 /* PickUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D512D67518C91B9300E788E1 /* PickUpTests.m */; };
+		D59AE13218C9363A00037820 /* cat.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13118C9363A00037820 /* cat.png */; };
+		D59AE13418C938AA00037820 /* sports.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13318C938AA00037820 /* sports.png */; };
+		D59AE13618C9398B00037820 /* sports1.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13518C9398B00037820 /* sports1.png */; };
+		D59AE13A18C93A9C00037820 /* sports4.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13918C93A9C00037820 /* sports4.png */; };
+		D59AE13D18C93D8700037820 /* PickUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59AE13C18C93D8700037820 /* PickUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +63,12 @@
 		D512D67118C91B9300E788E1 /* PickUpTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PickUpTests-Info.plist"; sourceTree = "<group>"; };
 		D512D67318C91B9300E788E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D512D67518C91B9300E788E1 /* PickUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickUpTests.m; sourceTree = "<group>"; };
+		D59AE13118C9363A00037820 /* cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat.png; sourceTree = "<group>"; };
+		D59AE13318C938AA00037820 /* sports.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports.png; sourceTree = "<group>"; };
+		D59AE13518C9398B00037820 /* sports1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports1.png; sourceTree = "<group>"; };
+		D59AE13918C93A9C00037820 /* sports4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports4.png; sourceTree = "<group>"; };
+		D59AE13B18C93D8700037820 /* PickUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickUpViewController.h; sourceTree = "<group>"; };
+		D59AE13C18C93D8700037820 /* PickUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +131,13 @@
 				D512D65318C91B9300E788E1 /* PickUpAppDelegate.h */,
 				D512D65418C91B9300E788E1 /* PickUpAppDelegate.m */,
 				D512D65618C91B9300E788E1 /* Main_iPhone.storyboard */,
+				D59AE13B18C93D8700037820 /* PickUpViewController.h */,
+				D59AE13C18C93D8700037820 /* PickUpViewController.m */,
 				D512D65918C91B9300E788E1 /* Main_iPad.storyboard */,
+				D59AE13318C938AA00037820 /* sports.png */,
+				D59AE13518C9398B00037820 /* sports1.png */,
+				D59AE13918C93A9C00037820 /* sports4.png */,
+				D59AE13118C9363A00037820 /* cat.png */,
 				D512D65C18C91B9300E788E1 /* PickUpFirstViewController.h */,
 				D512D65D18C91B9300E788E1 /* PickUpFirstViewController.m */,
 				D512D65F18C91B9300E788E1 /* PickUpSecondViewController.h */,
@@ -237,9 +254,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D59AE13418C938AA00037820 /* sports.png in Resources */,
+				D59AE13218C9363A00037820 /* cat.png in Resources */,
+				D59AE13A18C93A9C00037820 /* sports4.png in Resources */,
 				D512D65B18C91B9300E788E1 /* Main_iPad.storyboard in Resources */,
 				D512D66318C91B9300E788E1 /* Images.xcassets in Resources */,
 				D512D65818C91B9300E788E1 /* Main_iPhone.storyboard in Resources */,
+				D59AE13618C9398B00037820 /* sports1.png in Resources */,
 				D512D64F18C91B9300E788E1 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +282,7 @@
 			files = (
 				D512D65E18C91B9300E788E1 /* PickUpFirstViewController.m in Sources */,
 				D512D65518C91B9300E788E1 /* PickUpAppDelegate.m in Sources */,
+				D59AE13D18C93D8700037820 /* PickUpViewController.m in Sources */,
 				D512D66118C91B9300E788E1 /* PickUpSecondViewController.m in Sources */,
 				D512D65118C91B9300E788E1 /* main.m in Sources */,
 			);
@@ -481,6 +503,7 @@
 				D512D67B18C91B9300E788E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D512D67C18C91B9300E788E1 /* Build configuration list for PBXNativeTarget "PickUpTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +512,7 @@
 				D512D67E18C91B9300E788E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
