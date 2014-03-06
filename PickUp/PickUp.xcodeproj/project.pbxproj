@@ -1,0 +1,496 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D512D5FE18C91B5100E788E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D5FD18C91B5100E788E1 /* Foundation.framework */; };
+		D512D60018C91B5100E788E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D5FF18C91B5100E788E1 /* CoreGraphics.framework */; };
+		D512D60218C91B5100E788E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D60118C91B5100E788E1 /* UIKit.framework */; };
+		D512D60818C91B5100E788E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D512D60618C91B5100E788E1 /* InfoPlist.strings */; };
+		D512D60A18C91B5100E788E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D512D60918C91B5100E788E1 /* main.m */; };
+		D512D60E18C91B5100E788E1 /* AmericaAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D512D60D18C91B5100E788E1 /* AmericaAppDelegate.m */; };
+		D512D61118C91B5100E788E1 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D512D60F18C91B5100E788E1 /* Main_iPhone.storyboard */; };
+		D512D61418C91B5100E788E1 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D512D61218C91B5100E788E1 /* Main_iPad.storyboard */; };
+		D512D61718C91B5100E788E1 /* AmericaFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D512D61618C91B5100E788E1 /* AmericaFirstViewController.m */; };
+		D512D61A18C91B5100E788E1 /* AmericaSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D512D61918C91B5100E788E1 /* AmericaSecondViewController.m */; };
+		D512D61C18C91B5100E788E1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D512D61B18C91B5100E788E1 /* Images.xcassets */; };
+		D512D62318C91B5200E788E1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D62218C91B5200E788E1 /* XCTest.framework */; };
+		D512D62418C91B5200E788E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D5FD18C91B5100E788E1 /* Foundation.framework */; };
+		D512D62518C91B5200E788E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D60118C91B5100E788E1 /* UIKit.framework */; };
+		D512D62D18C91B5200E788E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D512D62B18C91B5200E788E1 /* InfoPlist.strings */; };
+		D512D62F18C91B5200E788E1 /* PickUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D512D62E18C91B5200E788E1 /* PickUpTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D512D62618C91B5200E788E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D512D5F218C91B5100E788E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D512D5F918C91B5100E788E1;
+			remoteInfo = PickUp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D512D5FA18C91B5100E788E1 /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D512D5FD18C91B5100E788E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D512D5FF18C91B5100E788E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D512D60118C91B5100E788E1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D512D60518C91B5100E788E1 /* PickUp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PickUp-Info.plist"; sourceTree = "<group>"; };
+		D512D60718C91B5100E788E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D512D60918C91B5100E788E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D512D60B18C91B5100E788E1 /* PickUp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PickUp-Prefix.pch"; sourceTree = "<group>"; };
+		D512D60C18C91B5100E788E1 /* AmericaAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmericaAppDelegate.h; sourceTree = "<group>"; };
+		D512D60D18C91B5100E788E1 /* AmericaAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AmericaAppDelegate.m; sourceTree = "<group>"; };
+		D512D61018C91B5100E788E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		D512D61318C91B5100E788E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		D512D61518C91B5100E788E1 /* AmericaFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmericaFirstViewController.h; sourceTree = "<group>"; };
+		D512D61618C91B5100E788E1 /* AmericaFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AmericaFirstViewController.m; sourceTree = "<group>"; };
+		D512D61818C91B5100E788E1 /* AmericaSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmericaSecondViewController.h; sourceTree = "<group>"; };
+		D512D61918C91B5100E788E1 /* AmericaSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AmericaSecondViewController.m; sourceTree = "<group>"; };
+		D512D61B18C91B5100E788E1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D512D62118C91B5200E788E1 /* PickUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PickUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D512D62218C91B5200E788E1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D512D62A18C91B5200E788E1 /* PickUpTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PickUpTests-Info.plist"; sourceTree = "<group>"; };
+		D512D62C18C91B5200E788E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D512D62E18C91B5200E788E1 /* PickUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickUpTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D512D5F718C91B5100E788E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D512D60018C91B5100E788E1 /* CoreGraphics.framework in Frameworks */,
+				D512D60218C91B5100E788E1 /* UIKit.framework in Frameworks */,
+				D512D5FE18C91B5100E788E1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D512D61E18C91B5200E788E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D512D62318C91B5200E788E1 /* XCTest.framework in Frameworks */,
+				D512D62518C91B5200E788E1 /* UIKit.framework in Frameworks */,
+				D512D62418C91B5200E788E1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D512D5F118C91B5100E788E1 = {
+			isa = PBXGroup;
+			children = (
+				D512D60318C91B5100E788E1 /* PickUp */,
+				D512D62818C91B5200E788E1 /* PickUpTests */,
+				D512D5FC18C91B5100E788E1 /* Frameworks */,
+				D512D5FB18C91B5100E788E1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D512D5FB18C91B5100E788E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D512D5FA18C91B5100E788E1 /* PickUp.app */,
+				D512D62118C91B5200E788E1 /* PickUpTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D512D5FC18C91B5100E788E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D512D5FD18C91B5100E788E1 /* Foundation.framework */,
+				D512D5FF18C91B5100E788E1 /* CoreGraphics.framework */,
+				D512D60118C91B5100E788E1 /* UIKit.framework */,
+				D512D62218C91B5200E788E1 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D512D60318C91B5100E788E1 /* PickUp */ = {
+			isa = PBXGroup;
+			children = (
+				D512D60C18C91B5100E788E1 /* AmericaAppDelegate.h */,
+				D512D60D18C91B5100E788E1 /* AmericaAppDelegate.m */,
+				D512D60F18C91B5100E788E1 /* Main_iPhone.storyboard */,
+				D512D61218C91B5100E788E1 /* Main_iPad.storyboard */,
+				D512D61518C91B5100E788E1 /* AmericaFirstViewController.h */,
+				D512D61618C91B5100E788E1 /* AmericaFirstViewController.m */,
+				D512D61818C91B5100E788E1 /* AmericaSecondViewController.h */,
+				D512D61918C91B5100E788E1 /* AmericaSecondViewController.m */,
+				D512D61B18C91B5100E788E1 /* Images.xcassets */,
+				D512D60418C91B5100E788E1 /* Supporting Files */,
+			);
+			path = PickUp;
+			sourceTree = "<group>";
+		};
+		D512D60418C91B5100E788E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D512D60518C91B5100E788E1 /* PickUp-Info.plist */,
+				D512D60618C91B5100E788E1 /* InfoPlist.strings */,
+				D512D60918C91B5100E788E1 /* main.m */,
+				D512D60B18C91B5100E788E1 /* PickUp-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D512D62818C91B5200E788E1 /* PickUpTests */ = {
+			isa = PBXGroup;
+			children = (
+				D512D62E18C91B5200E788E1 /* PickUpTests.m */,
+				D512D62918C91B5200E788E1 /* Supporting Files */,
+			);
+			path = PickUpTests;
+			sourceTree = "<group>";
+		};
+		D512D62918C91B5200E788E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D512D62A18C91B5200E788E1 /* PickUpTests-Info.plist */,
+				D512D62B18C91B5200E788E1 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D512D5F918C91B5100E788E1 /* PickUp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D512D63218C91B5200E788E1 /* Build configuration list for PBXNativeTarget "PickUp" */;
+			buildPhases = (
+				D512D5F618C91B5100E788E1 /* Sources */,
+				D512D5F718C91B5100E788E1 /* Frameworks */,
+				D512D5F818C91B5100E788E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PickUp;
+			productName = PickUp;
+			productReference = D512D5FA18C91B5100E788E1 /* PickUp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D512D62018C91B5200E788E1 /* PickUpTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D512D63518C91B5200E788E1 /* Build configuration list for PBXNativeTarget "PickUpTests" */;
+			buildPhases = (
+				D512D61D18C91B5200E788E1 /* Sources */,
+				D512D61E18C91B5200E788E1 /* Frameworks */,
+				D512D61F18C91B5200E788E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D512D62718C91B5200E788E1 /* PBXTargetDependency */,
+			);
+			name = PickUpTests;
+			productName = PickUpTests;
+			productReference = D512D62118C91B5200E788E1 /* PickUpTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D512D5F218C91B5100E788E1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = America;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = Amnesiacs;
+				TargetAttributes = {
+					D512D62018C91B5200E788E1 = {
+						TestTargetID = D512D5F918C91B5100E788E1;
+					};
+				};
+			};
+			buildConfigurationList = D512D5F518C91B5100E788E1 /* Build configuration list for PBXProject "PickUp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D512D5F118C91B5100E788E1;
+			productRefGroup = D512D5FB18C91B5100E788E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D512D5F918C91B5100E788E1 /* PickUp */,
+				D512D62018C91B5200E788E1 /* PickUpTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D512D5F818C91B5100E788E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D512D61418C91B5100E788E1 /* Main_iPad.storyboard in Resources */,
+				D512D61C18C91B5100E788E1 /* Images.xcassets in Resources */,
+				D512D61118C91B5100E788E1 /* Main_iPhone.storyboard in Resources */,
+				D512D60818C91B5100E788E1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D512D61F18C91B5200E788E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D512D62D18C91B5200E788E1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D512D5F618C91B5100E788E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D512D61718C91B5100E788E1 /* AmericaFirstViewController.m in Sources */,
+				D512D61A18C91B5100E788E1 /* AmericaSecondViewController.m in Sources */,
+				D512D60A18C91B5100E788E1 /* main.m in Sources */,
+				D512D60E18C91B5100E788E1 /* AmericaAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D512D61D18C91B5200E788E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D512D62F18C91B5200E788E1 /* PickUpTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D512D62718C91B5200E788E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D512D5F918C91B5100E788E1 /* PickUp */;
+			targetProxy = D512D62618C91B5200E788E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D512D60618C91B5100E788E1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D512D60718C91B5100E788E1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D512D60F18C91B5100E788E1 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D512D61018C91B5100E788E1 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		D512D61218C91B5100E788E1 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D512D61318C91B5100E788E1 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		D512D62B18C91B5200E788E1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D512D62C18C91B5200E788E1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D512D63018C91B5200E788E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D512D63118C91B5200E788E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D512D63318C91B5200E788E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PickUp/PickUp-Prefix.pch";
+				INFOPLIST_FILE = "PickUp/PickUp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D512D63418C91B5200E788E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PickUp/PickUp-Prefix.pch";
+				INFOPLIST_FILE = "PickUp/PickUp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D512D63618C91B5200E788E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PickUp.app/PickUp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PickUp/PickUp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PickUpTests/PickUpTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		D512D63718C91B5200E788E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PickUp.app/PickUp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PickUp/PickUp-Prefix.pch";
+				INFOPLIST_FILE = "PickUpTests/PickUpTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D512D5F518C91B5100E788E1 /* Build configuration list for PBXProject "PickUp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D512D63018C91B5200E788E1 /* Debug */,
+				D512D63118C91B5200E788E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D512D63218C91B5200E788E1 /* Build configuration list for PBXNativeTarget "PickUp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D512D63318C91B5200E788E1 /* Debug */,
+				D512D63418C91B5200E788E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D512D63518C91B5200E788E1 /* Build configuration list for PBXNativeTarget "PickUpTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D512D63618C91B5200E788E1 /* Debug */,
+				D512D63718C91B5200E788E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D512D5F218C91B5100E788E1 /* Project object */;
+}
