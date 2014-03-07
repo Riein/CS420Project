@@ -51,7 +51,7 @@
     if ([segue.identifier isEqualToString:@"createEvent"]){
         // Find out which button it is (I think)
         CreateEventViewController * destViewController = segue.destinationViewController;// Create the view controller instance
-        [self presentViewController:destViewController animated:YES completion:nil];
+        //[self presentViewController:destViewController animated:YES completion:nil];
     }
 }
 @end
