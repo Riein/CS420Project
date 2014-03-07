@@ -137,6 +137,7 @@
                                 </state>
                                 <connections>
                                     <action selector="createEvent:" destination="z5m-1A-qZP" eventType="touchUpInside" id="Beg-2a-lYF"/>
+                                    <segue destination="8jL-R9-ste" kind="push" identifier="createEvent" id="q9U-8m-JH3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QMq-07-4rv">
@@ -159,15 +160,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Main" image="first" id="myi-KA-HiX"/>
                     <navigationItem key="navigationItem" id="RlE-qp-Vhb"/>
-                    <connections>
-                        <segue destination="8jL-R9-ste" kind="modal" id="S95-Gj-6xv"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="in1-Vq-8GR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="987" y="36"/>
+            <point key="canvasLocation" x="1513" y="36"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="QvR-Pa-liA">
@@ -191,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hia-ce-9kA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489" y="-279"/>
+            <point key="canvasLocation" x="2015" y="-279"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -204,7 +201,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="z5m-1A-qZP" kind="relationship" relationship="viewControllers" id="mQh-6K-SkD"/>
+                        <segue destination="skl-18-FLS" kind="relationship" relationship="viewControllers" id="mQh-6K-SkD"/>
                         <segue destination="QUy-BD-bpt" kind="relationship" relationship="viewControllers" id="M8t-EP-wfW"/>
                         <segue destination="CZ4-MO-1fc" kind="relationship" relationship="viewControllers" id="SUk-Ux-ee1"/>
                     </connections>
@@ -248,6 +245,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1IB-1k-l3J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-110" y="742"/>
+        </scene>
+        <!--Navigation Controller - Main-->
+        <scene sceneID="cPX-UQ-B0l">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="skl-18-FLS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Main" image="first" id="myi-KA-HiX"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ual-Ys-HvZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="z5m-1A-qZP" kind="relationship" relationship="rootViewController" id="EXz-oV-cIq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yt0-kx-u78" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="987" y="36"/>
         </scene>
     </scenes>
     <resources>

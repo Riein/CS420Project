@@ -7,6 +7,7 @@
 //
 
 #import "PickUpViewController.h"
+#import "CreateEventViewController.h"
 
 @interface PickUpViewController ()
 
@@ -39,8 +40,18 @@
 }
 
 - (IBAction)createEvent:(id)sender {
+    //[self prepareForSegue:segue sender:sender];
+    [self performSegueWithIdentifier:@"createEvent" sender:sender];
 }
 
 - (IBAction)logout:(id)sender {
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"createEvent"]){
+        // Find out which button it is (I think)
+        CreateEventViewController * destViewController = segue.destinationViewController;// Create the view controller instance
+        [self presentViewController:destViewController animated:YES completion:nil];
+    }
 }
 @end
