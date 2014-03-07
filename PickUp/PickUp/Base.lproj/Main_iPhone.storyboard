@@ -68,7 +68,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="653" y="-397"/>
+            <point key="canvasLocation" x="493" y="-279"/>
         </scene>
         <!--Pick Up Second View Controller - Second-->
         <scene sceneID="ot8-2e-RuS">
@@ -103,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="653" y="626"/>
+            <point key="canvasLocation" x="493" y="444"/>
         </scene>
         <!--Pick Up View Controller - Main-->
         <scene sceneID="WWg-yc-hU1">
@@ -137,7 +137,6 @@
                                 </state>
                                 <connections>
                                     <action selector="createEvent:" destination="z5m-1A-qZP" eventType="touchUpInside" id="Beg-2a-lYF"/>
-                                    <segue destination="8jL-R9-ste" kind="custom" id="5sU-89-IO1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QMq-07-4rv">
@@ -152,9 +151,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Up" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fk1-0j-F8Y">
-                                <rect key="frame" x="100" y="70" width="121" height="46"/>
+                                <rect key="frame" x="75" y="117" width="170" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -162,10 +161,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Main" image="first" id="myi-KA-HiX"/>
                     <navigationItem key="navigationItem" id="RlE-qp-Vhb"/>
+                    <connections>
+                        <segue destination="8jL-R9-ste" kind="modal" id="S95-Gj-6xv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="in1-Vq-8GR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1317" y="180"/>
+            <point key="canvasLocation" x="987" y="36"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="QvR-Pa-liA">
@@ -189,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hia-ce-9kA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="-233"/>
+            <point key="canvasLocation" x="1489" y="-279"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -202,7 +204,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Eq6-cN-uYl" kind="modal" id="7Es-mi-bEr"/>
                         <segue destination="z5m-1A-qZP" kind="relationship" relationship="viewControllers" id="mQh-6K-SkD"/>
                         <segue destination="QUy-BD-bpt" kind="relationship" relationship="viewControllers" id="M8t-EP-wfW"/>
                         <segue destination="CZ4-MO-1fc" kind="relationship" relationship="viewControllers" id="SUk-Ux-ee1"/>
@@ -210,12 +211,12 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="180"/>
+            <point key="canvasLocation" x="-110" y="94"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="lyP-Il-aez">
             <objects>
-                <viewController id="Eq6-cN-uYl" sceneMemberID="viewController">
+                <viewController id="Eq6-cN-uYl" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zqo-i4-i3L">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -246,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1IB-1k-l3J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="267" y="1230"/>
+            <point key="canvasLocation" x="-110" y="742"/>
         </scene>
     </scenes>
     <resources>

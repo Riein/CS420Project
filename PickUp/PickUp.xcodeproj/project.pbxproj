@@ -28,6 +28,7 @@
 		D59AE13618C9398B00037820 /* sports1.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13518C9398B00037820 /* sports1.png */; };
 		D59AE13A18C93A9C00037820 /* sports4.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13918C93A9C00037820 /* sports4.png */; };
 		D59AE13D18C93D8700037820 /* PickUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59AE13C18C93D8700037820 /* PickUpViewController.m */; };
+		D59AE14018C9438E00037820 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59AE13F18C9438E00037820 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		D59AE13918C93A9C00037820 /* sports4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports4.png; sourceTree = "<group>"; };
 		D59AE13B18C93D8700037820 /* PickUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickUpViewController.h; sourceTree = "<group>"; };
 		D59AE13C18C93D8700037820 /* PickUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickUpViewController.m; sourceTree = "<group>"; };
+		D59AE13E18C9438E00037820 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		D59AE13F18C9438E00037820 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				D512D65318C91B9300E788E1 /* PickUpAppDelegate.h */,
 				D512D65418C91B9300E788E1 /* PickUpAppDelegate.m */,
 				D512D65618C91B9300E788E1 /* Main_iPhone.storyboard */,
+				D59AE13E18C9438E00037820 /* LoginViewController.h */,
+				D59AE13F18C9438E00037820 /* LoginViewController.m */,
 				D59AE13B18C93D8700037820 /* PickUpViewController.h */,
 				D59AE13C18C93D8700037820 /* PickUpViewController.m */,
 				D512D65918C91B9300E788E1 /* Main_iPad.storyboard */,
@@ -282,6 +287,7 @@
 			files = (
 				D512D65E18C91B9300E788E1 /* PickUpFirstViewController.m in Sources */,
 				D512D65518C91B9300E788E1 /* PickUpAppDelegate.m in Sources */,
+				D59AE14018C9438E00037820 /* LoginViewController.m in Sources */,
 				D59AE13D18C93D8700037820 /* PickUpViewController.m in Sources */,
 				D512D66118C91B9300E788E1 /* PickUpSecondViewController.m in Sources */,
 				D512D65118C91B9300E788E1 /* main.m in Sources */,
