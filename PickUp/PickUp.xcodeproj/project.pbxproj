@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2EEC28FB18CA801C00706067 /* Grass Covered Earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC28FA18CA801C00706067 /* Grass Covered Earth.jpg */; };
-		2EEC28FD18CA80C800706067 /* grass01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC28FC18CA80C800706067 /* grass01.jpg */; };
+		2ED715EE18CAD3E100452AB5 /* honeycomb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2ED715ED18CAD3E100452AB5 /* honeycomb.jpg */; };
+		2ED715F018CAD59C00452AB5 /* words.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED715EF18CAD59C00452AB5 /* words.png */; };
+		2ED715F218CAD5E300452AB5 /* words_cirlce.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED715F118CAD5E300452AB5 /* words_cirlce.png */; };
 		2EEC28FF18CA961300706067 /* simple_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC28FE18CA961300706067 /* simple_green.png */; };
+		2EEC290118CAA2B300706067 /* soccer.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC290018CAA2B300706067 /* soccer.jpg */; };
+		2EEC290318CAA98500706067 /* mybutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC290218CAA98500706067 /* mybutton.png */; };
+		2EEC290518CAA9C800706067 /* mybutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC290418CAA9C800706067 /* mybutton@2x.png */; };
+		2EEC290718CAAD7000706067 /* gray_metal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC290618CAAD7000706067 /* gray_metal.jpg */; };
+		2EEC290B18CAB18000706067 /* gray_flat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC290A18CAB18000706067 /* gray_flat.jpg */; };
+		2EEC290F18CAB41300706067 /* futbol-obekty-yumor-21142.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC290E18CAB41300706067 /* futbol-obekty-yumor-21142.jpg */; };
 		D512D64518C91B9300E788E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D64418C91B9300E788E1 /* Foundation.framework */; };
 		D512D64718C91B9300E788E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D64618C91B9300E788E1 /* CoreGraphics.framework */; };
 		D512D64918C91B9300E788E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D64818C91B9300E788E1 /* UIKit.framework */; };
@@ -27,7 +34,6 @@
 		D512D67418C91B9300E788E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D512D67218C91B9300E788E1 /* InfoPlist.strings */; };
 		D512D67618C91B9300E788E1 /* PickUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D512D67518C91B9300E788E1 /* PickUpTests.m */; };
 		D5526B2118CA5122001AF659 /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5526B2018CA5122001AF659 /* CreateEventViewController.m */; };
-		D59AE13218C9363A00037820 /* cat.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13118C9363A00037820 /* cat.png */; };
 		D59AE13418C938AA00037820 /* sports.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13318C938AA00037820 /* sports.png */; };
 		D59AE13618C9398B00037820 /* sports1.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13518C9398B00037820 /* sports1.png */; };
 		D59AE13A18C93A9C00037820 /* sports4.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13918C93A9C00037820 /* sports4.png */; };
@@ -46,9 +52,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2EEC28FA18CA801C00706067 /* Grass Covered Earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Grass Covered Earth.jpg"; path = "../Grass Covered Earth.jpg"; sourceTree = "<group>"; };
-		2EEC28FC18CA80C800706067 /* grass01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = grass01.jpg; path = ../grass01.jpg; sourceTree = "<group>"; };
+		2ED715ED18CAD3E100452AB5 /* honeycomb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = honeycomb.jpg; sourceTree = "<group>"; };
+		2ED715EF18CAD59C00452AB5 /* words.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = words.png; sourceTree = "<group>"; };
+		2ED715F118CAD5E300452AB5 /* words_cirlce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = words_cirlce.png; sourceTree = "<group>"; };
 		2EEC28FE18CA961300706067 /* simple_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simple_green.png; sourceTree = "<group>"; };
+		2EEC290018CAA2B300706067 /* soccer.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soccer.jpg; sourceTree = "<group>"; };
+		2EEC290218CAA98500706067 /* mybutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mybutton.png; sourceTree = "<group>"; };
+		2EEC290418CAA9C800706067 /* mybutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mybutton@2x.png"; sourceTree = "<group>"; };
+		2EEC290618CAAD7000706067 /* gray_metal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gray_metal.jpg; sourceTree = "<group>"; };
+		2EEC290A18CAB18000706067 /* gray_flat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gray_flat.jpg; sourceTree = "<group>"; };
+		2EEC290E18CAB41300706067 /* futbol-obekty-yumor-21142.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "futbol-obekty-yumor-21142.jpg"; sourceTree = "<group>"; };
 		D512D64118C91B9300E788E1 /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D512D64418C91B9300E788E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D512D64618C91B9300E788E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -73,7 +86,6 @@
 		D512D67518C91B9300E788E1 /* PickUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickUpTests.m; sourceTree = "<group>"; };
 		D5526B1F18CA5122001AF659 /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventViewController.h; sourceTree = "<group>"; };
 		D5526B2018CA5122001AF659 /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventViewController.m; sourceTree = "<group>"; };
-		D59AE13118C9363A00037820 /* cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat.png; sourceTree = "<group>"; };
 		D59AE13318C938AA00037820 /* sports.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports.png; sourceTree = "<group>"; };
 		D59AE13518C9398B00037820 /* sports1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports1.png; sourceTree = "<group>"; };
 		D59AE13918C93A9C00037820 /* sports4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports4.png; sourceTree = "<group>"; };
@@ -151,12 +163,18 @@
 				D5526B2018CA5122001AF659 /* CreateEventViewController.m */,
 				D512D65918C91B9300E788E1 /* Main_iPad.storyboard */,
 				D59AE13318C938AA00037820 /* sports.png */,
-				2EEC28FC18CA80C800706067 /* grass01.jpg */,
-				2EEC28FA18CA801C00706067 /* Grass Covered Earth.jpg */,
+				2EEC290618CAAD7000706067 /* gray_metal.jpg */,
+				2EEC290A18CAB18000706067 /* gray_flat.jpg */,
+				2ED715EF18CAD59C00452AB5 /* words.png */,
+				2ED715F118CAD5E300452AB5 /* words_cirlce.png */,
+				2EEC290218CAA98500706067 /* mybutton.png */,
+				2ED715ED18CAD3E100452AB5 /* honeycomb.jpg */,
+				2EEC290018CAA2B300706067 /* soccer.jpg */,
+				2EEC290418CAA9C800706067 /* mybutton@2x.png */,
 				D59AE13518C9398B00037820 /* sports1.png */,
+				2EEC290E18CAB41300706067 /* futbol-obekty-yumor-21142.jpg */,
 				2EEC28FE18CA961300706067 /* simple_green.png */,
 				D59AE13918C93A9C00037820 /* sports4.png */,
-				D59AE13118C9363A00037820 /* cat.png */,
 				D512D65C18C91B9300E788E1 /* PickUpFirstViewController.h */,
 				D512D65D18C91B9300E788E1 /* PickUpFirstViewController.m */,
 				D512D65F18C91B9300E788E1 /* PickUpSecondViewController.h */,
@@ -274,16 +292,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				D59AE13418C938AA00037820 /* sports.png in Resources */,
-				D59AE13218C9363A00037820 /* cat.png in Resources */,
+				2EEC290F18CAB41300706067 /* futbol-obekty-yumor-21142.jpg in Resources */,
+				2ED715EE18CAD3E100452AB5 /* honeycomb.jpg in Resources */,
 				D59AE13A18C93A9C00037820 /* sports4.png in Resources */,
 				D512D65B18C91B9300E788E1 /* Main_iPad.storyboard in Resources */,
+				2ED715F218CAD5E300452AB5 /* words_cirlce.png in Resources */,
 				D512D66318C91B9300E788E1 /* Images.xcassets in Resources */,
+				2EEC290118CAA2B300706067 /* soccer.jpg in Resources */,
 				D512D65818C91B9300E788E1 /* Main_iPhone.storyboard in Resources */,
 				D59AE13618C9398B00037820 /* sports1.png in Resources */,
-				2EEC28FB18CA801C00706067 /* Grass Covered Earth.jpg in Resources */,
+				2EEC290518CAA9C800706067 /* mybutton@2x.png in Resources */,
+				2EEC290318CAA98500706067 /* mybutton.png in Resources */,
+				2ED715F018CAD59C00452AB5 /* words.png in Resources */,
 				2EEC28FF18CA961300706067 /* simple_green.png in Resources */,
 				D512D64F18C91B9300E788E1 /* InfoPlist.strings in Resources */,
-				2EEC28FD18CA80C800706067 /* grass01.jpg in Resources */,
+				2EEC290718CAAD7000706067 /* gray_metal.jpg in Resources */,
+				2EEC290B18CAB18000706067 /* gray_flat.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
