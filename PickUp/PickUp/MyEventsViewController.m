@@ -23,10 +23,10 @@
     return self;
 }
 
--(void)loadView{
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-}
+//-(void)loadView{
+//    self.tableView.dataSource = self;
+//    self.tableView.delegate = self;
+//}
 
 - (void)viewDidLoad
 {
