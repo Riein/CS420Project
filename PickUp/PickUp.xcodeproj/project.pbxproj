@@ -33,6 +33,9 @@
 		D512D66C18C91B9300E788E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D64818C91B9300E788E1 /* UIKit.framework */; };
 		D512D67418C91B9300E788E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D512D67218C91B9300E788E1 /* InfoPlist.strings */; };
 		D512D67618C91B9300E788E1 /* PickUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D512D67518C91B9300E788E1 /* PickUpTests.m */; };
+		D546388118CA78C70028D662 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D546388018CA78C70028D662 /* RegisterViewController.m */; };
+		D546388418CA78E70028D662 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D546388318CA78E70028D662 /* InitialViewController.m */; };
+		D546388718CA794A0028D662 /* MyEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D546388618CA794A0028D662 /* MyEventsViewController.m */; };
 		D5526B2118CA5122001AF659 /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5526B2018CA5122001AF659 /* CreateEventViewController.m */; };
 		D59AE13418C938AA00037820 /* sports.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13318C938AA00037820 /* sports.png */; };
 		D59AE13618C9398B00037820 /* sports1.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13518C9398B00037820 /* sports1.png */; };
@@ -84,6 +87,12 @@
 		D512D67118C91B9300E788E1 /* PickUpTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PickUpTests-Info.plist"; sourceTree = "<group>"; };
 		D512D67318C91B9300E788E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D512D67518C91B9300E788E1 /* PickUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickUpTests.m; sourceTree = "<group>"; };
+		D546387F18CA78C70028D662 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		D546388018CA78C70028D662 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		D546388218CA78E70028D662 /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
+		D546388318CA78E70028D662 /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
+		D546388518CA794A0028D662 /* MyEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventsViewController.h; sourceTree = "<group>"; };
+		D546388618CA794A0028D662 /* MyEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEventsViewController.m; sourceTree = "<group>"; };
 		D5526B1F18CA5122001AF659 /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventViewController.h; sourceTree = "<group>"; };
 		D5526B2018CA5122001AF659 /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventViewController.m; sourceTree = "<group>"; };
 		D59AE13318C938AA00037820 /* sports.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports.png; sourceTree = "<group>"; };
@@ -157,6 +166,12 @@
 				D512D65618C91B9300E788E1 /* Main_iPhone.storyboard */,
 				D59AE13E18C9438E00037820 /* LoginViewController.h */,
 				D59AE13F18C9438E00037820 /* LoginViewController.m */,
+				D546387F18CA78C70028D662 /* RegisterViewController.h */,
+				D546388018CA78C70028D662 /* RegisterViewController.m */,
+				D546388218CA78E70028D662 /* InitialViewController.h */,
+				D546388318CA78E70028D662 /* InitialViewController.m */,
+				D546388518CA794A0028D662 /* MyEventsViewController.h */,
+				D546388618CA794A0028D662 /* MyEventsViewController.m */,
 				D59AE13B18C93D8700037820 /* PickUpViewController.h */,
 				D59AE13C18C93D8700037820 /* PickUpViewController.m */,
 				D5526B1F18CA5122001AF659 /* CreateEventViewController.h */,
@@ -330,7 +345,10 @@
 				D512D65E18C91B9300E788E1 /* PickUpFirstViewController.m in Sources */,
 				D512D65518C91B9300E788E1 /* PickUpAppDelegate.m in Sources */,
 				D59AE14018C9438E00037820 /* LoginViewController.m in Sources */,
+				D546388118CA78C70028D662 /* RegisterViewController.m in Sources */,
+				D546388418CA78E70028D662 /* InitialViewController.m in Sources */,
 				D59AE13D18C93D8700037820 /* PickUpViewController.m in Sources */,
+				D546388718CA794A0028D662 /* MyEventsViewController.m in Sources */,
 				D512D66118C91B9300E788E1 /* PickUpSecondViewController.m in Sources */,
 				D512D65118C91B9300E788E1 /* main.m in Sources */,
 			);

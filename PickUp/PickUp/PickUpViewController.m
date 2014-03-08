@@ -8,6 +8,7 @@
 
 #import "PickUpViewController.h"
 #import "CreateEventViewController.h"
+#import "MyEventsViewController.h"
 
 @interface PickUpViewController ()
 
@@ -28,6 +29,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self.navigationItem setHidesBackButton:YES animated:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,18 +46,19 @@
 }
 
 - (IBAction)createEvent:(id)sender {
-    //[self prepareForSegue:segue sender:sender];
-    [self performSegueWithIdentifier:@"createEvent" sender:sender];
 }
 
 - (IBAction)logout:(id)sender {
+    // Add actions to log user out of server
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"createEvent"]){
-        // Find out which button it is (I think)
-        CreateEventViewController * destViewController = segue.destinationViewController;// Create the view controller instance
-        //[self presentViewController:destViewController animated:YES completion:nil];
+        CreateEventViewController *destViewController = segue.destinationViewController;
+    }
+    if ([segue.identifier isEqualToString:@"myEvents"]) {
+        MyEventsViewController *destViewController = segue.destinationViewController;
     }
 }
 @end
