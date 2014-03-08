@@ -12,6 +12,8 @@
 		2EC47C4C18CBBD24001F23F6 /* basketball.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4718CBBD24001F23F6 /* basketball.png */; };
 		2EC47C4D18CBBD24001F23F6 /* soccerball.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4818CBBD24001F23F6 /* soccerball.png */; };
 		2EC47C4E18CBBD24001F23F6 /* tennis.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4918CBBD24001F23F6 /* tennis.png */; };
+		2EC47C5018CBCB96001F23F6 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4F18CBCB96001F23F6 /* unchecked.png */; };
+		2EC47C5218CBCBCD001F23F6 /* checkedbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C5118CBCBCD001F23F6 /* checkedbox.png */; };
 		2ED715EE18CAD3E100452AB5 /* honeycomb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2ED715ED18CAD3E100452AB5 /* honeycomb.jpg */; };
 		2ED715F018CAD59C00452AB5 /* words.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED715EF18CAD59C00452AB5 /* words.png */; };
 		2ED715F218CAD5E300452AB5 /* words_cirlce.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED715F118CAD5E300452AB5 /* words_cirlce.png */; };
@@ -69,6 +71,8 @@
 		2EC47C4718CBBD24001F23F6 /* basketball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basketball.png; sourceTree = "<group>"; };
 		2EC47C4818CBBD24001F23F6 /* soccerball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soccerball.png; sourceTree = "<group>"; };
 		2EC47C4918CBBD24001F23F6 /* tennis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tennis.png; sourceTree = "<group>"; };
+		2EC47C4F18CBCB96001F23F6 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
+		2EC47C5118CBCBCD001F23F6 /* checkedbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkedbox.png; sourceTree = "<group>"; };
 		2ED715ED18CAD3E100452AB5 /* honeycomb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = honeycomb.jpg; sourceTree = "<group>"; };
 		2ED715EF18CAD59C00452AB5 /* words.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = words.png; sourceTree = "<group>"; };
 		2ED715F118CAD5E300452AB5 /* words_cirlce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = words_cirlce.png; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 				D512D65918C91B9300E788E1 /* Main_iPad.storyboard */,
 				D59AE13318C938AA00037820 /* sports.png */,
 				2EEC290618CAAD7000706067 /* gray_metal.jpg */,
+				2EC47C4F18CBCB96001F23F6 /* unchecked.png */,
+				2EC47C5118CBCBCD001F23F6 /* checkedbox.png */,
 				2EEC290A18CAB18000706067 /* gray_flat.jpg */,
 				2ED715EF18CAD59C00452AB5 /* words.png */,
 				2ED715F118CAD5E300452AB5 /* words_cirlce.png */,
@@ -357,6 +363,8 @@
 				2ED715F018CAD59C00452AB5 /* words.png in Resources */,
 				2EC47C4C18CBBD24001F23F6 /* basketball.png in Resources */,
 				2EEC28FF18CA961300706067 /* simple_green.png in Resources */,
+				2EC47C5218CBCBCD001F23F6 /* checkedbox.png in Resources */,
+				2EC47C5018CBCB96001F23F6 /* unchecked.png in Resources */,
 				D512D64F18C91B9300E788E1 /* InfoPlist.strings in Resources */,
 				2EC47C4E18CBBD24001F23F6 /* tennis.png in Resources */,
 				2EEC290718CAAD7000706067 /* gray_metal.jpg in Resources */,
