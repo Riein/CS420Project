@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EC47C4A18CBBD24001F23F6 /* Football.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4518CBBD24001F23F6 /* Football.jpg */; };
+		2EC47C4B18CBBD24001F23F6 /* baseball.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4618CBBD24001F23F6 /* baseball.png */; };
+		2EC47C4C18CBBD24001F23F6 /* basketball.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4718CBBD24001F23F6 /* basketball.png */; };
+		2EC47C4D18CBBD24001F23F6 /* soccerball.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4818CBBD24001F23F6 /* soccerball.png */; };
+		2EC47C4E18CBBD24001F23F6 /* tennis.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4918CBBD24001F23F6 /* tennis.png */; };
 		2ED715EE18CAD3E100452AB5 /* honeycomb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2ED715ED18CAD3E100452AB5 /* honeycomb.jpg */; };
 		2ED715F018CAD59C00452AB5 /* words.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED715EF18CAD59C00452AB5 /* words.png */; };
 		2ED715F218CAD5E300452AB5 /* words_cirlce.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED715F118CAD5E300452AB5 /* words_cirlce.png */; };
@@ -55,6 +60,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EC47C4518CBBD24001F23F6 /* Football.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Football.jpg; sourceTree = "<group>"; };
+		2EC47C4618CBBD24001F23F6 /* baseball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baseball.png; sourceTree = "<group>"; };
+		2EC47C4718CBBD24001F23F6 /* basketball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basketball.png; sourceTree = "<group>"; };
+		2EC47C4818CBBD24001F23F6 /* soccerball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soccerball.png; sourceTree = "<group>"; };
+		2EC47C4918CBBD24001F23F6 /* tennis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tennis.png; sourceTree = "<group>"; };
 		2ED715ED18CAD3E100452AB5 /* honeycomb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = honeycomb.jpg; sourceTree = "<group>"; };
 		2ED715EF18CAD59C00452AB5 /* words.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = words.png; sourceTree = "<group>"; };
 		2ED715F118CAD5E300452AB5 /* words_cirlce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = words_cirlce.png; sourceTree = "<group>"; };
@@ -187,6 +197,11 @@
 				2EEC290018CAA2B300706067 /* soccer.jpg */,
 				2EEC290418CAA9C800706067 /* mybutton@2x.png */,
 				D59AE13518C9398B00037820 /* sports1.png */,
+				2EC47C4518CBBD24001F23F6 /* Football.jpg */,
+				2EC47C4618CBBD24001F23F6 /* baseball.png */,
+				2EC47C4718CBBD24001F23F6 /* basketball.png */,
+				2EC47C4818CBBD24001F23F6 /* soccerball.png */,
+				2EC47C4918CBBD24001F23F6 /* tennis.png */,
 				2EEC290E18CAB41300706067 /* futbol-obekty-yumor-21142.jpg */,
 				2EEC28FE18CA961300706067 /* simple_green.png */,
 				D59AE13918C93A9C00037820 /* sports4.png */,
@@ -311,17 +326,22 @@
 				2ED715EE18CAD3E100452AB5 /* honeycomb.jpg in Resources */,
 				D59AE13A18C93A9C00037820 /* sports4.png in Resources */,
 				D512D65B18C91B9300E788E1 /* Main_iPad.storyboard in Resources */,
+				2EC47C4D18CBBD24001F23F6 /* soccerball.png in Resources */,
 				2ED715F218CAD5E300452AB5 /* words_cirlce.png in Resources */,
 				D512D66318C91B9300E788E1 /* Images.xcassets in Resources */,
 				2EEC290118CAA2B300706067 /* soccer.jpg in Resources */,
 				D512D65818C91B9300E788E1 /* Main_iPhone.storyboard in Resources */,
 				D59AE13618C9398B00037820 /* sports1.png in Resources */,
 				2EEC290518CAA9C800706067 /* mybutton@2x.png in Resources */,
+				2EC47C4B18CBBD24001F23F6 /* baseball.png in Resources */,
 				2EEC290318CAA98500706067 /* mybutton.png in Resources */,
 				2ED715F018CAD59C00452AB5 /* words.png in Resources */,
+				2EC47C4C18CBBD24001F23F6 /* basketball.png in Resources */,
 				2EEC28FF18CA961300706067 /* simple_green.png in Resources */,
 				D512D64F18C91B9300E788E1 /* InfoPlist.strings in Resources */,
+				2EC47C4E18CBBD24001F23F6 /* tennis.png in Resources */,
 				2EEC290718CAAD7000706067 /* gray_metal.jpg in Resources */,
+				2EC47C4A18CBBD24001F23F6 /* Football.jpg in Resources */,
 				2EEC290B18CAB18000706067 /* gray_flat.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
