@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PickUpFirstViewController : UIViewController
+@interface PickUpFirstViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+
+@property (strong, nonatomic) NSArray *sports;
 
 @end

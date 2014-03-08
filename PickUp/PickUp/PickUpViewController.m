@@ -53,12 +53,4 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"createEvent"]){
-        CreateEventViewController *destViewController = segue.destinationViewController;
-    }
-    if ([segue.identifier isEqualToString:@"myEvents"]) {
-        MyEventsViewController *destViewController = segue.destinationViewController;
-    }
-}
 @end

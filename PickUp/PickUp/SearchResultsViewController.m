@@ -1,18 +1,18 @@
 //
-//  LoginViewController.m
+//  SearchResultsViewController.m
 //  PickUp
 //
-//  Created by Matthew Steven Pessa on 3/6/14.
+//  Created by Matthew Steven Pessa on 3/8/14.
 //  Copyright (c) 2014 Amnesiacs. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "SearchResultsViewController.h"
 
-@interface LoginViewController ()
+@interface SearchResultsViewController ()
 
 @end
 
-@implementation LoginViewController
+@implementation SearchResultsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,15 +29,14 @@
 	// Do any additional setup after loading the view.
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [self.navigationItem setHidesBackButton:NO animated:NO];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
-    return YES;
 }
 
 @end

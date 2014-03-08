@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateEventViewController : UIViewController
+@interface CreateEventViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+
+@property (strong, nonatomic) NSArray *sports;
 
 @end
