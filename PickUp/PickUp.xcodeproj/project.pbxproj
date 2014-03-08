@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EEC28FB18CA801C00706067 /* Grass Covered Earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC28FA18CA801C00706067 /* Grass Covered Earth.jpg */; };
+		2EEC28FD18CA80C800706067 /* grass01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC28FC18CA80C800706067 /* grass01.jpg */; };
+		2EEC28FF18CA961300706067 /* simple_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC28FE18CA961300706067 /* simple_green.png */; };
 		D512D64518C91B9300E788E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D64418C91B9300E788E1 /* Foundation.framework */; };
 		D512D64718C91B9300E788E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D64618C91B9300E788E1 /* CoreGraphics.framework */; };
 		D512D64918C91B9300E788E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D64818C91B9300E788E1 /* UIKit.framework */; };
@@ -43,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EEC28FA18CA801C00706067 /* Grass Covered Earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Grass Covered Earth.jpg"; path = "../Grass Covered Earth.jpg"; sourceTree = "<group>"; };
+		2EEC28FC18CA80C800706067 /* grass01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = grass01.jpg; path = ../grass01.jpg; sourceTree = "<group>"; };
+		2EEC28FE18CA961300706067 /* simple_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simple_green.png; sourceTree = "<group>"; };
 		D512D64118C91B9300E788E1 /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D512D64418C91B9300E788E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D512D64618C91B9300E788E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -145,7 +151,10 @@
 				D5526B2018CA5122001AF659 /* CreateEventViewController.m */,
 				D512D65918C91B9300E788E1 /* Main_iPad.storyboard */,
 				D59AE13318C938AA00037820 /* sports.png */,
+				2EEC28FC18CA80C800706067 /* grass01.jpg */,
+				2EEC28FA18CA801C00706067 /* Grass Covered Earth.jpg */,
 				D59AE13518C9398B00037820 /* sports1.png */,
+				2EEC28FE18CA961300706067 /* simple_green.png */,
 				D59AE13918C93A9C00037820 /* sports4.png */,
 				D59AE13118C9363A00037820 /* cat.png */,
 				D512D65C18C91B9300E788E1 /* PickUpFirstViewController.h */,
@@ -271,7 +280,10 @@
 				D512D66318C91B9300E788E1 /* Images.xcassets in Resources */,
 				D512D65818C91B9300E788E1 /* Main_iPhone.storyboard in Resources */,
 				D59AE13618C9398B00037820 /* sports1.png in Resources */,
+				2EEC28FB18CA801C00706067 /* Grass Covered Earth.jpg in Resources */,
+				2EEC28FF18CA961300706067 /* simple_green.png in Resources */,
 				D512D64F18C91B9300E788E1 /* InfoPlist.strings in Resources */,
+				2EEC28FD18CA80C800706067 /* grass01.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
