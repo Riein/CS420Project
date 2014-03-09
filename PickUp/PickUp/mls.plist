@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Chicago Fire</key>
+	<string>http://www.chicago-fire.com/</string>
+	<key>Chivas USA</key>
+	<string>http://www.cdchivasusa.com/</string>
+	<key>Colorado Rapids</key>
+	<string>http://www.coloradorapids.com/</string>
+	<key>Columbus Crew</key>
+	<string>http://www.thecrew.com/</string>
+	<key>D.C. United</key>
+	<string>http://www.dcunited.com/</string>
+	<key>FC Dallas</key>
+	<string>http://www.fcdallas.com/</string>
+	<key>Houston Dynamo</key>
+	<string>http://www.houstondynamo.com/</string>
+	<key>LA Galaxy</key>
+	<string>http://www.lagalaxy.com/</string>
+	<key>Montreal Impact</key>
+	<string>http://www.impactmontreal.com/en</string>
+	<key>New England Revolution</key>
+	<string>http://www.revolutionsoccer.net/</string>
+	<key>New York Red Bulls</key>
+	<string>http://www.newyorkredbulls.com/</string>
+	<key>Philadelphia Union</key>
+	<string>http://www.philadelphiaunion.com/</string>
+	<key>Portland Timbers</key>
+	<string>http://www.timbers.com/</string>
+	<key>San Jose EarthQuakes</key>
+	<string>http://www.sjearthquakes.com/</string>
+	<key>Real Salt Lake</key>
+	<string>http://www.realsaltlake.com/</string>
+	<key>Seattle Sounders FC</key>
+	<string>http://www.soundersfc.com/</string>
+	<key>Sporting Kansas City</key>
+	<string>http://www.sportingkc.com/</string>
+	<key>Toronto FC</key>
+	<string>http://www.torontofc.ca/</string>
+	<key>Vancouver Whitecaps FC</key>
+	<string>http://www.whitecapsfc.com/</string>
+</dict>
+</plist>

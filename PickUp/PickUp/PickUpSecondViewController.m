@@ -7,6 +7,7 @@
 //
 
 #import "PickUpSecondViewController.h"
+#import "ProfessionalViewController.h"
 
 @interface PickUpSecondViewController ()
 
@@ -24,6 +25,30 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"basketball"]) {
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        ProfessionalViewController *controller = (ProfessionalViewController *)navController.topViewController;
+        controller.selection = segue.identifier;
+        //[[segue destinationViewController] segueHandoffWithInput:segue.identifier];
+    }
+    if ([segue.identifier isEqualToString:@"baseball"]) {
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        ProfessionalViewController *controller = (ProfessionalViewController *)navController.topViewController;
+        controller.selection = segue.identifier;
+    }
+    if ([segue.identifier isEqualToString:@"soccer"]) {
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        ProfessionalViewController *controller = (ProfessionalViewController *)navController.topViewController;
+        controller.selection = segue.identifier;
+    }
+    if ([segue.identifier isEqualToString:@"football"]) {
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        ProfessionalViewController *controller = (ProfessionalViewController *)navController.topViewController;
+        controller.selection = segue.identifier;
+    }
 }
 
 @end

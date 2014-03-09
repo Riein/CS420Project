@@ -71,13 +71,30 @@
     // Configure the cell...
     // NSString *key = [_eventNames objectAtIndex:indexPath.row];
     // NSDictionary *dict = [_eventDict objectForKey:key];
-    // NSNumber *latitude = [dict objectForKey:@"latitude"];
-    // NSNumber *longitude = [dict objectForKey:@"longitude"];
-    // NSString *date = [dict objectForKey:@"date"];
-    // NSString *time = [dict objectForKey:@"time"];
+    // cell.textLabel.text = key;
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+//    NSString *key = [_eventNames objectAtIndex:indexPath.row];
+//    NSDictionary *dict = [_eventNames objectForKey:key];
+//    NSNumber *latitude = [dict objectForKey:@"latitude"];
+//    NSNumber *longitude = [dict objectForKey:@"longitude"];
+//    
+//    MKCoordinateRegion region;
+//    region.center.latitude = latitude.doubleValue;
+//    region.center.longitude = longitude.doubleValue;
+//    region.span.latitudeDelta = 8.0;
+//    region.span.longitudeDelta = 8.0;
+    
+//    StateMapViewController *detailViewController = [[StateMapViewController alloc] init];
+//    detailViewController.region = region;
+//    detailViewController.title = key;
+    
+//    [self.navigationController pushViewController:detailViewController animated:YES];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

@@ -14,11 +14,15 @@
 
 @implementation EventInfoViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil dict:(NSDictionary *)dict title:(NSString *)title
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Custom initialization... Pass in the title and dictionary from the cell.
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        label.text = title;
+        [self.view addSubview:label];
+        _info = dict;
     }
     return self;
 }
@@ -27,7 +31,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    // We'll be getting the information from the server and populating all of the fields with it.
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,7 +40,16 @@
 }
 
 - (IBAction)joinButton:(id)sender {
-    // Probably set a variable to be BOOL joined. If joined -> unjoin the event else join the event.
+    if (_joined) {
+        self.joined = NO;
+        [sender setTitle:@"Join"];
+        // Update the DB to show no longer joined
+    }
+    else{
+        self.joined = YES;
+        [sender setTitle:@"Unjoin"];
+        // Update the DB to show attending
+    }
 }
 
 @end
