@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Golf</key>
+	<dict>
+		<key>host</key>
+		<string>eschulze</string>
+		<key>Sport</key>
+		<string>Golf</string>
+		<key>Location</key>
+		<string>Green Mountain Golf Course</string>
+		<key>Latitude</key>
+		<real>45.645938</real>
+		<key>Longitude</key>
+		<real>-122.456188</real>
+		<key>Number of Players</key>
+		<integer>5</integer>
+		<key>Date</key>
+		<date>2014-04-01T13:00:00Z</date>
+		<key>Players</key>
+		<array>
+			<string>mpessa</string>
+			<string>jpessa</string>
+			<string>sdemyanik</string>
+			<string>ctwing</string>
+		</array>
+		<key>Equipment</key>
+		<array>
+			<string>Golf Clubs</string>
+			<string>Golf Balls</string>
+			<string>Golf Club Bag</string>
+			<string>Neon Orange Shirt</string>
+			<string>Lime Green and Hot Pink Striped Pants</string>
+			<string>Canary Yellow Hat</string>
+		</array>
+	</dict>
+	<key>Frisbee</key>
+	<dict>
+		<key>host</key>
+		<string>eschulze</string>
+		<key>Sport</key>
+		<string>Frisbee</string>
+		<key>Location</key>
+		<string>WSU Vancouver</string>
+		<key>Latitude</key>
+		<real>45.733721</real>
+		<key>Longitude</key>
+		<real>-122.632935</real>
+		<key>Number of Players</key>
+		<integer>5</integer>
+		<key>Date</key>
+		<date>2014-04-01T13:00:00Z</date>
+		<key>Players</key>
+		<array>
+			<string>mpessa</string>
+			<string>jpessa</string>
+			<string>sdemyanik</string>
+			<string>ctwing</string>
+		</array>
+		<key>Equipment</key>
+		<array>
+			<string>Frisbee</string>
+		</array>
+	</dict>
+	<key>Pickup Baseball</key>
+	<dict>
+		<key>host</key>
+		<string>eschulze</string>
+		<key>Sport</key>
+		<string>Baseball</string>
+		<key>Location</key>
+		<string>Louis Bloch Park</string>
+		<key>Latitude</key>
+		<real>45.588072</real>
+		<key>Longitude</key>
+		<real>-122.396021</real>
+		<key>Number of Players</key>
+		<integer>18</integer>
+		<key>Date</key>
+		<date>2014-04-02T00:00:00Z</date>
+		<key>Players</key>
+		<array>
+			<string>mpessa</string>
+			<string>jpessa</string>
+			<string>sdemyanik</string>
+			<string>ctwing</string>
+		</array>
+		<key>Equipment</key>
+		<array>
+			<string>Baseball</string>
+			<string>Baseball Bat</string>
+			<string>Baseball Glove</string>
+		</array>
+	</dict>
+	<key>Pickup Soccer</key>
+	<dict>
+		<key>host</key>
+		<string>mpessa</string>
+		<key>Sport</key>
+		<string>Soccer</string>
+		<key>Location</key>
+		<string>WSU Vancouver Soccer Field</string>
+		<key>Latitude</key>
+		<real>45.729183</real>
+		<key>Longitude</key>
+		<real>-122.639008</real>
+		<key>Date</key>
+		<date>2014-04-01T12:00:00Z</date>
+		<key>Number of Players</key>
+		<integer>6</integer>
+		<key>Players</key>
+		<array>
+			<string>eschulze</string>
+			<string>jpessa</string>
+			<string>sdemyanik</string>
+			<string>ctwing</string>
+		</array>
+		<key>Equipment</key>
+		<array>
+			<string>Soccer Ball</string>
+			<string>Shoes With Cleats</string>
+		</array>
+	</dict>
+	<key>Pickup Basketball</key>
+	<dict>
+		<key>host</key>
+		<string>mpessa</string>
+		<key>Sport</key>
+		<string>Basketball</string>
+		<key>Location</key>
+		<string>WSU Vancouver Basketball Court</string>
+		<key>Latitude</key>
+		<real>45.729183</real>
+		<key>Longitude</key>
+		<real>-122.639008</real>
+		<key>Date</key>
+		<date>2014-04-02T00:00:00Z</date>
+		<key>Number of Players</key>
+		<integer>6</integer>
+		<key>Players</key>
+		<array>
+			<string>eschulze</string>
+			<string>jpessa</string>
+			<string>sdemyanik</string>
+			<string>ctwing</string>
+		</array>
+		<key>Equipment</key>
+		<array>
+			<string>Basketball</string>
+		</array>
+	</dict>
+	<key>Calvinball</key>
+	<dict>
+		<key>host</key>
+		<string>eschulze</string>
+		<key>Sport</key>
+		<string>Other</string>
+		<key>Location</key>
+		<string>Silver Star Scenic Area</string>
+		<key>Latitude</key>
+		<real>45.748951</real>
+		<key>Longitude</key>
+		<real>-122.228737</real>
+		<key>Number of Players</key>
+		<integer>5</integer>
+		<key>Date</key>
+		<date>2014-06-02T00:00:00Z</date>
+		<key>Players</key>
+		<array>
+			<string>mpessa</string>
+			<string>jpessa</string>
+			<string>sdemyanik</string>
+			<string>ctwing</string>
+		</array>
+		<key>Equipment</key>
+		<array>
+			<string>Football</string>
+			<string>Baseball Glove</string>
+			<string>Baseball Bat</string>
+			<string>Golf Club</string>
+			<string>Bowling Ball</string>
+			<string>Sledge Hammer</string>
+			<string>Riding Lawnmower</string>
+			<string>NERF Gun</string>
+			<string>Knee Pads</string>
+			<string>Helmet</string>
+			<string>Checkered Flag</string>
+			<string>Potato Cannon</string>
+			<string>Live Rooster</string>
+		</array>
+	</dict>
+</dict>
+</plist>
