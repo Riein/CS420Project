@@ -64,6 +64,18 @@
         _foot = [[NSDictionary alloc] initWithContentsOfFile:path];
         _footKeys = [[[_foot allKeys] sortedArrayUsingSelector:@selector(compare:)] mutableCopy];
     }
+    if ([_selection isEqualToString:@"baseball"]) {
+        self.title = @"MLB Teams";
+    }
+    if ([_selection isEqualToString:@"basketball"]) {
+        self.title = @"NBA Teams";
+    }
+    if ([_selection isEqualToString:@"soccer"]) {
+        self.title = @"MLS Teams";
+    }
+    if ([_selection isEqualToString:@"football"]) {
+        self.title = @"NFL Teams";
+    }
 }
 
 - (void)didReceiveMemoryWarning
