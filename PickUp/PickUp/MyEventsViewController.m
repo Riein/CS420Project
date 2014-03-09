@@ -23,6 +23,11 @@
     return self;
 }
 
+//-(void)loadView{
+//    self.tableView.dataSource = self;
+//    self.tableView.delegate = self;
+//}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -44,15 +49,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
+    // Return the number events that can be displayed? Is this needed? It wasn't in Americas.
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
-    // Return the number of rows in the section.
+    // Return the number of events a user is signed up for.
+    // return [_eventNames count];
     return 0;
 }
 
@@ -60,9 +65,16 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     // Configure the cell...
-    
+    // NSString *key = [_eventNames objectAtIndex:indexPath.row];
+    // NSDictionary *dict = [_eventDict objectForKey:key];
+    // NSNumber *latitude = [dict objectForKey:@"latitude"];
+    // NSNumber *longitude = [dict objectForKey:@"longitude"];
+    // NSString *date = [dict objectForKey:@"date"];
+    // NSString *time = [dict objectForKey:@"time"];
     return cell;
 }
 

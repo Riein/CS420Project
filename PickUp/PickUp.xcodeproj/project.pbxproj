@@ -55,6 +55,9 @@
 		D546388418CA78E70028D662 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D546388318CA78E70028D662 /* InitialViewController.m */; };
 		D546388718CA794A0028D662 /* MyEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D546388618CA794A0028D662 /* MyEventsViewController.m */; };
 		D54D21BA18CBC42000B2C4D0 /* SearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D21B918CBC42000B2C4D0 /* SearchResultsViewController.m */; };
+		D54D21BE18CBCEB300B2C4D0 /* EventInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D21BC18CBCEB300B2C4D0 /* EventInfoViewController.m */; };
+		D54D21BF18CBCEB300B2C4D0 /* EventInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54D21BD18CBCEB300B2C4D0 /* EventInfoViewController.xib */; };
+		D54D21C218CBD8F000B2C4D0 /* ProfessionalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D21C118CBD8F000B2C4D0 /* ProfessionalViewController.m */; };
 		D5526B2118CA5122001AF659 /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5526B2018CA5122001AF659 /* CreateEventViewController.m */; };
 		D59AE13418C938AA00037820 /* sports.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13318C938AA00037820 /* sports.png */; };
 		D59AE13618C9398B00037820 /* sports1.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13518C9398B00037820 /* sports1.png */; };
@@ -132,6 +135,11 @@
 		D546388618CA794A0028D662 /* MyEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEventsViewController.m; sourceTree = "<group>"; };
 		D54D21B818CBC42000B2C4D0 /* SearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsViewController.h; sourceTree = "<group>"; };
 		D54D21B918CBC42000B2C4D0 /* SearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsViewController.m; sourceTree = "<group>"; };
+		D54D21BB18CBCEB300B2C4D0 /* EventInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInfoViewController.h; sourceTree = "<group>"; };
+		D54D21BC18CBCEB300B2C4D0 /* EventInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInfoViewController.m; sourceTree = "<group>"; };
+		D54D21BD18CBCEB300B2C4D0 /* EventInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventInfoViewController.xib; sourceTree = "<group>"; };
+		D54D21C018CBD8F000B2C4D0 /* ProfessionalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalViewController.h; sourceTree = "<group>"; };
+		D54D21C118CBD8F000B2C4D0 /* ProfessionalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalViewController.m; sourceTree = "<group>"; };
 		D5526B1F18CA5122001AF659 /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventViewController.h; sourceTree = "<group>"; };
 		D5526B2018CA5122001AF659 /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventViewController.m; sourceTree = "<group>"; };
 		D59AE13318C938AA00037820 /* sports.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports.png; sourceTree = "<group>"; };
@@ -203,6 +211,8 @@
 				D512D65318C91B9300E788E1 /* PickUpAppDelegate.h */,
 				D512D65418C91B9300E788E1 /* PickUpAppDelegate.m */,
 				D512D65618C91B9300E788E1 /* Main_iPhone.storyboard */,
+				D54D21C018CBD8F000B2C4D0 /* ProfessionalViewController.h */,
+				D54D21C118CBD8F000B2C4D0 /* ProfessionalViewController.m */,
 				D54D21B818CBC42000B2C4D0 /* SearchResultsViewController.h */,
 				D54D21B918CBC42000B2C4D0 /* SearchResultsViewController.m */,
 				D59AE13E18C9438E00037820 /* LoginViewController.h */,
@@ -255,6 +265,9 @@
 				D512D66018C91B9300E788E1 /* PickUpSecondViewController.m */,
 				D512D66218C91B9300E788E1 /* Images.xcassets */,
 				D512D64B18C91B9300E788E1 /* Supporting Files */,
+				D54D21BB18CBCEB300B2C4D0 /* EventInfoViewController.h */,
+				D54D21BC18CBCEB300B2C4D0 /* EventInfoViewController.m */,
+				D54D21BD18CBCEB300B2C4D0 /* EventInfoViewController.xib */,
 			);
 			path = PickUp;
 			sourceTree = "<group>";
@@ -386,6 +399,7 @@
 				2EEC290518CAA9C800706067 /* mybutton@2x.png in Resources */,
 				2EC47C5618CBD081001F23F6 /* footbalfield.png in Resources */,
 				2EC47C4B18CBBD24001F23F6 /* baseball.png in Resources */,
+				D54D21BF18CBCEB300B2C4D0 /* EventInfoViewController.xib in Resources */,
 				2EEC290318CAA98500706067 /* mybutton.png in Resources */,
 				2EC47C6218CBDB45001F23F6 /* army.png in Resources */,
 				2ED715F018CAD59C00452AB5 /* words.png in Resources */,
@@ -422,11 +436,13 @@
 				D512D65E18C91B9300E788E1 /* PickUpFirstViewController.m in Sources */,
 				D512D65518C91B9300E788E1 /* PickUpAppDelegate.m in Sources */,
 				D59AE14018C9438E00037820 /* LoginViewController.m in Sources */,
+				D54D21C218CBD8F000B2C4D0 /* ProfessionalViewController.m in Sources */,
 				D54D21BA18CBC42000B2C4D0 /* SearchResultsViewController.m in Sources */,
 				D546388118CA78C70028D662 /* RegisterViewController.m in Sources */,
 				D546388418CA78E70028D662 /* InitialViewController.m in Sources */,
 				D59AE13D18C93D8700037820 /* PickUpViewController.m in Sources */,
 				D546388718CA794A0028D662 /* MyEventsViewController.m in Sources */,
+				D54D21BE18CBCEB300B2C4D0 /* EventInfoViewController.m in Sources */,
 				D512D66118C91B9300E788E1 /* PickUpSecondViewController.m in Sources */,
 				D512D65118C91B9300E788E1 /* main.m in Sources */,
 			);
