@@ -15,13 +15,13 @@
 
 @implementation ProfessionalViewController{
     NSDictionary *_bball;
-    NSArray *_bballKeys;
+    NSMutableArray *_bballKeys;
     NSDictionary *_basket;
-    NSArray *_basketKeys;
+    NSMutableArray *_basketKeys;
     NSDictionary *_soccer;
-    NSArray *_soccerKeys;
+    NSMutableArray *_soccerKeys;
     NSDictionary *_foot;
-    NSArray *_footKeys;
+    NSMutableArray *_footKeys;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -47,22 +47,22 @@
     if (_bball == nil) {
         NSString *path = [[NSBundle mainBundle] pathForResource:@"mlb" ofType:@"plist"];
         _bball = [[NSDictionary alloc] initWithContentsOfFile:path];
-        _bballKeys = [[_bball allKeys] sortedArrayUsingSelector:@selector(compare:)];
+        _bballKeys = [[[_bball allKeys] sortedArrayUsingSelector:@selector(compare:)] mutableCopy];
     }
     if (_basket == nil) {
         NSString *path = [[NSBundle mainBundle] pathForResource:@"nba" ofType:@"plist"];
         _basket = [[NSDictionary alloc] initWithContentsOfFile:path];
-        _basketKeys = [[_basket allKeys] sortedArrayUsingSelector:@selector(compare:)];
+        _basketKeys = [[[_basket allKeys] sortedArrayUsingSelector:@selector(compare:)] mutableCopy];
     }
     if (_soccer == nil) {
         NSString *path = [[NSBundle mainBundle] pathForResource:@"mls" ofType:@"plist"];
         _soccer = [[NSDictionary alloc] initWithContentsOfFile:path];
-        _soccerKeys = [[_soccer allKeys] sortedArrayUsingSelector:@selector(compare:)];
+        _soccerKeys = [[[_soccer allKeys] sortedArrayUsingSelector:@selector(compare:)] mutableCopy];
     }
     if (_foot == nil) {
         NSString *path = [[NSBundle mainBundle] pathForResource:@"nfl" ofType:@"plist"];
         _foot = [[NSDictionary alloc] initWithContentsOfFile:path];
-        _footKeys = [[_foot allKeys] sortedArrayUsingSelector:@selector(compare:)];
+        _footKeys = [[[_foot allKeys] sortedArrayUsingSelector:@selector(compare:)] mutableCopy];
     }
 }
 
@@ -137,7 +137,7 @@
         cell.textLabel.text = [_bballKeys objectAtIndex:indexPath.row];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    if ([_selection  isEqual: @"baskerball"]) {
+    if ([_selection  isEqual: @"basketball"]) {
         cell.textLabel.text = [_basketKeys objectAtIndex:indexPath.row];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
