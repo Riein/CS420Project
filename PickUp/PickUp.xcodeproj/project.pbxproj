@@ -25,6 +25,7 @@
 		2EC47C6418CBDDFB001F23F6 /* park.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C6318CBDDFB001F23F6 /* park.png */; };
 		2EC47C6618CBDF1A001F23F6 /* park2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C6518CBDF1A001F23F6 /* park2.png */; };
 		2EC47C6A18CBE795001F23F6 /* PickUpGames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C6918CBE795001F23F6 /* PickUpGames.plist */; };
+		2EC47C6C18CBEC69001F23F6 /* scheduling.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C6B18CBEC69001F23F6 /* scheduling.png */; };
 		2ED715EE18CAD3E100452AB5 /* honeycomb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2ED715ED18CAD3E100452AB5 /* honeycomb.jpg */; };
 		2ED715F018CAD59C00452AB5 /* words.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED715EF18CAD59C00452AB5 /* words.png */; };
 		2ED715F218CAD5E300452AB5 /* words_cirlce.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED715F118CAD5E300452AB5 /* words_cirlce.png */; };
@@ -95,6 +96,7 @@
 		2EC47C6318CBDDFB001F23F6 /* park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = park.png; sourceTree = "<group>"; };
 		2EC47C6518CBDF1A001F23F6 /* park2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = park2.png; sourceTree = "<group>"; };
 		2EC47C6918CBE795001F23F6 /* PickUpGames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PickUpGames.plist; sourceTree = "<group>"; };
+		2EC47C6B18CBEC69001F23F6 /* scheduling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scheduling.png; sourceTree = "<group>"; };
 		2ED715ED18CAD3E100452AB5 /* honeycomb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = honeycomb.jpg; sourceTree = "<group>"; };
 		2ED715EF18CAD59C00452AB5 /* words.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = words.png; sourceTree = "<group>"; };
 		2ED715F118CAD5E300452AB5 /* words_cirlce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = words_cirlce.png; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				D59AE13318C938AA00037820 /* sports.png */,
 				2EEC290618CAAD7000706067 /* gray_metal.jpg */,
 				2EC47C5B18CBD5B5001F23F6 /* seahawks.png */,
+				2EC47C6B18CBEC69001F23F6 /* scheduling.png */,
 				2EC47C5918CBD3FB001F23F6 /* basketballfight.png */,
 				2EC47C5718CBD24C001F23F6 /* parachute.png */,
 				2EC47C6518CBDF1A001F23F6 /* park2.png */,
@@ -386,6 +389,7 @@
 				2EC47C5A18CBD3FB001F23F6 /* basketballfight.png in Resources */,
 				2EC47C4D18CBBD24001F23F6 /* soccerball.png in Resources */,
 				2ED715F218CAD5E300452AB5 /* words_cirlce.png in Resources */,
+				2EC47C6C18CBEC69001F23F6 /* scheduling.png in Resources */,
 				2EC47C5C18CBD5B5001F23F6 /* seahawks.png in Resources */,
 				2EC47C5818CBD24C001F23F6 /* parachute.png in Resources */,
 				D512D66318C91B9300E788E1 /* Images.xcassets in Resources */,
