@@ -14,15 +14,11 @@
 
 @implementation EventInfoViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil dict:(NSDictionary *)dict title:(NSString *)title
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization... Pass in the title and dictionary from the cell.
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-        label.text = title;
-        [self.view addSubview:label];
-        _info = dict;
+
     }
     return self;
 }
@@ -31,6 +27,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    //MKMapView *mapView = [[MKMapView alloc]]
+    NSNumber *latitude = [self.info objectForKey:@"Latitude"];
+    NSNumber *longitude = [self.info objectForKey:@"Longitude"];
+    _region.center.latitude = latitude.doubleValue;
+    _region.center.longitude = longitude.doubleValue;
+    _region.span.latitudeDelta = 0.02;
+    _region.span.longitudeDelta = 0.02;
+    _mapView.region = _region;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,16 +46,16 @@
 }
 
 - (IBAction)joinButton:(id)sender {
-    if (_joined) {
-        self.joined = NO;
-        [sender setTitle:@"Join"];
-        // Update the DB to show no longer joined
-    }
-    else{
-        self.joined = YES;
-        [sender setTitle:@"Unjoin"];
-        // Update the DB to show attending
-    }
+//    if (_joined) {
+//        self.joined = NO;
+//        [sender setTitle:@"Join"];
+//        // Update the DB to show no longer joined
+//    }
+//    else{
+//        self.joined = YES;
+//        [sender setTitle:@"Unjoin"];
+//        // Update the DB to show attending
+//    }
 }
 
 @end
