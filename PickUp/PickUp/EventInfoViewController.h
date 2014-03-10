@@ -12,6 +12,7 @@
 @interface EventInfoViewController : UIViewController
 
 @property (assign, nonatomic) IBOutlet MKMapView *mapView;
+@property MKCoordinateRegion region;
 
 @property (weak, nonatomic) IBOutlet UITextField *locField;
 @property (weak, nonatomic) IBOutlet UITextField *dateField;
@@ -20,7 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *button;
 
 @property (weak, nonatomic) NSDictionary *info;
-@property (assign, nonatomic) BOOL joined;
 
 - (IBAction)joinButton:(id)sender;
 

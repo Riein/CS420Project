@@ -7,12 +7,18 @@
 //
 
 #import "SearchResultsViewController.h"
+#import "EventInfoViewController.h"
 
 @interface SearchResultsViewController ()
 
 @end
 
-@implementation SearchResultsViewController
+@implementation SearchResultsViewController{
+    NSDictionary *_localList;
+    NSMutableArray *_localKeys;
+    NSString *_keyToPass;
+    NSDictionary *_dictToPass;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +33,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    if (_localList == nil) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"PickUpGames" ofType:@"plist"];
+        _localList = [[NSDictionary alloc] initWithContentsOfFile:path];
+        _localKeys = [[[_localList allKeys] sortedArrayUsingSelector:@selector(compare:)] mutableCopy];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -39,4 +50,47 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table View Data Source
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [_localKeys count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellID = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    
+    cell.textLabel.text = [_localKeys objectAtIndex:indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    return cell;
+}
+
+#pragma mark - Table View Delegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    _keyToPass = [_localKeys objectAtIndex:indexPath.row];
+    _dictToPass = [_localList objectForKey:_keyToPass];
+    
+    EventInfoViewController *detailViewController = [[EventInfoViewController alloc] init];
+    detailViewController.info = _dictToPass;
+    detailViewController.title = _keyToPass;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
+
+
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+//    EventInfoViewController *destViewController = segue.destinationViewController;
+//    destViewController.info = _dictToPass;
+//    destViewController.title = _keyToPass;
+//}
 @end

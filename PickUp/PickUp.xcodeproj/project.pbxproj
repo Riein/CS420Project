@@ -66,12 +66,12 @@
 		D546388718CA794A0028D662 /* MyEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D546388618CA794A0028D662 /* MyEventsViewController.m */; };
 		D54D21BA18CBC42000B2C4D0 /* SearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D21B918CBC42000B2C4D0 /* SearchResultsViewController.m */; };
 		D54D21BE18CBCEB300B2C4D0 /* EventInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D21BC18CBCEB300B2C4D0 /* EventInfoViewController.m */; };
-		D54D21BF18CBCEB300B2C4D0 /* EventInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54D21BD18CBCEB300B2C4D0 /* EventInfoViewController.xib */; };
 		D54D21C218CBD8F000B2C4D0 /* ProfessionalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D21C118CBD8F000B2C4D0 /* ProfessionalViewController.m */; };
 		D54D21C418CBE77D00B2C4D0 /* mlb.plist in Resources */ = {isa = PBXBuildFile; fileRef = D54D21C318CBE77D00B2C4D0 /* mlb.plist */; };
 		D54D21C618CBE78400B2C4D0 /* mls.plist in Resources */ = {isa = PBXBuildFile; fileRef = D54D21C518CBE78400B2C4D0 /* mls.plist */; };
 		D54D21CD18CBEB1900B2C4D0 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D21CC18CBEB1900B2C4D0 /* WebViewController.m */; };
 		D5526B2118CA5122001AF659 /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5526B2018CA5122001AF659 /* CreateEventViewController.m */; };
+		D56B679518CE3E4A00B15EB1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56B679418CE3E4A00B15EB1 /* MapKit.framework */; };
 		D5890BF718CD13AB00281DB0 /* footbalfield.png in Resources */ = {isa = PBXBuildFile; fileRef = D5890BF618CD13AB00281DB0 /* footbalfield.png */; };
 		D59AE13418C938AA00037820 /* sports.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13318C938AA00037820 /* sports.png */; };
 		D59AE13618C9398B00037820 /* sports1.png in Resources */ = {isa = PBXBuildFile; fileRef = D59AE13518C9398B00037820 /* sports1.png */; };
@@ -163,7 +163,6 @@
 		D54D21B918CBC42000B2C4D0 /* SearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsViewController.m; sourceTree = "<group>"; };
 		D54D21BB18CBCEB300B2C4D0 /* EventInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInfoViewController.h; sourceTree = "<group>"; };
 		D54D21BC18CBCEB300B2C4D0 /* EventInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInfoViewController.m; sourceTree = "<group>"; };
-		D54D21BD18CBCEB300B2C4D0 /* EventInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventInfoViewController.xib; sourceTree = "<group>"; };
 		D54D21C018CBD8F000B2C4D0 /* ProfessionalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalViewController.h; sourceTree = "<group>"; };
 		D54D21C118CBD8F000B2C4D0 /* ProfessionalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalViewController.m; sourceTree = "<group>"; };
 		D54D21C318CBE77D00B2C4D0 /* mlb.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mlb.plist; sourceTree = "<group>"; };
@@ -172,6 +171,7 @@
 		D54D21CC18CBEB1900B2C4D0 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		D5526B1F18CA5122001AF659 /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventViewController.h; sourceTree = "<group>"; };
 		D5526B2018CA5122001AF659 /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventViewController.m; sourceTree = "<group>"; };
+		D56B679418CE3E4A00B15EB1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D5890BF618CD13AB00281DB0 /* footbalfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = footbalfield.png; sourceTree = "<group>"; };
 		D59AE13318C938AA00037820 /* sports.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports.png; sourceTree = "<group>"; };
 		D59AE13518C9398B00037820 /* sports1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports1.png; sourceTree = "<group>"; };
@@ -189,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D56B679518CE3E4A00B15EB1 /* MapKit.framework in Frameworks */,
 				D512D64718C91B9300E788E1 /* CoreGraphics.framework in Frameworks */,
 				D512D64918C91B9300E788E1 /* UIKit.framework in Frameworks */,
 				D512D64518C91B9300E788E1 /* Foundation.framework in Frameworks */,
@@ -230,6 +231,7 @@
 		D512D64318C91B9300E788E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D56B679418CE3E4A00B15EB1 /* MapKit.framework */,
 				D512D64418C91B9300E788E1 /* Foundation.framework */,
 				D512D64618C91B9300E788E1 /* CoreGraphics.framework */,
 				D512D64818C91B9300E788E1 /* UIKit.framework */,
@@ -262,6 +264,12 @@
 				D59AE13C18C93D8700037820 /* PickUpViewController.m */,
 				D5526B1F18CA5122001AF659 /* CreateEventViewController.h */,
 				D5526B2018CA5122001AF659 /* CreateEventViewController.m */,
+				D54D21BB18CBCEB300B2C4D0 /* EventInfoViewController.h */,
+				D54D21BC18CBCEB300B2C4D0 /* EventInfoViewController.m */,
+				D512D65C18C91B9300E788E1 /* PickUpFirstViewController.h */,
+				D512D65D18C91B9300E788E1 /* PickUpFirstViewController.m */,
+				D512D65F18C91B9300E788E1 /* PickUpSecondViewController.h */,
+				D512D66018C91B9300E788E1 /* PickUpSecondViewController.m */,
 				2EC47C6918CBE795001F23F6 /* PickUpGames.plist */,
 				2EC47C7D18CD86F5001F23F6 /* collage.png */,
 				D512D65918C91B9300E788E1 /* Main_iPad.storyboard */,
@@ -304,20 +312,13 @@
 				2EEC290E18CAB41300706067 /* futbol-obekty-yumor-21142.jpg */,
 				2EEC28FE18CA961300706067 /* simple_green.png */,
 				D59AE13918C93A9C00037820 /* sports4.png */,
-				D54D21C318CBE77D00B2C4D0 /* mlb.plist */,
 				2EC47C7918CD7D39001F23F6 /* multiple.png */,
+				D54D21C318CBE77D00B2C4D0 /* mlb.plist */,
 				F7BB96E418CD202F000D4746 /* nfl.plist */,
 				F7BB96E618CD2035000D4746 /* nba.plist */,
 				D54D21C518CBE78400B2C4D0 /* mls.plist */,
-				D512D65C18C91B9300E788E1 /* PickUpFirstViewController.h */,
-				D512D65D18C91B9300E788E1 /* PickUpFirstViewController.m */,
-				D512D65F18C91B9300E788E1 /* PickUpSecondViewController.h */,
-				D512D66018C91B9300E788E1 /* PickUpSecondViewController.m */,
 				D512D66218C91B9300E788E1 /* Images.xcassets */,
 				D512D64B18C91B9300E788E1 /* Supporting Files */,
-				D54D21BB18CBCEB300B2C4D0 /* EventInfoViewController.h */,
-				D54D21BC18CBCEB300B2C4D0 /* EventInfoViewController.m */,
-				D54D21BD18CBCEB300B2C4D0 /* EventInfoViewController.xib */,
 			);
 			path = PickUp;
 			sourceTree = "<group>";
@@ -459,7 +460,6 @@
 				D54D21C418CBE77D00B2C4D0 /* mlb.plist in Resources */,
 				2EC47C7A18CD7D3A001F23F6 /* multiple.png in Resources */,
 				2EC47C4B18CBBD24001F23F6 /* baseball.png in Resources */,
-				D54D21BF18CBCEB300B2C4D0 /* EventInfoViewController.xib in Resources */,
 				2EC47C7018CD68BC001F23F6 /* Teamsports.png in Resources */,
 				2EEC290318CAA98500706067 /* mybutton.png in Resources */,
 				2EC47C7618CD75EB001F23F6 /* browngreen.png in Resources */,

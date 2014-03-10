@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchResultsViewController : UIViewController
+@interface SearchResultsViewController : UITableViewController
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
