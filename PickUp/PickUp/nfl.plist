@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Arizona Cardinals</key>
+	<string>http://www.azcardinals.com/</string>
+	<key>Atlanta Falcons</key>
+	<string>http://www.atlantafalcons.com/</string>
+	<key>Baltimore Ravens</key>
+	<string>http://www.baltimoreravens.com/</string>
+	<key>Buffalo Bills</key>
+	<string>http://www.buffalobills.com/</string>
+	<key>Carolina Panthers</key>
+	<string>http://www.panthers.com/</string>
+	<key>Chicago Bears</key>
+	<string>http://www.chicagobears.com/</string>
+	<key>Cincinnati Bengals</key>
+	<string>http://www.bengals.com/</string>
+	<key>Cleveland Browns</key>
+	<string>http://www.clevelandbrowns.com/</string>
+	<key>Dallas Cowboys</key>
+	<string>http://www.dallascowboys.com/</string>
+	<key>Denver Broncos</key>
+	<string>http://www.denverbroncos.com/</string>
+	<key>Detroit Lions</key>
+	<string>http://www.detroitlions.com/</string>
+	<key>Green Bay Packers</key>
+	<string>http://www.packers.com/</string>
+	<key>Houston Texans</key>
+	<string>http://www.houstontexans.com/</string>
+	<key>Indianapolis Colts</key>
+	<string>http://www.colts.com/</string>
+	<key>Jacksonville Jaguars</key>
+	<string>http://www.jaguars.com/</string>
+	<key>Kansas City Chiefs</key>
+	<string>http://www.kcchiefs.com/</string>
+	<key>Miami Dolphins</key>
+	<string>http://www.miamidolphins.com/</string>
+	<key>Minnesota Vikings</key>
+	<string>http://www.vikings.com/</string>
+	<key>New England Patriots</key>
+	<string>http://www.patriots.com/</string>
+	<key>New Orleans Saints</key>
+	<string>http://www.neworleanssaints.com/</string>
+	<key>New York Giants</key>
+	<string>http://www.giants.com/</string>
+	<key>New York Jets</key>
+	<string>http://www.newyorkjets.com/</string>
+	<key>Oakland Raiders</key>
+	<string>http://www.raiders.com/</string>
+	<key>Pittsburgh Steelers</key>
+	<string>http://www.steelers.com/</string>
+	<key>Philadelphia Eagles</key>
+	<string>http://www.philadelphiaeagles.com/</string>
+	<key>San Diego Chargers</key>
+	<string>http://www.chargers.com/</string>
+	<key>San Francisco 49ers</key>
+	<string>http://www.49ers.com/</string>
+	<key>Seattle Seahawks</key>
+	<string>http://www.seahawks.com/</string>
+	<key>St. Louis Rams</key>
+	<string>http://www.stlouisrams.com/</string>
+	<key>Tampa Bay Buccaneers</key>
+	<string>http://www.buccaneers.com/</string>
+	<key>Tennessee Titans</key>
+	<string>http://www.titansonline.com/</string>
+	<key>Washington Redskins</key>
+	<string>http://www.redskins.com/</string>
+</dict>
+</plist>

@@ -7,6 +7,7 @@
 //
 
 #import "PickUpSecondViewController.h"
+#import "ProfessionalViewController.h"
 
 @interface PickUpSecondViewController ()
 
@@ -24,6 +25,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    ProfessionalViewController *destViewController = segue.destinationViewController;
+    destViewController.selection = segue.identifier;
 }
 
 @end

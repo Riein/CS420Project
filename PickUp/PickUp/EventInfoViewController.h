@@ -13,12 +13,15 @@
 
 @property (assign, nonatomic) IBOutlet MKMapView *mapView;
 
-@property (nonatomic, copy) NSString *title;
 @property (weak, nonatomic) IBOutlet UITextField *locField;
 @property (weak, nonatomic) IBOutlet UITextField *dateField;
 @property (weak, nonatomic) IBOutlet UITextField *timeField;
 @property (weak, nonatomic) IBOutlet UITextView *equipField;
 @property (weak, nonatomic) IBOutlet UIButton *button;
 
+@property (weak, nonatomic) NSDictionary *info;
+@property (assign, nonatomic) BOOL joined;
+
 - (IBAction)joinButton:(id)sender;
+
 @end

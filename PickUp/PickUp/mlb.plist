@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Arizona Diamondbacks</key>
+	<string>http://arizona.diamondbacks.mlb.com/index.jsp?c_id=ari&amp;tcid=mm_mlb_sitelist</string>
+	<key>Atlanta Braves</key>
+	<string>http://atlanta.braves.mlb.com/index.jsp?c_id=atl&amp;tcid=mm_ari_sitelist</string>
+	<key>Baltimore Orioles</key>
+	<string>http://baltimore.orioles.mlb.com/index.jsp?c_id=bal&amp;tcid=mm_atl_sitelist</string>
+	<key>Boston Red Sox</key>
+	<string>http://boston.redsox.mlb.com/index.jsp?c_id=bos&amp;tcid=mm_bal_sitelist</string>
+	<key>Chicago Cubs</key>
+	<string>http://chicago.cubs.mlb.com/index.jsp?c_id=chc&amp;tcid=mm_bos_sitelist</string>
+	<key>Chicago White Sox</key>
+	<string>http://chicago.whitesox.mlb.com/index.jsp?c_id=cws&amp;tcid=mm_chc_sitelist</string>
+	<key>Cincinnati Reds</key>
+	<string>http://cincinnati.reds.mlb.com/index.jsp?c_id=cin&amp;tcid=mm_cws_sitelist</string>
+	<key>Cleveland Indians</key>
+	<string>http://cleveland.indians.mlb.com/index.jsp?c_id=cle&amp;tcid=mm_cin_sitelist</string>
+	<key>Colorado Rockies</key>
+	<string>http://colorado.rockies.mlb.com/index.jsp?c_id=col&amp;tcid=mm_cle_sitelist</string>
+	<key>Detroit Tigers</key>
+	<string>http://detroit.tigers.mlb.com/index.jsp?c_id=det&amp;tcid=mm_col_sitelist</string>
+	<key>Houston Astros</key>
+	<string>http://houston.astros.mlb.com/index.jsp?c_id=hou&amp;tcid=mm_det_sitelist</string>
+	<key>Kansas City Royals</key>
+	<string>http://kansascity.royals.mlb.com/index.jsp?c_id=kc&amp;tcid=mm_hou_sitelist</string>
+	<key>Los Angeles Angels</key>
+	<string>http://losangeles.angels.mlb.com/index.jsp?c_id=ana&amp;tcid=mm_kc_sitelist</string>
+	<key>Los Angeles Dodgers</key>
+	<string>http://losangeles.dodgers.mlb.com/index.jsp?c_id=la&amp;tcid=mm_ana_sitelist</string>
+	<key>Miami Marlins</key>
+	<string>http://miami.marlins.mlb.com/index.jsp?c_id=mia&amp;tcid=mm_la_sitelist</string>
+	<key>Milwaukee Brewers</key>
+	<string>http://milwaukee.brewers.mlb.com/index.jsp?c_id=mil&amp;tcid=mm_mia_sitelist</string>
+	<key>Minnesota Twins</key>
+	<string>http://minnesota.twins.mlb.com/index.jsp?c_id=min&amp;tcid=mm_mil_sitelist</string>
+	<key>New York Mets</key>
+	<string>http://newyork.mets.mlb.com/index.jsp?c_id=nym&amp;tcid=mm_min_sitelist</string>
+	<key>New York Yankees</key>
+	<string>http://newyork.yankees.mlb.com/index.jsp?c_id=nyy&amp;tcid=mm_nym_sitelist</string>
+	<key>Oakland Athletics</key>
+	<string>http://oakland.athletics.mlb.com/index.jsp?c_id=oak&amp;tcid=mm_nyy_sitelist</string>
+	<key>Philadelphia Phillies</key>
+	<string>http://philadelphia.phillies.mlb.com/index.jsp?c_id=phi&amp;tcid=mm_oak_sitelist</string>
+	<key>Pittsburgh Pirates</key>
+	<string>http://pittsburgh.pirates.mlb.com/index.jsp?c_id=pit&amp;tcid=mm_phi_sitelist</string>
+	<key>San Diego Padres</key>
+	<string>http://sandiego.padres.mlb.com/index.jsp?c_id=sd&amp;tcid=mm_pit_sitelist</string>
+	<key>San Francisco Giants</key>
+	<string>http://sanfrancisco.giants.mlb.com/index.jsp?c_id=sf&amp;tcid=mm_sd_sitelist</string>
+	<key>Seattle Mariners</key>
+	<string>http://seattle.mariners.mlb.com/index.jsp?c_id=sea&amp;tcid=mm_sf_sitelist</string>
+	<key>St. Louis Cardinals</key>
+	<string>http://stlouis.cardinals.mlb.com/index.jsp?c_id=stl&amp;tcid=mm_sea_sitelist</string>
+	<key>Tampa Bay Rays</key>
+	<string>http://tampabay.rays.mlb.com/index.jsp?c_id=tb&amp;tcid=mm_stl_sitelist</string>
+	<key>Texas Rangers</key>
+	<string>http://texas.rangers.mlb.com/index.jsp?c_id=tex&amp;tcid=mm_tb_sitelist</string>
+	<key>Toronto Blue Jays</key>
+	<string>http://toronto.bluejays.mlb.com/index.jsp?c_id=tor&amp;tcid=mm_tex_sitelist</string>
+	<key>Washington Nationals</key>
+	<string>http://washington.nationals.mlb.com/index.jsp?c_id=was&amp;tcid=mm_tor_sitelist</string>
+</dict>
+</plist>
