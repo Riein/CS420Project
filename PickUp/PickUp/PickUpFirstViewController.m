@@ -18,7 +18,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    _sports = @[@"Soccer", @"Baseball", @"Basketball", @"Frisbee", @"Golf"];
+    _sports = @[@"All",@"Soccer", @"Baseball", @"Basketball", @"Frisbee"];
 
 }
 
