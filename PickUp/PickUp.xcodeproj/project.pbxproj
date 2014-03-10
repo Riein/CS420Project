@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E3CC38218CE4CA600CC2133 /* boardball.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E3CC38118CE4CA600CC2133 /* boardball.png */; };
+		2E3CC38418CE4D5300CC2133 /* clipboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E3CC38318CE4D5300CC2133 /* clipboard.png */; };
 		2EC47C4A18CBBD24001F23F6 /* Football.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4518CBBD24001F23F6 /* Football.jpg */; };
 		2EC47C4B18CBBD24001F23F6 /* baseball.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4618CBBD24001F23F6 /* baseball.png */; };
 		2EC47C4C18CBBD24001F23F6 /* basketball.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4718CBBD24001F23F6 /* basketball.png */; };
@@ -93,6 +95,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E3CC38118CE4CA600CC2133 /* boardball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boardball.png; sourceTree = "<group>"; };
+		2E3CC38318CE4D5300CC2133 /* clipboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clipboard.png; sourceTree = "<group>"; };
 		2EC47C4518CBBD24001F23F6 /* Football.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Football.jpg; sourceTree = "<group>"; };
 		2EC47C4618CBBD24001F23F6 /* baseball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baseball.png; sourceTree = "<group>"; };
 		2EC47C4718CBBD24001F23F6 /* basketball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basketball.png; sourceTree = "<group>"; };
@@ -275,6 +279,8 @@
 				D512D65918C91B9300E788E1 /* Main_iPad.storyboard */,
 				2EC47C7F18CD89E6001F23F6 /* footbasket.png */,
 				D59AE13318C938AA00037820 /* sports.png */,
+				2E3CC38318CE4D5300CC2133 /* clipboard.png */,
+				2E3CC38118CE4CA600CC2133 /* boardball.png */,
 				2EC47C7518CD75EB001F23F6 /* browngreen.png */,
 				2EEC290618CAAD7000706067 /* gray_metal.jpg */,
 				2EC47C5B18CBD5B5001F23F6 /* seahawks.png */,
@@ -434,6 +440,7 @@
 				D54D21C618CBE78400B2C4D0 /* mls.plist in Resources */,
 				2ED715EE18CAD3E100452AB5 /* honeycomb.jpg in Resources */,
 				2EC47C7C18CD83BF001F23F6 /* groupbasketball.png in Resources */,
+				2E3CC38218CE4CA600CC2133 /* boardball.png in Resources */,
 				D59AE13A18C93A9C00037820 /* sports4.png in Resources */,
 				D512D65B18C91B9300E788E1 /* Main_iPad.storyboard in Resources */,
 				2EC47C5A18CBD3FB001F23F6 /* basketballfight.png in Resources */,
@@ -456,6 +463,7 @@
 				2EC47C5E18CBD6A8001F23F6 /* seahawks2.png in Resources */,
 				F7BB96E518CD202F000D4746 /* nfl.plist in Resources */,
 				D59AE13618C9398B00037820 /* sports1.png in Resources */,
+				2E3CC38418CE4D5300CC2133 /* clipboard.png in Resources */,
 				2EEC290518CAA9C800706067 /* mybutton@2x.png in Resources */,
 				D54D21C418CBE77D00B2C4D0 /* mlb.plist in Resources */,
 				2EC47C7A18CD7D3A001F23F6 /* multiple.png in Resources */,
