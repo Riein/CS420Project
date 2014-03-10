@@ -87,10 +87,4 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
-
-//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-//    EventInfoViewController *destViewController = segue.destinationViewController;
-//    destViewController.info = _dictToPass;
-//    destViewController.title = _keyToPass;
-//}
 @end

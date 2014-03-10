@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *timeField;
 @property (weak, nonatomic) IBOutlet UITextView *equipField;
 @property (weak, nonatomic) IBOutlet UIButton *button;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) NSDictionary *info;
 

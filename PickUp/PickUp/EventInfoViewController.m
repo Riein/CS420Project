@@ -23,9 +23,18 @@
     return self;
 }
 
+//-(void)loadView{
+//    //[super viewDidAppear:animated];
+//    [self.scrollView setScrollEnabled:YES];
+//    [self.scrollView setContentSize:CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height*2)];
+//}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.scrollView setContentSize:CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height*2)];
+    [self.scrollView setNeedsDisplay];
+    NSLog(@"viewDidLoad");
     // Do any additional setup after loading the view from its nib.
     //MKMapView *mapView = [[MKMapView alloc]]
     NSNumber *latitude = [self.info objectForKey:@"Latitude"];
@@ -35,6 +44,7 @@
     _region.span.latitudeDelta = 0.02;
     _region.span.longitudeDelta = 0.02;
     _mapView.region = _region;
+    NSLog(@"mapView.region set");
     
     
 }

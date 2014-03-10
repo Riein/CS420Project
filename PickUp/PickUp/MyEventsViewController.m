@@ -7,12 +7,18 @@
 //
 
 #import "MyEventsViewController.h"
+#import "EventInfoViewController.h"
 
 @interface MyEventsViewController ()
 
 @end
 
-@implementation MyEventsViewController
+@implementation MyEventsViewController{
+    NSDictionary *_localList;
+    NSMutableArray *_localKeys;
+    NSString *_keyToPass;
+    NSDictionary *_dictToPass;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,20 +29,15 @@
     return self;
 }
 
-//-(void)loadView{
-//    self.tableView.dataSource = self;
-//    self.tableView.delegate = self;
-//}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if (_localList == nil) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"PickUpGames" ofType:@"plist"];
+        _localList = [[NSDictionary alloc] initWithContentsOfFile:path];
+        _localKeys = [[[_localList allKeys] sortedArrayUsingSelector:@selector(compare:)] mutableCopy];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,51 +50,39 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number events that can be displayed? Is this needed? It wasn't in Americas.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of events a user is signed up for.
-    // return [_eventNames count];
-    return 0;
+    return [_localKeys count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    // Configure the cell...
-    // NSString *key = [_eventNames objectAtIndex:indexPath.row];
-    // NSDictionary *dict = [_eventDict objectForKey:key];
-    // cell.textLabel.text = key;
+    
+    cell.textLabel.text = [_localKeys objectAtIndex:indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    _keyToPass = [_localKeys objectAtIndex:indexPath.row];
+    _dictToPass = [_localList objectForKey:_keyToPass];
     
-//    NSString *key = [_eventNames objectAtIndex:indexPath.row];
-//    NSDictionary *dict = [_eventNames objectForKey:key];
-//    NSNumber *latitude = [dict objectForKey:@"latitude"];
-//    NSNumber *longitude = [dict objectForKey:@"longitude"];
-//    
-//    MKCoordinateRegion region;
-//    region.center.latitude = latitude.doubleValue;
-//    region.center.longitude = longitude.doubleValue;
-//    region.span.latitudeDelta = 8.0;
-//    region.span.longitudeDelta = 8.0;
+    EventInfoViewController *detailViewController = [[EventInfoViewController alloc] init];
+    detailViewController.info = _dictToPass;
+    detailViewController.title = _keyToPass;
     
-//    StateMapViewController *detailViewController = [[StateMapViewController alloc] init];
-//    detailViewController.region = region;
-//    detailViewController.title = key;
-    
-//    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 /*
 // Override to support conditional editing of the table view.
