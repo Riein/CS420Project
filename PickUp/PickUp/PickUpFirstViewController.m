@@ -18,7 +18,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    _sports = @[@"Soccer", @"Baseball", @"Basketball", @"Frisbee", @"Golf"];
+    _sports = @[@"All",@"Soccer", @"Baseball", @"Basketball", @"Frisbee"];
 
 }
 
@@ -39,7 +39,7 @@
 }
 
 -(NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:_sports[row] attributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:_sports[row] attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     return attString;
 }
