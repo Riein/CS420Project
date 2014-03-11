@@ -32,11 +32,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _scrollView = [[UIScrollView alloc] init];
+    _scrollView.frame = self.view.frame;
     [self.scrollView setContentSize:CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height*2)];
+    [self.scrollView setScrollEnabled:YES];
+    [self.view addSubview:self.scrollView];
+    [self.scrollView layoutSubviews];
     [self.scrollView setNeedsDisplay];
-    NSLog(@"viewDidLoad");
-    // Do any additional setup after loading the view from its nib.
-    //MKMapView *mapView = [[MKMapView alloc]]
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    _mapView = [[MKMapView alloc] init];
     NSNumber *latitude = [self.info objectForKey:@"Latitude"];
     NSNumber *longitude = [self.info objectForKey:@"Longitude"];
     _region.center.latitude = latitude.doubleValue;
@@ -45,8 +49,24 @@
     _region.span.longitudeDelta = 0.02;
     _mapView.region = _region;
     NSLog(@"mapView.region set");
-    
-    
+    // Does not work with or without the following commented section
+/*    [self.scrollView addSubview:_mapView];
+    _locField = [[UITextField alloc] initWithFrame:CGRectMake(114, 172, 206, 30)];
+    [self.scrollView addSubview:_locField];
+    _dateField = [[UITextField alloc] init];
+    [self.scrollView addSubview:_dateField];
+    _timeField = [[UITextField alloc] init];
+    [self.scrollView addSubview:_timeField];
+    _equipField = [[UITextView alloc] init];
+    [self.scrollView addSubview:_equipField];
+    _button = [[UIButton alloc] init];
+    [self.scrollView addSubview:_button];
+    UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, 100, 50)];
+    testLabel.text = @"testing";
+    [self.scrollView addSubview:testLabel]; */
+    NSLog(@"viewDidLoad");
+  
+    //[self.view sendSubviewToBack:_scrollView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,16 +76,7 @@
 }
 
 - (IBAction)joinButton:(id)sender {
-//    if (_joined) {
-//        self.joined = NO;
-//        [sender setTitle:@"Join"];
-//        // Update the DB to show no longer joined
-//    }
-//    else{
-//        self.joined = YES;
-//        [sender setTitle:@"Unjoin"];
-//        // Update the DB to show attending
-//    }
+
 }
 
 @end
