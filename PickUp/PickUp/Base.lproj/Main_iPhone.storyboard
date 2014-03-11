@@ -117,7 +117,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="815" y="-58"/>
+            <point key="canvasLocation" x="763" y="-58"/>
         </scene>
         <!--Search Results View Controller - Search Results-->
         <scene sceneID="TU4-lE-VKK">
@@ -149,7 +149,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E41-xF-0HH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1223" y="-58"/>
+            <point key="canvasLocation" x="1298" y="-58"/>
         </scene>
         <!--Pick Up Second View Controller - Second-->
         <scene sceneID="ot8-2e-RuS">
@@ -171,7 +171,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OBy-FY-JBn">
-                                <rect key="frame" x="74" y="267" width="173" height="36"/>
+                                <rect key="frame" x="43" y="267" width="230" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
@@ -184,7 +184,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2Pl-g0-b77">
-                                <rect key="frame" x="74" y="187" width="173" height="36"/>
+                                <rect key="frame" x="43" y="187" width="230" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
@@ -197,7 +197,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nkf-qs-4Kh">
-                                <rect key="frame" x="74" y="349" width="173" height="36"/>
+                                <rect key="frame" x="43" y="349" width="230" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
@@ -210,7 +210,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MSV-z1-H0s">
-                                <rect key="frame" x="74" y="109" width="173" height="36"/>
+                                <rect key="frame" x="43" y="109" width="230" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
@@ -317,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="in1-Vq-8GR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845" y="538"/>
+            <point key="canvasLocation" x="763" y="538"/>
         </scene>
         <!--My Events View Controller - My Events-->
         <scene sceneID="q7n-Q1-N3U">
@@ -351,7 +351,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Lm-mp-CZA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1649" y="248"/>
+            <point key="canvasLocation" x="1765" y="258"/>
         </scene>
         <!--Create Event View Controller - Create Event-->
         <scene sceneID="QvR-Pa-liA">
@@ -474,13 +474,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hia-ce-9kA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1641" y="880"/>
+            <point key="canvasLocation" x="1765" y="878"/>
         </scene>
         <!--Event Info View Controller-->
         <scene sceneID="gkO-8o-wHO">
             <objects>
                 <viewController id="xS8-QC-Zz6" customClass="EventInfoViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="07d-x9-aae">
+                    <view key="view" contentMode="scaleToFill" id="07d-x9-aae" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="356" height="641"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -649,7 +649,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14H-fC-w2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2089" y="-361"/>
+            <point key="canvasLocation" x="1729" y="-737"/>
         </scene>
         <!--Login View Controller - Login-->
         <scene sceneID="IjK-kA-yBd">
@@ -705,7 +705,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <color key="tintColor" patternImage="492F3620-5B9E-4D91-9341-20117AB9D744" colorSpace="pattern"/>
+                        <color key="tintColor" patternImage="22789177-75D9-4EDB-BB81-ABE0CAA0EBA3" colorSpace="pattern"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="W35-oL-0Xk">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Fa7-rh-Dls"/>
@@ -978,7 +978,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="492F3620-5B9E-4D91-9341-20117AB9D744" width="256" height="256">
+        <image name="22789177-75D9-4EDB-BB81-ABE0CAA0EBA3" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
