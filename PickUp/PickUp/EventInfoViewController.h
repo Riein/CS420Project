@@ -20,9 +20,8 @@
 @property (strong, nonatomic) IBOutlet UITextView *equipField;
 @property (strong, nonatomic) IBOutlet UIButton *button;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIView *insideView;
 
 @property (weak, nonatomic) NSDictionary *info;
-
-- (IBAction)joinButton:(id)sender;
 
 @end
