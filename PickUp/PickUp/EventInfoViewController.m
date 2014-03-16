@@ -26,6 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Add background image here
+    
     _scrollView = [[UIScrollView alloc] init];
     _scrollView.frame = self.view.frame;
     self.scrollView.ContentSize = CGSizeMake(320, 800);
@@ -110,7 +112,7 @@
     [_button setTitle:@"Join" forState:UIControlStateNormal];
     // Add this in later, change the button title if already joined
 //    for (int i = 0; i < ppl.count; i++) {
-//        if (currentUser == ppl[i]) {
+//        if ([currentUser isEqual: ppl[i]]) {
 //            [_button setTitle:@"Unjoin" forState:UIControlStateApplication];
 //        }
 //    }
@@ -141,7 +143,14 @@
 
 -(void)buttonPressed:(id)sender{
     NSLog(@"button pressed");
-    // Going to add user to list, send update to server, change button title
+    // Add user to list
+    // Send update to server
+    if ([_button.currentTitle isEqual: @"Join"]) {
+        [_button setTitle:@"Unjoin" forState:UIControlStateNormal];
+    }
+    else{
+        [_button setTitle:@"Join" forState:UIControlStateNormal];
+    }
 }
 
 @end
