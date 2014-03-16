@@ -26,16 +26,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Add background image here
-    
     _scrollView = [[UIScrollView alloc] init];
     _scrollView.frame = self.view.frame;
     self.scrollView.ContentSize = CGSizeMake(320, 800);
     [self.scrollView setScrollEnabled:YES];
     _insideView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 720)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, 320, 720)];
+    imageView.image = [UIImage imageNamed:@"gray.png"];
+    
+    [self.view addSubview:imageView];
+    
+    
+    [_scrollView setBackgroundColor:[UIColor clearColor]];
     [self.scrollView addSubview:self.insideView];
     [self.view addSubview:self.scrollView];
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    //[self.view setBackgroundColor:[UIColor whiteColor]];
     _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 65, 320, 200)];
     NSNumber *latitude = [self.info objectForKey:@"Latitude"];
     NSNumber *longitude = [self.info objectForKey:@"Longitude"];
@@ -50,37 +55,54 @@
     _locField = [[UITextField alloc] initWithFrame:CGRectMake(92, 288, 206, 30)];
     _locField.borderStyle = UITextBorderStyleBezel;
     [_locField setEnabled:NO];
+    [_locField setBackgroundColor:[UIColor whiteColor]];
     [self.insideView addSubview:_locField];
-    UILabel *locLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 292, 67, 21)];
+    UILabel *locLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 292, 67, 21)];
+    locLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
     locLabel.text = @"Location";
+
     [self.insideView addSubview:locLabel];
     _dateField = [[UITextField alloc] initWithFrame:CGRectMake(92, 331, 206, 30)];
     _dateField.borderStyle = UITextBorderStyleBezel;
     [_dateField setEnabled:NO];
+    [_dateField setBackgroundColor:[UIColor whiteColor]];
+
     [self.insideView addSubview:_dateField];
-    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 335, 67, 21)];
+    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 335, 67, 21)];
+    [dateLabel setFont:[UIFont fontWithName:@"DIN Alternate Bold" size:17]];
     dateLabel.text = @"Date";
+
     [self.scrollView addSubview:dateLabel];
     _timeField = [[UITextField alloc] initWithFrame:CGRectMake(92, 374, 206, 30)];
     _timeField.borderStyle = UITextBorderStyleBezel;
     [_timeField setEnabled:NO];
+    [_timeField setBackgroundColor:[UIColor whiteColor]];
+
     [self.insideView addSubview:_timeField];
-    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 378, 67, 21)];
+    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 378, 67, 21)];
+    timeLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
     timeLabel.text = @"Time";
+
     [self.scrollView addSubview:timeLabel];
     _equipField = [[UITextView alloc] initWithFrame:CGRectMake(41, 516, 239, 65)];
-    [_equipField setBackgroundColor:[UIColor lightGrayColor]];
+    [_equipField setBackgroundColor:[UIColor whiteColor]];
     [_equipField setEditable:NO];
     [self.insideView addSubview:_equipField];
-    UILabel *equipLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 487, 162, 21)];
+    UILabel *equipLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 487, 162, 21)];
+    equipLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
     equipLabel.text = @"Required Equipment:";
+    
     [self.insideView addSubview:equipLabel];
     _players = [[UITextView alloc] initWithFrame:CGRectMake(92, 417, 206, 67)];
     [_players setBackgroundColor:[UIColor lightGrayColor]];
     [_players setEditable:NO];
+    [_players setBackgroundColor:[UIColor whiteColor]];
+
     [self.insideView addSubview:_players];
-    UILabel *playersLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 421, 67, 21)];
+    UILabel *playersLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 421, 67, 21)];
     playersLabel.text = @"Players:";
+    playersLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
+
     [self.insideView addSubview:playersLabel];
 
     
@@ -116,8 +138,12 @@
 //            [_button setTitle:@"Unjoin" forState:UIControlStateApplication];
 //        }
 //    }
-    [_button setBackgroundColor:[UIColor lightGrayColor]];
-    [_button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    
+    [_button setBackgroundImage:[UIImage imageNamed:@"mybutton.png"] forState:UIControlStateNormal];
+    
+
+    //[_button setBackgroundColor:[UIColor lightGrayColor]];
+    [_button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_button addTarget:self
                  action:@selector(buttonPressed:)
        forControlEvents:UIControlEventTouchUpInside];

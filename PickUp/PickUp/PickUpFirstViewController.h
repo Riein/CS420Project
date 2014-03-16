@@ -11,5 +11,6 @@
 @interface PickUpFirstViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (strong, nonatomic) NSArray *sports;
+@property (weak, nonatomic) IBOutlet UITextField *eventName;
 
 @end

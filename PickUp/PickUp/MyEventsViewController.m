@@ -63,10 +63,15 @@
     static NSString *CellIdentifier = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     cell.textLabel.text = [_localKeys objectAtIndex:indexPath.row];
+    NSDictionary *detail = [[NSDictionary alloc] init];
+    detail = [_localList objectForKey:cell.textLabel.text];
+    NSDateFormatter *dateForm = [[NSDateFormatter alloc] init];
+    [dateForm setDateFormat:@"MMMM d, yyyy : hh:mm"];
+    cell.detailTextLabel.text = [dateForm stringFromDate:[detail objectForKey:@"Date"]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;

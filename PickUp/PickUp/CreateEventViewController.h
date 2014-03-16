@@ -11,5 +11,6 @@
 @interface CreateEventViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSArray *sports;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

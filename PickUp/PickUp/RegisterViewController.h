@@ -10,4 +10,5 @@
 
 @interface RegisterViewController : UIViewController <UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *pass;
 @end
