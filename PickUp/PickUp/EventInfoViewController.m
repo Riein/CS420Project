@@ -34,7 +34,7 @@
     [self.scrollView addSubview:self.insideView];
     [self.view addSubview:self.scrollView];
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 25, 320, 200)];
+    _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 65, 320, 200)];
     NSNumber *latitude = [self.info objectForKey:@"Latitude"];
     NSNumber *longitude = [self.info objectForKey:@"Longitude"];
     _region.center.latitude = latitude.doubleValue;
@@ -49,36 +49,68 @@
     _locField = [[UITextField alloc] initWithFrame:CGRectMake(92, 288, 206, 30)];
     _locField.borderStyle = UITextBorderStyleBezel;
     [_locField setEnabled:NO];
-    [self.scrollView addSubview:_locField];
+    [self.insideView addSubview:_locField];
     UILabel *locLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 292, 67, 21)];
     locLabel.text = @"Location";
-    [self.scrollView addSubview:locLabel];
+    [self.insideView addSubview:locLabel];
     _dateField = [[UITextField alloc] initWithFrame:CGRectMake(92, 331, 206, 30)];
     _dateField.borderStyle = UITextBorderStyleBezel;
     [_dateField setEnabled:NO];
-    [self.scrollView addSubview:_dateField];
+    [self.insideView addSubview:_dateField];
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 335, 67, 21)];
     dateLabel.text = @"Date";
     [self.scrollView addSubview:dateLabel];
     _timeField = [[UITextField alloc] initWithFrame:CGRectMake(92, 374, 206, 30)];
     _timeField.borderStyle = UITextBorderStyleBezel;
     [_timeField setEnabled:NO];
-    [self.scrollView addSubview:_timeField];
+    [self.insideView addSubview:_timeField];
     UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 378, 67, 21)];
     timeLabel.text = @"Time";
     [self.scrollView addSubview:timeLabel];
     _equipField = [[UITextView alloc] initWithFrame:CGRectMake(41, 516, 239, 65)];
     [_equipField setBackgroundColor:[UIColor lightGrayColor]];
     [_equipField setEditable:NO];
-    [self.scrollView addSubview:_equipField];
+    [self.insideView addSubview:_equipField];
     UILabel *equipLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 487, 162, 21)];
     equipLabel.text = @"Required Equipment:";
-    [self.scrollView addSubview:equipLabel];
+    [self.insideView addSubview:equipLabel];
+    _players = [[UITextView alloc] initWithFrame:CGRectMake(92, 417, 206, 67)];
+    [_players setBackgroundColor:[UIColor lightGrayColor]];
+    [_players setEditable:NO];
+    [self.insideView addSubview:_players];
+    UILabel *playersLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 421, 67, 21)];
+    playersLabel.text = @"Players:";
+    [self.insideView addSubview:playersLabel];
     
-    // Button not being added still. Need to figure out why.
+    // Button not being added still. Need to figure out why. Thinking of just putting button in top bar.
     _button = [[UIButton alloc] initWithFrame:CGRectMake(115, 610, 90, 34)];
     [_button setTitle:@"Join" forState:UIControlStateApplication];
-    [self.scrollView addSubview:_button];
+    [self.insideView addSubview:_button];
+    
+    // Date not wanting to show up. I think because the date is it's own type, not a string.
+    NSDateFormatter *day = [[NSDateFormatter alloc] init];
+    [day setDateFormat:@"MM/dd/yyyy"];
+    NSString *date = [day stringFromDate:[self.info objectForKey:@"Date"]];
+    _dateField.text = date;
+    NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
+    [timeFormat setDateFormat:@"hh:mm"];
+    NSString *time = [timeFormat stringFromDate:[self.info objectForKey:@"Date"]];
+    _timeField.text = time;
+    NSArray *ppl = [[NSArray alloc] initWithArray:[self.info objectForKey:@"Players"]];
+    NSMutableString *play = [[NSMutableString alloc] init];
+    for (int i = 0; i < ppl.count; i++) {
+        [play appendString:[ppl objectAtIndex:i]];
+        [play appendString:@"\n"];
+    }
+    _players.text = play;
+    
+    NSArray *eq = [[NSArray alloc] initWithArray:[self.info objectForKey:@"Equipment"]];
+    NSMutableString *equip = [[NSMutableString alloc] init];
+    for (int i = 0; i < eq.count; i++) {
+        [equip appendString:[eq objectAtIndex:i]];
+        [equip appendString:@"\n"];
+    }
+    _equipField.text = equip;
 
     NSLog(@"viewDidLoad");
   
