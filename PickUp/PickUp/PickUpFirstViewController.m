@@ -12,13 +12,16 @@
 
 @end
 
-@implementation PickUpFirstViewController
+@implementation PickUpFirstViewController{
+    //UIPopoverController *popoverController;
+    NSDate *dateToSet;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    _sports = @[@"All",@"Soccer", @"Baseball", @"Basketball", @"Frisbee"];
+    _sports = @[@"All",@"Soccer", @"Baseball", @"Basketball", @"Frisbee", @"Jousting"];
 
 }
 
@@ -52,18 +55,6 @@
         [self setViewMovedUp:NO];
     }
 }
-
-//-(void)textFieldDidBeginEditing:(UITextField *)sender
-//{
-//    if ([sender isEqual:self.eventName])
-//    {
-//        //move the main view, so that the keyboard does not hide it.
-//        if  (self.view.frame.origin.y >= 0)
-//        {
-//            [self setViewMovedUp:YES];
-//        }
-//    }
-//}
 
 //method to move the view up/down whenever the keyboard is shown/dismissed
 -(void)setViewMovedUp:(BOOL)movedUp
@@ -142,6 +133,80 @@
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     // Do nothing in here right now
+}
+
+#pragma mark - DatePickerPopover
+
+-(IBAction)dateFieldClicked:(UIButton*)sender{
+    _customView = [[UIView alloc] initWithFrame:CGRectMake(0, sender.center.y - 150, 320, 264)];
+    
+    _customView.alpha = 0.0;
+    _customView.layer.cornerRadius = 5;
+    _customView.layer.borderWidth = 1.5f;
+    _customView.layer.masksToBounds = YES;
+    _customView.backgroundColor = [UIColor whiteColor];
+    
+    _picker = [[UIDatePicker alloc] init];
+    _picker.frame = CGRectMake(0, 0, 320, 216);
+    _picker.datePickerMode = UIDatePickerModeDate;
+    [_customView addSubview:_picker];
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(130, 220, 60, 40)];
+    [button setTitle:@"Save" forState:UIControlStateNormal];
+    [button setBackgroundColor:[UIColor lightGrayColor]];
+    [button addTarget:self action:@selector(setDateForButton:)forControlEvents:UIControlEventTouchUpInside];
+    [_customView addSubview:button];
+    
+    [self.view addSubview:_customView];
+    
+    [UIView animateWithDuration:0.4 animations:^{
+        [_customView setAlpha:1.0];
+    } completion:^(BOOL finished) {}];
+}
+
+-(void)setDateForButton:(id)sender{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMMM d, yyyy"];
+    NSString *newDate = [formatter stringFromDate:self.picker.date];
+    [self.dateBut setTitle:newDate forState:UIControlStateNormal];
+    [_customView removeFromSuperview];
+}
+
+#pragma mark - Time Picker Popover
+
+-(IBAction)timeFieldClicked:(UIButton*)sender{
+    _customView = [[UIView alloc] initWithFrame:CGRectMake(0, sender.center.y - 203, 320, 264)];
+    
+    _customView.alpha = 0.0;
+    _customView.layer.cornerRadius = 5;
+    _customView.layer.borderWidth = 1.5f;
+    _customView.layer.masksToBounds = YES;
+    _customView.backgroundColor = [UIColor whiteColor];
+    
+    _picker = [[UIDatePicker alloc] init];
+    _picker.frame = CGRectMake(0, 0, 320, 216);
+    _picker.datePickerMode = UIDatePickerModeTime;
+    [_customView addSubview:_picker];
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(130, 220, 60, 40)];
+    [button setTitle:@"Save" forState:UIControlStateNormal];
+    [button setBackgroundColor:[UIColor lightGrayColor]];
+    [button addTarget:self action:@selector(setTimeForButton:)forControlEvents:UIControlEventTouchUpInside];
+    [_customView addSubview:button];
+    
+    [self.view addSubview:_customView];
+    
+    [UIView animateWithDuration:0.4 animations:^{
+        [_customView setAlpha:1.0];
+    } completion:^(BOOL finished) {}];
+}
+
+-(void)setTimeForButton:(id)sender{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"hh:mm a"];
+    NSString *newDate = [formatter stringFromDate:self.picker.date];
+    [self.timeBut setTitle:newDate forState:UIControlStateNormal];
+    [_customView removeFromSuperview];
 }
 
 @end

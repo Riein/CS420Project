@@ -13,4 +13,12 @@
 @property (strong, nonatomic) NSArray *sports;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
+- (IBAction)dateFieldClicked:(UIButton *)sender;
+- (IBAction)timeFieldClicked:(UIButton *)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *dateButton;
+@property (weak, nonatomic) IBOutlet UIButton *timeButton;
+
+@property (strong, nonatomic) UIDatePicker *picker;
+@property (strong, nonatomic) UIView *customView;
 @end
