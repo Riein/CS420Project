@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E3CC38218CE4CA600CC2133 /* boardball.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E3CC38118CE4CA600CC2133 /* boardball.png */; };
 		2E3CC38418CE4D5300CC2133 /* clipboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E3CC38318CE4D5300CC2133 /* clipboard.png */; };
+		2E3FC47A18DDF1A3006D0FE5 /* PickUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E3FC47918DDF1A3006D0FE5 /* PickUp.m */; };
 		2EC47C4A18CBBD24001F23F6 /* Football.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4518CBBD24001F23F6 /* Football.jpg */; };
 		2EC47C4B18CBBD24001F23F6 /* baseball.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4618CBBD24001F23F6 /* baseball.png */; };
 		2EC47C4C18CBBD24001F23F6 /* basketball.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC47C4718CBBD24001F23F6 /* basketball.png */; };
@@ -97,6 +98,8 @@
 /* Begin PBXFileReference section */
 		2E3CC38118CE4CA600CC2133 /* boardball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boardball.png; sourceTree = "<group>"; };
 		2E3CC38318CE4D5300CC2133 /* clipboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clipboard.png; sourceTree = "<group>"; };
+		2E3FC47818DDF1A3006D0FE5 /* PickUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickUp.h; sourceTree = "<group>"; };
+		2E3FC47918DDF1A3006D0FE5 /* PickUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickUp.m; sourceTree = "<group>"; };
 		2EC47C4518CBBD24001F23F6 /* Football.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Football.jpg; sourceTree = "<group>"; };
 		2EC47C4618CBBD24001F23F6 /* baseball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baseball.png; sourceTree = "<group>"; };
 		2EC47C4718CBBD24001F23F6 /* basketball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basketball.png; sourceTree = "<group>"; };
@@ -250,6 +253,8 @@
 				D512D65318C91B9300E788E1 /* PickUpAppDelegate.h */,
 				D512D65418C91B9300E788E1 /* PickUpAppDelegate.m */,
 				D512D65618C91B9300E788E1 /* Main_iPhone.storyboard */,
+				2E3FC47818DDF1A3006D0FE5 /* PickUp.h */,
+				2E3FC47918DDF1A3006D0FE5 /* PickUp.m */,
 				D54D21C018CBD8F000B2C4D0 /* ProfessionalViewController.h */,
 				D54D21C118CBD8F000B2C4D0 /* ProfessionalViewController.m */,
 				D54D21CB18CBEB1900B2C4D0 /* WebViewController.h */,
@@ -507,6 +512,7 @@
 			files = (
 				D5526B2118CA5122001AF659 /* CreateEventViewController.m in Sources */,
 				D54D21CD18CBEB1900B2C4D0 /* WebViewController.m in Sources */,
+				2E3FC47A18DDF1A3006D0FE5 /* PickUp.m in Sources */,
 				D512D65E18C91B9300E788E1 /* PickUpFirstViewController.m in Sources */,
 				D512D65518C91B9300E788E1 /* PickUpAppDelegate.m in Sources */,
 				D59AE14018C9438E00037820 /* LoginViewController.m in Sources */,
