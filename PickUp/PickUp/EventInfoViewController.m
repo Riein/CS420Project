@@ -58,8 +58,8 @@
     [_locField setBackgroundColor:[UIColor whiteColor]];
     [self.insideView addSubview:_locField];
     UILabel *locLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 292, 100, 21)];
-    locLabel.font = [UIFont fontWithName:@"Chalkduster" size:15];
-    locLabel.textColor = [UIColor whiteColor];
+    locLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
+    locLabel.textColor = [UIColor blackColor];
     locLabel.text = @"Location";
 
     [self.insideView addSubview:locLabel];
@@ -70,8 +70,8 @@
 
     [self.insideView addSubview:_dateField];
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 335, 67, 21)];
-    [dateLabel setFont:[UIFont fontWithName:@"Chalkduster" size:15]];
-    dateLabel.textColor = [UIColor whiteColor];
+    [dateLabel setFont:[UIFont fontWithName:@"DIN Alternate Bold" size:17]];
+    dateLabel.textColor = [UIColor blackColor];
 
     dateLabel.text = @"Date";
 
@@ -83,8 +83,8 @@
 
     [self.insideView addSubview:_timeField];
     UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 378, 67, 21)];
-    timeLabel.font = [UIFont fontWithName:@"Chalkduster" size:15];
-    timeLabel.textColor = [UIColor whiteColor];
+    timeLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
+    timeLabel.textColor = [UIColor blackColor];
     timeLabel.text = @"Time";
 
     [self.scrollView addSubview:timeLabel];
@@ -92,9 +92,12 @@
     [_equipField setBackgroundColor:[UIColor whiteColor]];
     [_equipField setEditable:NO];
     [self.insideView addSubview:_equipField];
+    
+    
+    
     UILabel *equipLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 487, 190, 21)];
-    equipLabel.font = [UIFont fontWithName:@"Chalkduster" size:15];
-    equipLabel.textColor = [UIColor whiteColor];
+    equipLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
+    equipLabel.textColor = [UIColor blackColor];
     equipLabel.text = @"Required Equipment:";
     
     [self.insideView addSubview:equipLabel];
@@ -106,8 +109,8 @@
     [self.insideView addSubview:_players];
     UILabel *playersLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 421, 67, 21)];
     playersLabel.text = @"Players:";
-    playersLabel.font = [UIFont fontWithName:@"Chalkduster" size:15];
-    playersLabel.textColor = [UIColor whiteColor];
+    playersLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
+    playersLabel.textColor = [UIColor blackColor];
 
 
     [self.insideView addSubview:playersLabel];
