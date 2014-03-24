@@ -10,6 +10,7 @@
 
 @interface CreateEventViewController (){
     NSMutableString *equip;
+    BOOL first;
 }
 
 @end
@@ -44,6 +45,7 @@
     [self.scrollView setScrollEnabled:YES];
     self.scrollView.delaysContentTouches = NO;
     equip = [[NSMutableString alloc] init];
+    first = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -135,6 +137,10 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     if ([textField isEqual:self.reqEquip]) {
+        if (first) {
+            self.textView.text = @"";
+            first = NO;
+        }
         [equip setString:self.textView.text];
         [equip appendString:@"\n"];
         [equip appendString:textField.text];
@@ -143,6 +149,12 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+- (IBAction)clearEquipment:(UIButton *)sender {
+    self.textView.text = @"Equipment List:";
+    first = YES;
+}
+
 
 #pragma mark - PickerView DataSource
 

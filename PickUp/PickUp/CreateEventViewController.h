@@ -15,6 +15,7 @@
 
 - (IBAction)dateFieldClicked:(UIButton *)sender;
 - (IBAction)timeFieldClicked:(UIButton *)sender;
+- (IBAction)clearEquipment:(UIButton *)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *dateButton;
 @property (weak, nonatomic) IBOutlet UIButton *timeButton;
