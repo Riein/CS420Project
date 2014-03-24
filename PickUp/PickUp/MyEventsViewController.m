@@ -70,7 +70,7 @@
     NSDictionary *detail = [[NSDictionary alloc] init];
     detail = [_localList objectForKey:cell.textLabel.text];
     NSDateFormatter *dateForm = [[NSDateFormatter alloc] init];
-    [dateForm setDateFormat:@"MMMM d, yyyy : hh:mm"];
+    [dateForm setDateFormat:@"MMMM d, yyyy : hh:mm a"];
     cell.detailTextLabel.text = [dateForm stringFromDate:[detail objectForKey:@"Date"]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     

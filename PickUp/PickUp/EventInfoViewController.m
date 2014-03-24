@@ -52,35 +52,39 @@
     [self.scrollView addSubview:_mapView];
     NSLog(@"mapView.region set");
 
-    _locField = [[UITextField alloc] initWithFrame:CGRectMake(92, 288, 206, 30)];
+    _locField = [[UITextField alloc] initWithFrame:CGRectMake(110, 288, 190, 30)];
     _locField.borderStyle = UITextBorderStyleBezel;
     [_locField setEnabled:NO];
     [_locField setBackgroundColor:[UIColor whiteColor]];
     [self.insideView addSubview:_locField];
-    UILabel *locLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 292, 67, 21)];
-    locLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
+    UILabel *locLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 292, 100, 21)];
+    locLabel.font = [UIFont fontWithName:@"Chalkduster" size:15];
+    locLabel.textColor = [UIColor whiteColor];
     locLabel.text = @"Location";
 
     [self.insideView addSubview:locLabel];
-    _dateField = [[UITextField alloc] initWithFrame:CGRectMake(92, 331, 206, 30)];
+    _dateField = [[UITextField alloc] initWithFrame:CGRectMake(110, 331, 190, 30)];
     _dateField.borderStyle = UITextBorderStyleBezel;
     [_dateField setEnabled:NO];
     [_dateField setBackgroundColor:[UIColor whiteColor]];
 
     [self.insideView addSubview:_dateField];
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 335, 67, 21)];
-    [dateLabel setFont:[UIFont fontWithName:@"DIN Alternate Bold" size:17]];
+    [dateLabel setFont:[UIFont fontWithName:@"Chalkduster" size:15]];
+    dateLabel.textColor = [UIColor whiteColor];
+
     dateLabel.text = @"Date";
 
     [self.scrollView addSubview:dateLabel];
-    _timeField = [[UITextField alloc] initWithFrame:CGRectMake(92, 374, 206, 30)];
+    _timeField = [[UITextField alloc] initWithFrame:CGRectMake(110, 374, 190, 30)];
     _timeField.borderStyle = UITextBorderStyleBezel;
     [_timeField setEnabled:NO];
     [_timeField setBackgroundColor:[UIColor whiteColor]];
 
     [self.insideView addSubview:_timeField];
     UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 378, 67, 21)];
-    timeLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
+    timeLabel.font = [UIFont fontWithName:@"Chalkduster" size:15];
+    timeLabel.textColor = [UIColor whiteColor];
     timeLabel.text = @"Time";
 
     [self.scrollView addSubview:timeLabel];
@@ -88,12 +92,13 @@
     [_equipField setBackgroundColor:[UIColor whiteColor]];
     [_equipField setEditable:NO];
     [self.insideView addSubview:_equipField];
-    UILabel *equipLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 487, 162, 21)];
-    equipLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
+    UILabel *equipLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 487, 190, 21)];
+    equipLabel.font = [UIFont fontWithName:@"Chalkduster" size:15];
+    equipLabel.textColor = [UIColor whiteColor];
     equipLabel.text = @"Required Equipment:";
     
     [self.insideView addSubview:equipLabel];
-    _players = [[UITextView alloc] initWithFrame:CGRectMake(92, 417, 206, 67)];
+    _players = [[UITextView alloc] initWithFrame:CGRectMake(110, 417, 190, 67)];
     [_players setBackgroundColor:[UIColor lightGrayColor]];
     [_players setEditable:NO];
     [_players setBackgroundColor:[UIColor whiteColor]];
@@ -101,17 +106,19 @@
     [self.insideView addSubview:_players];
     UILabel *playersLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 421, 67, 21)];
     playersLabel.text = @"Players:";
-    playersLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
+    playersLabel.font = [UIFont fontWithName:@"Chalkduster" size:15];
+    playersLabel.textColor = [UIColor whiteColor];
+
 
     [self.insideView addSubview:playersLabel];
 
     
     NSDateFormatter *day = [[NSDateFormatter alloc] init];
-    [day setDateFormat:@"MM/dd/yyyy"];
+    [day setDateFormat:@"MMM d, yyyy"];
     NSString *date = [day stringFromDate:[self.info objectForKey:@"Date"]];
     _dateField.text = date;
     NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
-    [timeFormat setDateFormat:@"hh:mm"];
+    [timeFormat setDateFormat:@"hh:mm a"];
     NSString *time = [timeFormat stringFromDate:[self.info objectForKey:@"Date"]];
     _timeField.text = time;
     NSArray *ppl = [[NSArray alloc] initWithArray:[self.info objectForKey:@"Players"]];
