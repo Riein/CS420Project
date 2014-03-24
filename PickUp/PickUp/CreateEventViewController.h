@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *dateButton;
 @property (weak, nonatomic) IBOutlet UIButton *timeButton;
 
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UITextField *reqEquip;
 @property (strong, nonatomic) UIDatePicker *picker;
 @property (strong, nonatomic) UIView *customView;
 @end

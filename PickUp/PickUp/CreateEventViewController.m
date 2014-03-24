@@ -8,7 +8,9 @@
 
 #import "CreateEventViewController.h"
 
-@interface CreateEventViewController ()
+@interface CreateEventViewController (){
+    NSMutableString *equip;
+}
 
 @end
 
@@ -24,6 +26,15 @@
     return self;
 }
 
+
+
+
+
+
+
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,7 +43,7 @@
     self.scrollView.ContentSize = CGSizeMake(320, 517);
     [self.scrollView setScrollEnabled:YES];
     self.scrollView.delaysContentTouches = NO;
-
+    equip = [[NSMutableString alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -123,6 +134,12 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if ([textField isEqual:self.reqEquip]) {
+        [equip setString:self.textView.text];
+        [equip appendString:@"\n"];
+        [equip appendString:textField.text];
+        self.textView.text = equip;
+    }
     [textField resignFirstResponder];
     return YES;
 }
@@ -165,10 +182,13 @@
     _picker.datePickerMode = UIDatePickerModeDate;
     [_customView addSubview:_picker];
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(130, 220, 60, 40)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(130, 220, 80, 30)];
     [button setTitle:@"Save" forState:UIControlStateNormal];
-    [button setBackgroundColor:[UIColor lightGrayColor]];
+    //[button setBackgroundColor:[UIColor lightGrayColor]];
     [button addTarget:self action:@selector(setDateForButton:)forControlEvents:UIControlEventTouchUpInside];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageNamed:@"mybutton.png"] forState:UIControlStateNormal];
+
     [_customView addSubview:button];
     
     [self.view addSubview:_customView];
@@ -202,10 +222,13 @@
     _picker.datePickerMode = UIDatePickerModeTime;
     [_customView addSubview:_picker];
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(130, 220, 60, 40)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(130, 220, 80, 30)];
     [button setTitle:@"Save" forState:UIControlStateNormal];
-    [button setBackgroundColor:[UIColor lightGrayColor]];
+    //[button setBackgroundColor:[UIColor blackColor]];
     [button addTarget:self action:@selector(setTimeForButton:)forControlEvents:UIControlEventTouchUpInside];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageNamed:@"mybutton.png"] forState:UIControlStateNormal];
+
     [_customView addSubview:button];
     
     [self.view addSubview:_customView];
