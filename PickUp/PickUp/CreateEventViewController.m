@@ -11,6 +11,7 @@
 @interface CreateEventViewController (){
     NSMutableString *equip;
     BOOL first;
+    NSMutableArray *equipList;
 }
 
 @end
@@ -27,25 +28,23 @@
     return self;
 }
 
-
-
-
-
-
-
-
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     _sports = @[@"Soccer", @"Baseball", @"Basketball", @"Frisbee", @"Golf"];
-    self.scrollView.ContentSize = CGSizeMake(320, 517);
+    self.scrollView.ContentSize = CGSizeMake(320, 580);
     [self.scrollView setScrollEnabled:YES];
     self.scrollView.delaysContentTouches = NO;
     equip = [[NSMutableString alloc] init];
     first = YES;
+    equipList = [[NSMutableArray alloc] initWithObjects:@"None", nil];
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    // Creating tableView programatically to try.
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 309, 300, 156)];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.scrollView addSubview:self.tableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -138,21 +137,35 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     if ([textField isEqual:self.reqEquip]) {
         if (first) {
-            self.textView.text = @"";
+            [equipList removeAllObjects];
             first = NO;
         }
-        [equip setString:self.textView.text];
-        [equip appendString:@"\n"];
-        [equip appendString:textField.text];
-        self.textView.text = equip;
+        NSString *newEquip = textField.text;
+        [equipList addObject:newEquip];
+//        if (first) {
+//            self.textView.text = @"";
+//            first = NO;
+//        }
+//        [equip setString:self.textView.text];
+//        [equip appendString:@"\n"];
+//        [equip appendString:textField.text];
+//        self.textView.text = equip;
+        [self.tableView reloadData];
     }
     [textField resignFirstResponder];
     return YES;
 }
 
 - (IBAction)clearEquipment:(UIButton *)sender {
-    self.textView.text = @"Equipment List:";
+    NSMutableArray *resetList = [[NSMutableArray alloc] initWithObjects:@"None", nil];
+    equipList = resetList;
     first = YES;
+    [self.tableView reloadData];
+//    self.textView.text = @"Equipment List:";
+//    first = YES;
+}
+
+- (IBAction)autoFill:(id)sender {
 }
 
 
@@ -257,5 +270,47 @@
     [self.timeButton setTitle:newDate forState:UIControlStateNormal];
     [_customView removeFromSuperview];
 }
+
+#pragma mark - Table View Data Source
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [equipList count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellID = @"equipment";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+    }
+    
+    cell.textLabel.text = [equipList objectAtIndex:indexPath.row];
+//    NSDictionary *detail = [[NSDictionary alloc] init];
+//    detail = [_localList objectForKey:cell.textLabel.text];
+//    NSDateFormatter *dateForm = [[NSDateFormatter alloc] init];
+//    [dateForm setDateFormat:@"MMMM d, yyyy : hh:mm a"];
+//    cell.detailTextLabel.text = [dateForm stringFromDate:[detail objectForKey:@"Date"]];
+//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    return cell;
+}
+
+#pragma mark - Table View Delegate
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+////    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+////    
+////    _keyToPass = [_localKeys objectAtIndex:indexPath.row];
+////    _dictToPass = [_localList objectForKey:_keyToPass];
+////    
+////    EventInfoViewController *detailViewController = [[EventInfoViewController alloc] init];
+////    detailViewController.info = _dictToPass;
+////    detailViewController.title = _keyToPass;
+////    
+////    [self.navigationController pushViewController:detailViewController animated:YES];
+//}
 
 @end
