@@ -432,11 +432,11 @@
             <objects>
                 <viewController id="8jL-R9-ste" customClass="CreateEventViewController" sceneMemberID="viewController">
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="b8L-y1-iCd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray.png" id="e8h-pP-7PX">
-                                <rect key="frame" x="-46" y="-5" width="439" height="609"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray.png" id="YNT-0I-57C">
+                                <rect key="frame" x="-157" y="-21" width="634" height="742"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <pickerView contentMode="scaleToFill" id="ld0-cO-r83">
@@ -527,7 +527,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bwm-V0-w2U">
-                                <rect key="frame" x="116" y="478" width="88" height="30"/>
+                                <rect key="frame" x="116" y="517" width="88" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <state key="normal" title="Create Event" backgroundImage="mybutton.png">
@@ -538,13 +538,6 @@
                                     <action selector="createeventbutton:" destination="8jL-R9-ste" eventType="touchUpInside" id="Lb7-YL-cns"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.59999999999999964" contentMode="scaleToFill" editable="NO" text="Equipment List:" id="NCa-cw-uRy">
-                                <rect key="frame" x="15" y="325" width="285" height="84"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="17G-mR-T7g">
                                 <rect key="frame" x="157" y="159" width="143" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -570,7 +563,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KTT-1F-pG2">
-                                <rect key="frame" x="254" y="488" width="46" height="30"/>
+                                <rect key="frame" x="254" y="529" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <state key="normal" title="Help?">
@@ -582,7 +575,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Sgq-BR-fbY">
-                                <rect key="frame" x="116" y="406" width="290" height="31"/>
+                                <rect key="frame" x="116" y="461" width="290" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                 <state key="normal" title="clear all">
@@ -592,18 +585,48 @@
                                     <action selector="clearEquipment:" destination="8jL-R9-ste" eventType="touchUpInside" id="6NN-0X-lkw"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZSF-d3-biq">
+                                <rect key="frame" x="34" y="309" width="252" height="156"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="equipment" id="7lE-uf-b9H">
+                                        <rect key="frame" x="0.0" y="22" width="252" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7lE-uf-b9H" id="N6M-fa-LWD">
+                                            <rect key="frame" x="0.0" y="0.0" width="252" height="29"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8jL-R9-ste" id="PZh-7W-6ra"/>
+                                    <outlet property="delegate" destination="8jL-R9-ste" id="FN8-AW-HD6"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xYT-QF-D8M">
+                                <rect key="frame" x="31" y="473" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Auto-fill" backgroundImage="mybutton.png">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="autoFill:" destination="8jL-R9-ste" eventType="touchUpInside" id="JWX-RV-XBr"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </scrollView>
                     <navigationItem key="navigationItem" title="Create An Event" id="G6X-uq-LFM">
                         <barButtonItem key="backBarButtonItem" title="Back" id="hlT-WE-hsN"/>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="600"/>
+                    <size key="freeformSize" width="320" height="700"/>
                     <connections>
                         <outlet property="dateButton" destination="17G-mR-T7g" id="nFg-QY-TsJ"/>
                         <outlet property="reqEquip" destination="Zyg-MQ-mZx" id="igq-TO-gPt"/>
                         <outlet property="scrollView" destination="b8L-y1-iCd" id="8BE-71-HsC"/>
-                        <outlet property="textView" destination="NCa-cw-uRy" id="uM5-bd-bJO"/>
+                        <outlet property="tableView" destination="ZSF-d3-biq" id="KoU-XA-2MF"/>
                         <outlet property="timeButton" destination="Nzo-08-8C9" id="fqo-cV-W1c"/>
                     </connections>
                 </viewController>
