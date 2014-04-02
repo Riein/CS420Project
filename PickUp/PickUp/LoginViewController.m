@@ -129,4 +129,8 @@
     return YES;
 }
 
+- (IBAction)forgotpasswordbutton:(id)sender {
+    UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"Frequently Asked Questions \n\n QUESTION: How do reset my password? \n\n ANSWER: To reset your password, email: passwordreset@gmail.com.\n\n QUESTION: How do I retrieve my current password?\n\n  ANSWER: Not gunna do it. Nope! Can't make me. Sorry sucka!\n\n" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    [helpSheet showInView:self.view];
+}
 @end

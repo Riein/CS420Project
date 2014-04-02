@@ -128,4 +128,11 @@
     [textField resignFirstResponder];
     return YES;
 }
+- (IBAction)helpbutton:(id)sender {
+    UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"Frequently Asked Questions \n\n QUESTION: Why won't it accept my password? \n\n ANSWER: Your password must be AT LEAST 6 characters long for it to accept.\n\n QUESTION: Can you describe yourself in 3 words ?\n\n  ANSWER: Of course. I'm a computer application, so ruggedly handsome (some say quite beautiful), fast and able to leap tall buildings in a single bound. \n\n" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    [helpSheet showInView:self.view];
+    
+    
+    
+}
 @end

@@ -55,8 +55,11 @@
     _locField = [[UITextField alloc] initWithFrame:CGRectMake(110, 288, 190, 30)];
     _locField.borderStyle = UITextBorderStyleBezel;
     [_locField setEnabled:NO];
-    [_locField setBackgroundColor:[UIColor whiteColor]];
+    [_locField setBackgroundColor:[UIColor lightGrayColor]];
     [self.insideView addSubview:_locField];
+    
+    
+    
     UILabel *locLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 292, 100, 21)];
     locLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
     locLabel.textColor = [UIColor blackColor];
@@ -66,7 +69,7 @@
     _dateField = [[UITextField alloc] initWithFrame:CGRectMake(110, 331, 190, 30)];
     _dateField.borderStyle = UITextBorderStyleBezel;
     [_dateField setEnabled:NO];
-    [_dateField setBackgroundColor:[UIColor whiteColor]];
+    [_dateField setBackgroundColor:[UIColor lightGrayColor]];
 
     [self.insideView addSubview:_dateField];
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 335, 67, 21)];
@@ -79,7 +82,7 @@
     _timeField = [[UITextField alloc] initWithFrame:CGRectMake(110, 374, 190, 30)];
     _timeField.borderStyle = UITextBorderStyleBezel;
     [_timeField setEnabled:NO];
-    [_timeField setBackgroundColor:[UIColor whiteColor]];
+    [_timeField setBackgroundColor:[UIColor lightGrayColor]];
 
     [self.insideView addSubview:_timeField];
     UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 378, 67, 21)];
@@ -89,7 +92,7 @@
 
     [self.scrollView addSubview:timeLabel];
     _equipField = [[UITextView alloc] initWithFrame:CGRectMake(41, 516, 239, 65)];
-    [_equipField setBackgroundColor:[UIColor whiteColor]];
+    [_equipField setBackgroundColor:[UIColor lightGrayColor]];
     [_equipField setEditable:NO];
     [self.insideView addSubview:_equipField];
     
@@ -104,7 +107,7 @@
     _players = [[UITextView alloc] initWithFrame:CGRectMake(110, 417, 190, 67)];
     [_players setBackgroundColor:[UIColor lightGrayColor]];
     [_players setEditable:NO];
-    [_players setBackgroundColor:[UIColor whiteColor]];
+    [_players setBackgroundColor:[UIColor lightGrayColor]];
 
     [self.insideView addSubview:_players];
     UILabel *playersLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 421, 67, 21)];

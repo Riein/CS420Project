@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateEventViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
+@interface CreateEventViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate,UIActionSheetDelegate>
 
 @property (strong, nonatomic) NSArray *sports;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+- (IBAction)helpbutton:(id)sender;
+
+
+- (IBAction)createeventbutton:(id)sender;
 
 - (IBAction)dateFieldClicked:(UIButton *)sender;
 - (IBAction)timeFieldClicked:(UIButton *)sender;
@@ -25,3 +29,5 @@
 @property (strong, nonatomic) UIDatePicker *picker;
 @property (strong, nonatomic) UIView *customView;
 @end
+
+

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegisterViewController : UIViewController <UITextFieldDelegate>
+@interface RegisterViewController : UIViewController <UITextFieldDelegate,UIActionSheetDelegate>
+
+- (IBAction)helpbutton:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITextField *pass;
 @end

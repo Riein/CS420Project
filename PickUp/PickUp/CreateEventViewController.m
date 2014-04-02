@@ -180,6 +180,17 @@
 
 #pragma mark - DatePickerPopover
 
+- (IBAction)helpbutton:(id)sender {
+    UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"Frequently Asked Questions \n\n QUESTION: How do I select I sport? \n\n ANSWER: To the right of the Select A Sport message, click and drag the dial up or down to the desired sport.\n\n QUESTION: Do I have to fill in all of the fields to create an event?\n\n  ANSWER: Yes. All of the fields are important information for anyone to know when joining a pickup game.\n\n QUESTION: How much wood WOULD a woodchuck chuck, if a woodchuck could chuck wood?\n\n ANSWER: I really have no idea!\n\n" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    [helpSheet showInView:self.view];
+}
+
+- (IBAction)createeventbutton:(id)sender {
+    UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"YOUR EVENT HAS BEEN CREATED" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    [helpSheet showInView:self.view];
+}
+
+
 -(IBAction)dateFieldClicked:(UIButton*)sender{
     _customView = [[UIView alloc] initWithFrame:CGRectMake(0, sender.center.y - 150, 320, 264)];
     
