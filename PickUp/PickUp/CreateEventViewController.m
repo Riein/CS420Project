@@ -10,10 +10,11 @@
 
 @interface CreateEventViewController (){
     NSMutableString *equip;
-    BOOL first, selectedRow;
+    BOOL first, selectedRow, incomplete;
     NSMutableArray *equipList;
     NSMutableArray *soccerList, *footballList, *baseballList, *frisbeeList, *golfList;
     NSInteger rowIndex;
+    int errs[6];
 }
 
 @end
@@ -41,6 +42,7 @@
     equip = [[NSMutableString alloc] init];
     first = YES;
     selectedRow = NO;
+    incomplete = YES;
     equipList = [[NSMutableArray alloc] initWithObjects:@"None", nil];
     self.view.backgroundColor = [UIColor lightGrayColor];
     // Creating tableView programatically to try.
@@ -54,6 +56,9 @@
     frisbeeList = [[NSMutableArray alloc] initWithObjects:@"Discs", nil];
     golfList = [[NSMutableArray alloc] initWithObjects:@"Clubs", @"69 Golf balls", @"42 Tees", nil];
     rowIndex = 0;
+    for (int i = 0; i < 6; i++) {
+        errs[i] = 0;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -242,11 +247,61 @@
 }
 
 - (IBAction)createeventbutton:(id)sender {
-    UIAlertView *check = [[UIAlertView alloc] initWithTitle:@"Create Event"
+    NSArray *errMess = [[NSArray alloc] initWithObjects:@"Event name is blank\n", @"Location is blank\n", @"Players needed is blank\n", @"Date needs to be selected\n", @"Time needs to be selected\n", @"The date must be in the future", nil];
+    if ([self.eventField.text isEqualToString:@""]) {
+        incomplete = YES;
+        errs[0] = 1;
+    }
+    if ([self.locationField.text isEqualToString:@""]) {
+        incomplete = YES;
+        errs[1] = 1;
+    }
+    if ([self.playerField.text isEqualToString:@""]) {
+        incomplete = YES;
+        errs[2] = 1;
+    }
+    if ([self.dateButton.currentTitle isEqualToString:@"Select a Date"]) {
+        incomplete = YES;
+        errs[3] = 1;
+    }
+    if ([self.timeButton.currentTitle isEqualToString:@"Select a Time"]) {
+        incomplete = YES;
+        errs[4] = 1;
+    }
+    NSDate *checkDate = [[NSDate alloc] init];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, yyyy"];
+    checkDate = [formatter dateFromString:self.dateButton.currentTitle];
+    NSTimeInterval secondsBetween = [checkDate timeIntervalSinceDate:[NSDate date]];
+    if (secondsBetween < 360) {
+        incomplete = YES;
+        errs[5] = 1;
+    }
+    if (!incomplete) {
+        UIAlertView *check = [[UIAlertView alloc] initWithTitle:@"Create Event"
                                                     message:@"Are you sure you would like to create this event?" delegate:self
                                           cancelButtonTitle:@"Cancel"
                                           otherButtonTitles:@"Accept", nil];
-    [check show];
+        [check show];
+    }
+    else{
+        NSMutableString *errorMess = [[NSMutableString alloc] init];
+        for (int i = 0; i < 6; i++) {
+            if (errs[i] == 1) {
+                [errorMess appendString:errMess[i]];
+            }
+        }
+        UIAlertView *nope = [[UIAlertView alloc] initWithTitle:@"Incomplete Form"
+                                                       message:errorMess
+                                                      delegate:self
+                                             cancelButtonTitle:@"OK"
+                                             otherButtonTitles:nil, nil];
+        [nope show];
+    }
+    for (int i = 0; i < 6; i++) {
+        errs[i] = 0;
+    }
+    incomplete = NO;
 }
 
 - (void)alertView:(UIAlertView *)alertView
