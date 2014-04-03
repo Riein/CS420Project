@@ -10,8 +10,10 @@
 
 @interface CreateEventViewController (){
     NSMutableString *equip;
-    BOOL first;
+    BOOL first, selectedRow;
     NSMutableArray *equipList;
+    NSMutableArray *soccerList, *footballList, *baseballList, *frisbeeList, *golfList;
+    NSInteger rowIndex;
 }
 
 @end
@@ -32,19 +34,26 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    _sports = @[@"Soccer", @"Baseball", @"Basketball", @"Frisbee", @"Golf"];
+    _sports = @[@"Soccer", @"Baseball", @"Football", @"Disc Golf", @"Golf"];
     self.scrollView.ContentSize = CGSizeMake(320, 580);
     [self.scrollView setScrollEnabled:YES];
     self.scrollView.delaysContentTouches = NO;
     equip = [[NSMutableString alloc] init];
     first = YES;
+    selectedRow = NO;
     equipList = [[NSMutableArray alloc] initWithObjects:@"None", nil];
     self.view.backgroundColor = [UIColor lightGrayColor];
     // Creating tableView programatically to try.
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 309, 300, 156)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(15, 360, 290, 130)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.scrollView addSubview:self.tableView];
+    soccerList = [[NSMutableArray alloc] initWithObjects:@"Cleats", @"Light colored shirt", @"Dark colored shirt", @"Shinguards", @"Soccer ball" , nil];
+    footballList = [[NSMutableArray alloc] initWithObjects:@"Cleats", @"Light colored shirt", @"Dark colored shirt", @"Shoulder pads", nil];
+    baseballList = [[NSMutableArray alloc] initWithObjects:@"Cleats", @"Helmet", @"Bat", @"Glove", nil];
+    frisbeeList = [[NSMutableArray alloc] initWithObjects:@"Discs", nil];
+    golfList = [[NSMutableArray alloc] initWithObjects:@"Clubs", @"69 Golf balls", @"42 Tees", nil];
+    rowIndex = 0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -157,15 +166,45 @@
 }
 
 - (IBAction)clearEquipment:(UIButton *)sender {
-    NSMutableArray *resetList = [[NSMutableArray alloc] initWithObjects:@"None", nil];
-    equipList = resetList;
-    first = YES;
-    [self.tableView reloadData];
+    if (selectedRow && ![[equipList objectAtIndex:0] isEqualToString:@"None"]) {
+        [equipList removeObjectAtIndex:rowIndex];
+        [self.removeClicked setTitle:@"Remove All" forState:UIControlStateNormal];
+        selectedRow = NO;
+        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+        [self.tableView reloadData];
+    }
+    else {
+        NSMutableArray *resetList = [[NSMutableArray alloc] initWithObjects:@"None", nil];
+        equipList = resetList;
+        first = YES;
+        [self.tableView reloadData];
+    }
 //    self.textView.text = @"Equipment List:";
 //    first = YES;
 }
 
 - (IBAction)autoFill:(id)sender {
+    NSInteger sportIndex = [self.sportPicker selectedRowInComponent:0];
+    NSString *sport = [_sports objectAtIndex:sportIndex];
+    NSMutableArray *temp;
+    if ([sport isEqualToString:@"Soccer"]) {
+        temp = [[NSMutableArray alloc] initWithArray:soccerList copyItems:YES];
+    }
+    if ([sport isEqualToString:@"Football"]) {
+        temp = [[NSMutableArray alloc] initWithArray:footballList copyItems:YES];
+    }
+    if ([sport isEqualToString:@"Baseball"]) {
+        temp = [[NSMutableArray alloc] initWithArray:baseballList copyItems:YES];
+    }
+    if ([sport isEqualToString:@"Disc Golf"]) {
+        temp = [[NSMutableArray alloc] initWithArray:frisbeeList copyItems:YES];
+    }
+    if ([sport isEqualToString:@"Golf"]) {
+        temp = [[NSMutableArray alloc] initWithArray:golfList copyItems:YES];
+    }
+    equipList = temp;
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    [self.tableView reloadData];
 }
 
 
@@ -194,15 +233,38 @@
 #pragma mark - DatePickerPopover
 
 - (IBAction)helpbutton:(id)sender {
-    UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"Frequently Asked Questions \n\n QUESTION: How do I select I sport? \n\n ANSWER: To the right of the Select A Sport message, click and drag the dial up or down to the desired sport.\n\n QUESTION: Do I have to fill in all of the fields to create an event?\n\n  ANSWER: Yes. All of the fields are important information for anyone to know when joining a pickup game.\n\n QUESTION: How much wood WOULD a woodchuck chuck, if a woodchuck could chuck wood?\n\n ANSWER: I really have no idea!\n\n" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"Frequently Asked Questions \n\n QUESTION: How do I remove just one item from the equipment list? \n\n ANSWER: To remove one item, select it and click the Remove button.\n\n QUESTION: Do I have to fill in all of the fields to create an event?\n\n  ANSWER: Yes. All of the fields are important information for anyone to know when joining a pickup game.\n\n QUESTION: How much wood WOULD a woodchuck chuck, if a woodchuck could chuck wood?\n\n ANSWER: I really have no idea!\n\n" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    helpSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
     [helpSheet showInView:self.view];
+}
+
+- (IBAction)autofillbutton:(id)sender {
 }
 
 - (IBAction)createeventbutton:(id)sender {
+    UIAlertView *check = [[UIAlertView alloc] initWithTitle:@"Create Event"
+                                                    message:@"Are you sure you would like to create this event?" delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Accept", nil];
+    [check show];
+}
+
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0){
+        //cancel clicked ...do your action
+        //NSLog(@"Index 0");
+    }else{
+        //reset clicked
+        [self addEvent];
+    }
+}
+
+-(void)addEvent{
+    NSLog(@"Someday we need to add this event.....");
     UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"YOUR EVENT HAS BEEN CREATED" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
     [helpSheet showInView:self.view];
 }
-
 
 -(IBAction)dateFieldClicked:(UIButton*)sender{
     _customView = [[UIView alloc] initWithFrame:CGRectMake(0, sender.center.y - 150, 320, 264)];
@@ -311,7 +373,11 @@
 }
 
 #pragma mark - Table View Delegate
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    selectedRow = YES;
+    [self.removeClicked setTitle:@"Remove" forState:UIControlStateNormal];
+    rowIndex = indexPath.row;
+    
 ////    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 ////    
 ////    _keyToPass = [_localKeys objectAtIndex:indexPath.row];
@@ -322,6 +388,6 @@
 ////    detailViewController.title = _keyToPass;
 ////    
 ////    [self.navigationController pushViewController:detailViewController animated:YES];
-//}
+}
 
 @end

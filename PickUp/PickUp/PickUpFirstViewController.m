@@ -21,7 +21,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    _sports = @[@"All",@"Soccer", @"Baseball", @"Basketball", @"Frisbee", @"Jousting"];
+    _sports = @[@"All",@"Soccer", @"Baseball", @"Basketball", @"Disc Golf", @"Golf", @"Jousting"];
 
 }
 
@@ -153,7 +153,7 @@
     
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(130, 220, 80, 30)];
     [button setTitle:@"Save" forState:UIControlStateNormal];
-    //[button setBackgroundColor:[UIColor lightGrayColor]];
+    //[button setBackgroundColor:[UIColor whiteColor]];
     [button addTarget:self action:@selector(setDateForButton:)forControlEvents:UIControlEventTouchUpInside];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button setBackgroundImage:[UIImage imageNamed:@"mybutton.png"] forState:UIControlStateNormal];
@@ -210,7 +210,7 @@
 }
 
 - (IBAction)helpbutton:(id)sender {
-    UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"Frequently Asked Questions \n\n QUESTION: Can I search based on one thing? \n\n ANSWER: Yes. But the more information you give the application the better the app works.\n\n QUESTION: What if I do not see the sport I am looking for?\n\n  ANSWER: If you do not see your sport in the roll-a-dex then someone has not created an event for that sport.\n\n QUESTION: If somebody wrote a biography of you, what would it be titled?\n\n ANSWER: Scroned...Hopeful\n\n" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"Frequently Asked Questions \n\n QUESTION: Can I search based on one thing? \n\n ANSWER: Yes. But the more information you give the application the better the app works.\n\n QUESTION: What if I do not see the sport I am looking for?\n\n  ANSWER: If you do not see your sport in the roll-a-dex then someone has not created an event for that sport.\n\n QUESTION: If somebody wrote a biography of you, what would it be titled?\n\n ANSWER: Scorned... Hopeful\n\n" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
     [helpSheet showInView:self.view];
 }
 

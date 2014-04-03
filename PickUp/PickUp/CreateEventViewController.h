@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateEventViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate,UIActionSheetDelegate>
+@interface CreateEventViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate,UIActionSheetDelegate, UITableViewDataSource,UITableViewDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSArray *sports;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 - (IBAction)helpbutton:(id)sender;
+
+- (IBAction)autofillbutton:(id)sender;
 
 
 - (IBAction)createeventbutton:(id)sender;
@@ -26,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *timeButton;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIPickerView *sportPicker;
+@property (weak, nonatomic) IBOutlet UIButton *removeClicked;
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) IBOutlet UITextField *reqEquip;
