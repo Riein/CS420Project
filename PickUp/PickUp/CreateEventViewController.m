@@ -277,6 +277,7 @@
         incomplete = YES;
         errs[5] = 1;
     }
+    
     if (!incomplete) {
         UIAlertView *check = [[UIAlertView alloc] initWithTitle:@"Create Event"
                                                     message:@"Are you sure you would like to create this event?" delegate:self
