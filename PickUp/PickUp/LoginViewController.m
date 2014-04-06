@@ -7,6 +7,11 @@
 //
 
 #import "LoginViewController.h"
+#import "PickUpAppDelegate.h"
+#import "AFHTTPSessionManager.h"
+
+#define BaseURLString @"https://bend.encs.vancouver.wsu.edu/~mpessa/appServer/"
+
 
 @interface LoginViewController ()
 

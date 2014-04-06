@@ -91,14 +91,14 @@
     timeLabel.text = @"Time";
 
     [self.scrollView addSubview:timeLabel];
-    _equipField = [[UITextView alloc] initWithFrame:CGRectMake(41, 516, 239, 65)];
+    _equipField = [[UITextView alloc] initWithFrame:CGRectMake(41, 516, 243, 137)];
     [_equipField setBackgroundColor:[UIColor whiteColor]];
     [_equipField setEditable:NO];
     [self.insideView addSubview:_equipField];
     
     
     
-    UILabel *equipLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 487, 190, 21)];
+    UILabel *equipLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 487, 190, 32)];
     equipLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
     equipLabel.textColor = [UIColor blackColor];
     equipLabel.text = @"Required Equipment:";
@@ -143,8 +143,9 @@
     }
     _equipField.text = equip;
     
-    _button = [[UIButton alloc] initWithFrame:CGRectMake(115, 610, 90, 34)];
+    _button = [[UIButton alloc] initWithFrame:CGRectMake(115, 680, 90, 37)];
     [_button setTitle:@"Join" forState:UIControlStateNormal];
+    
     // Add this in later, change the button title if already joined
 //    for (int i = 0; i < ppl.count; i++) {
 //        if ([currentUser isEqual: ppl[i]]) {
@@ -179,6 +180,9 @@
 - (BOOL)touchesShouldCancelInContentView:(UIView *)view {
     return NO;
 }
+
+
+
 
 -(void)buttonPressed:(id)sender{
     NSLog(@"button pressed");

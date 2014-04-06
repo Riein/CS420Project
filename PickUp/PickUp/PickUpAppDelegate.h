@@ -12,4 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic) NSMutableArray *events;
+@property (strong, nonatomic) NSString *user;
+
 @end

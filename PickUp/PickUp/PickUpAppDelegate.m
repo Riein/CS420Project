@@ -7,13 +7,34 @@
 //
 
 #import "PickUpAppDelegate.h"
+#import "Event.h"
+
+#define kEventsKey @"events"
 
 @implementation PickUpAppDelegate
+
+-(NSString*)pathToArchive{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docDir = [paths objectAtIndex:0];
+    return [docDir stringByAppendingPathComponent:@"tweets.archive"];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     
+    NSString *archivePath = [self pathToArchive];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:archivePath]) {
+        NSData *data = [[NSData alloc] initWithContentsOfFile:archivePath];
+        NSKeyedUnarchiver *decoder = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        NSArray *a = [decoder decodeObjectForKey:kEventsKey];
+        [decoder finishDecoding];
+        self.events = [a mutableCopy];
+    }
+    else{
+        // Update later. Need to figure this part out.
+        self.events = [[NSMutableArray alloc] init];
+    }
     return YES;
 }
 							
@@ -42,6 +63,27 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(NSDate *)lastEventDate{
+    if (self.events.count > 0) {
+        Event *event = [[Event alloc] init];
+        event = [self.events objectAtIndex:0];
+        return event.timeStamp;
+    }
+    else{
+        NSDate *date;
+        NSDateComponents *comps = [[NSDateComponents alloc] init];
+        [comps setMonth:1];
+        [comps setDay:1];
+        [comps setYear:2014];
+        [comps setHour:1];
+        [comps setMinute:0];
+        [comps setSecond:0];
+        NSCalendar *norm = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        date = [norm dateFromComponents:comps];
+        return date;
+    }
 }
 
 @end
