@@ -189,9 +189,21 @@
     // Add user to list
     // Send update to server
     if ([_button.currentTitle isEqual: @"Join"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
+                                                        message:@"You have joined this event"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
         [_button setTitle:@"Unjoin" forState:UIControlStateNormal];
     }
     else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
+                                                        message:@"You have removed yourself from his event"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
         [_button setTitle:@"Join" forState:UIControlStateNormal];
     }
 }
