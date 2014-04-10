@@ -42,8 +42,8 @@
     [self.view addSubview:self.scrollView];
     //[self.view setBackgroundColor:[UIColor whiteColor]];
     _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 65, 320, 200)];
-    NSNumber *latitude = [self.info objectForKey:@"Latitude"];
-    NSNumber *longitude = [self.info objectForKey:@"Longitude"];
+    NSNumber *latitude = self.info.latitude;
+    NSNumber *longitude = self.info.longitude;
     _region.center.latitude = latitude.doubleValue;
     _region.center.longitude = longitude.doubleValue;
     _region.span.latitudeDelta = 0.02;
@@ -118,16 +118,16 @@
 
     [self.insideView addSubview:playersLabel];
 
-    
+    _locField.text = self.info.location;
     NSDateFormatter *day = [[NSDateFormatter alloc] init];
     [day setDateFormat:@"MMM d, yyyy"];
-    NSString *date = [day stringFromDate:[self.info objectForKey:@"Date"]];
+    NSString *date = [day stringFromDate:self.info.eventDate];
     _dateField.text = date;
     NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
     [timeFormat setDateFormat:@"hh:mm a"];
-    NSString *time = [timeFormat stringFromDate:[self.info objectForKey:@"Date"]];
+    NSString *time = [timeFormat stringFromDate:self.info.eventDate];
     _timeField.text = time;
-    NSArray *ppl = [[NSArray alloc] initWithArray:[self.info objectForKey:@"Players"]];
+    NSArray *ppl = [[NSArray alloc] initWithArray:self.info.players];
     NSMutableString *play = [[NSMutableString alloc] init];
     for (int i = 0; i < ppl.count; i++) {
         [play appendString:[ppl objectAtIndex:i]];
@@ -135,7 +135,7 @@
     }
     _players.text = play;
     
-    NSArray *eq = [[NSArray alloc] initWithArray:[self.info objectForKey:@"Equipment"]];
+    NSArray *eq = [[NSArray alloc] initWithArray:self.info.equipment];
     NSMutableString *equip = [[NSMutableString alloc] init];
     for (int i = 0; i < eq.count; i++) {
         [equip appendString:[eq objectAtIndex:i]];
@@ -189,9 +189,21 @@
     // Add user to list
     // Send update to server
     if ([_button.currentTitle isEqual: @"Join"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
+                                                        message:@"You have joined this event"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
         [_button setTitle:@"Unjoin" forState:UIControlStateNormal];
     }
     else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
+                                                        message:@"You have removed yourself from his event"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
         [_button setTitle:@"Join" forState:UIControlStateNormal];
     }
 }

@@ -10,7 +10,9 @@
 
 @interface Event : NSObject <NSCopying, NSCoding>
 
-@property (strong, nonatomic) NSNumber *event_id;
+@property (assign, nonatomic) NSInteger event_id;
+@property (strong, nonatomic) NSString *eventSport;
+@property (strong, nonatomic) NSString *eventName;
 @property (strong, nonatomic) NSDate *eventDate;
 @property (strong, nonatomic) NSDate *timeStamp;
 @property (copy, nonatomic) NSString *host;

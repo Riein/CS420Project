@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "Event.h"
 
 @interface EventInfoViewController : UIViewController
 
@@ -23,7 +24,7 @@
 @property (strong, nonatomic)  UIScrollView *scrollView;
 @property (strong, nonatomic)  UIView *insideView;
 
-@property (weak, nonatomic) NSDictionary *info;
+@property (weak, nonatomic) Event *info;
 
 
 

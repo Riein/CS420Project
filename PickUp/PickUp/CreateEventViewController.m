@@ -7,6 +7,8 @@
 //
 
 #import "CreateEventViewController.h"
+#import "Event.h"
+#import "PickUpAppDelegate.h"
 
 @interface CreateEventViewController (){
     NSMutableString *equip;
@@ -15,6 +17,7 @@
     NSMutableArray *soccerList, *footballList, *baseballList, *frisbeeList, *golfList;
     NSInteger rowIndex;
     int errs[6];
+    PickUpAppDelegate *appDelegate;
 }
 
 @end
@@ -59,6 +62,7 @@
     for (int i = 0; i < 6; i++) {
         errs[i] = 0;
     }
+    appDelegate = [[UIApplication sharedApplication] delegate];
 }
 
 - (void)didReceiveMemoryWarning
@@ -301,6 +305,22 @@
     }
     for (int i = 0; i < 6; i++) {
         errs[i] = 0;
+    }
+    if (!incomplete) {
+        Event *newEvent = [[Event alloc] init];
+        newEvent.event_id = [appDelegate.events count] + 1;
+        newEvent.eventName = self.eventField.text;
+        newEvent.location = self.locationField.text;
+        // Need to add in pulling the lat and long
+        newEvent.latitude = @45.72918;
+        newEvent.longitude = @-122.639008;
+        NSDateFormatter *format = [[NSDateFormatter alloc] init];
+        [format setDateFormat:@"MMM d, yyyy"];
+        newEvent.eventDate = [format dateFromString:self.dateButton.currentTitle];
+        // Need to work out how to add in the time here
+        newEvent.host = appDelegate.user;
+        newEvent.equipment = equipList;
+        [appDelegate.events insertObject:newEvent atIndex:0];
     }
     incomplete = NO;
 }

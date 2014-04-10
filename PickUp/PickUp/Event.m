@@ -14,6 +14,8 @@
 
     if (self = [super init]) {
         self.event_id = 0;
+        self.eventName = @"";
+        self.eventSport = @"";
         self.eventDate = [NSDate date];
         self.timeStamp = [NSDate date];
         self.host = @"";
@@ -28,6 +30,8 @@
 }
 
 #define kEventID @"event_id"
+#define kEventName @"eventName"
+#define kSportKey @"eventSport"
 #define kEventDate @"date"
 #define kTimeKey @"timeStamp"
 #define kHostKey @"host"
@@ -39,7 +43,9 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super init]) {
-        self.event_id = [aDecoder decodeObjectForKey:kEventID];
+        self.event_id = [[aDecoder decodeObjectForKey:kEventID] integerValue];
+        self.eventSport = [aDecoder decodeObjectForKey:kSportKey];
+        self.eventName = [aDecoder decodeObjectForKey:kEventName];
         self.eventDate = [aDecoder decodeObjectForKey:kEventDate];
         self.timeStamp = [aDecoder decodeObjectForKey:kTimeKey];
         self.host = [aDecoder decodeObjectForKey:kHostKey];
@@ -53,7 +59,10 @@
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:self.event_id forKey:kEventID];
+    NSNumber *num = [[NSNumber alloc] initWithInt:self.event_id];
+    [aCoder encodeObject:num forKey:kEventID];
+    [aCoder encodeObject:self.eventName forKey:kEventName];
+    [aCoder encodeObject:self.eventSport forKey:kSportKey];
     [aCoder encodeObject:self.eventDate forKey:kEventDate];
     [aCoder encodeObject:self.timeStamp forKey:kTimeKey];
     [aCoder encodeObject:self.host forKey:kHostKey];
@@ -67,6 +76,8 @@
 -(id)copyWithZone:(NSZone *)zone{
     Event *clone = [[[self class] alloc] init];
     clone.event_id = self.event_id;
+    clone.eventName = self.eventName;
+    clone.eventSport = self.eventSport;
     clone.eventDate = self.eventDate;
     clone.timeStamp = self.timeStamp;
     clone.host = self.host;

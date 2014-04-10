@@ -31,7 +31,7 @@
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="DBQ-2i-WLH" kind="push" id="St4-eD-RP0"/>
+                                    <segue destination="DBQ-2i-WLH" kind="push" identifier="search" id="St4-eD-RP0"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" id="mIi-wR-JFK">
@@ -137,8 +137,10 @@
                     <navigationItem key="navigationItem" title="Pick Up Games Search" id="oDP-4f-OfU"/>
                     <connections>
                         <outlet property="dateBut" destination="FGZ-Xc-Slu" id="6fX-2Y-jJq"/>
-                        <outlet property="eventName" destination="1do-Iq-LkI" id="Mxf-bC-G50"/>
+                        <outlet property="eventName" destination="1do-Iq-LkI" id="6nz-XR-lrU"/>
+                        <outlet property="location" destination="8Oc-Ys-6Kb" id="dA2-lT-LFE"/>
                         <outlet property="searchDisplayController" destination="UH0-DK-UO1" id="KSH-TC-0fq"/>
+                        <outlet property="sportPicker" destination="mIi-wR-JFK" id="AvI-Iq-W2z"/>
                         <outlet property="timeBut" destination="0xp-3I-zDt" id="ya6-Zb-cO8"/>
                     </connections>
                 </viewController>
