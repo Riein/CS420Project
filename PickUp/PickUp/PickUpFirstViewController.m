@@ -235,6 +235,7 @@
 
 -(NSMutableArray*)eventsSearched{
     NSMutableArray *temp = [[NSMutableArray alloc] initWithArray:appDelegate.events copyItems:YES];
+    NSLog(@"# of items:%d", temp.count);
     int remove[temp.count];
     for (int i = 0; i < temp.count; i++) {
         remove[i] = 0;
@@ -250,7 +251,12 @@
             NSLog(@"not all sports");
             for (int i = 0; i < temp.count; i++) {
                 Event *event = [temp objectAtIndex:i];
-                if (![_sports[[self.sportPicker selectedRowInComponent:i]] isEqualToString:event.eventSport]) {
+                if ([_sports[[self.sportPicker selectedRowInComponent:0]] isEqualToString:event.eventSport]) {
+                    NSLog(@"is %@", _sports[[self.sportPicker selectedRowInComponent:0]]);
+                    remove[i] = 0;
+                }
+                else{
+                    NSLog(@"not %@", _sports[[self.sportPicker selectedRowInComponent:0]]);
                     remove[i] = 1;
                 }
             }

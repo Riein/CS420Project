@@ -251,6 +251,7 @@
 }
 
 - (IBAction)createeventbutton:(id)sender {
+    incomplete = NO;
     NSArray *errMess = [[NSArray alloc] initWithObjects:@"Event name is blank\n", @"Location is blank\n", @"Players needed is blank\n", @"Date needs to be selected\n", @"Time needs to be selected\n", @"The date must be in the future", nil];
     if ([self.eventField.text isEqualToString:@""]) {
         incomplete = YES;
@@ -306,22 +307,7 @@
     for (int i = 0; i < 6; i++) {
         errs[i] = 0;
     }
-    if (!incomplete) {
-        Event *newEvent = [[Event alloc] init];
-        newEvent.event_id = [appDelegate.events count] + 1;
-        newEvent.eventName = self.eventField.text;
-        newEvent.location = self.locationField.text;
-        // Need to add in pulling the lat and long
-        newEvent.latitude = @45.72918;
-        newEvent.longitude = @-122.639008;
-        NSDateFormatter *format = [[NSDateFormatter alloc] init];
-        [format setDateFormat:@"MMM d, yyyy"];
-        newEvent.eventDate = [format dateFromString:self.dateButton.currentTitle];
-        // Need to work out how to add in the time here
-        newEvent.host = appDelegate.user;
-        newEvent.equipment = equipList;
-        [appDelegate.events insertObject:newEvent atIndex:0];
-    }
+
     incomplete = NO;
 }
 
@@ -337,9 +323,32 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
 }
 
 -(void)addEvent{
-    NSLog(@"Someday we need to add this event.....");
+    Event *newEvent = [[Event alloc] init];
+    newEvent.event_id = [appDelegate.events count] + 1;
+    newEvent.eventName = self.eventField.text;
+    newEvent.eventSport = _sports[[self.sportPicker selectedRowInComponent:0]];
+    newEvent.location = self.locationField.text;
+    // Need to add in pulling the lat and long
+    newEvent.latitude = @45.72918;
+    newEvent.longitude = @-122.639008;
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"MMM d, yyyy"];
+    newEvent.eventDate = [format dateFromString:self.dateButton.currentTitle];
+    // Need to work out how to add in the time here
+    newEvent.players = [@[appDelegate.user] copy];
+    newEvent.host = appDelegate.user;
+    newEvent.equipment = equipList;
+    
+    [appDelegate.events insertObject:newEvent atIndex:0];
+    
     UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"YOUR EVENT HAS BEEN CREATED" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
     [helpSheet showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    // Goes too far. Goes back to login page.
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)dateFieldClicked:(UIButton*)sender{

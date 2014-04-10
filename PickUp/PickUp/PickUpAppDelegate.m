@@ -48,6 +48,7 @@
         event.equipment = [@[@"rags", @"bats"] copy];
         [self.events addObject:event];
     }
+    self.user = @"Cpt. America";
     return YES;
 }
 							
