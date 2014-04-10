@@ -16,7 +16,7 @@
     NSMutableArray *equipList;
     NSMutableArray *soccerList, *footballList, *baseballList, *frisbeeList, *golfList;
     NSInteger rowIndex;
-    int errs[6];
+    int errs[7];
     PickUpAppDelegate *appDelegate;
 }
 
@@ -252,7 +252,7 @@
 
 - (IBAction)createeventbutton:(id)sender {
     incomplete = NO;
-    NSArray *errMess = [[NSArray alloc] initWithObjects:@"Event name is blank\n", @"Location is blank\n", @"Players needed is blank\n", @"Date needs to be selected\n", @"Time needs to be selected\n", @"The date must be in the future", nil];
+    NSArray *errMess = [[NSArray alloc] initWithObjects:@"Event name is blank\n", @"Location is blank\n", @"Players needed is blank\n", @"Date needs to be selected\n", @"Time needs to be selected\n", @"The date must be in the future", @"Number of players must be an integer", nil];
     if ([self.eventField.text isEqualToString:@""]) {
         incomplete = YES;
         errs[0] = 1;
@@ -264,6 +264,11 @@
     if ([self.playerField.text isEqualToString:@""]) {
         incomplete = YES;
         errs[2] = 1;
+    }
+    NSCharacterSet *ints = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    if ([self.playerField.text rangeOfCharacterFromSet:ints].location != NSNotFound) {
+        incomplete = YES;
+        errs[6] = 1;
     }
     if ([self.dateButton.currentTitle isEqualToString:@"Select a Date"]) {
         incomplete = YES;
@@ -292,7 +297,7 @@
     }
     else{
         NSMutableString *errorMess = [[NSMutableString alloc] init];
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 7; i++) {
             if (errs[i] == 1) {
                 [errorMess appendString:errMess[i]];
             }
@@ -304,7 +309,7 @@
                                              otherButtonTitles:nil, nil];
         [nope show];
     }
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 7; i++) {
         errs[i] = 0;
     }
 
@@ -324,7 +329,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
 
 -(void)addEvent{
     Event *newEvent = [[Event alloc] init];
-    newEvent.event_id = [appDelegate.events count] + 1;
+    //newEvent.event_id = [appDelegate.events count] + 1; // Handle this on the server
     newEvent.eventName = self.eventField.text;
     newEvent.eventSport = _sports[[self.sportPicker selectedRowInComponent:0]];
     newEvent.location = self.locationField.text;
@@ -334,31 +339,19 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"MMM d, yyyy"];
     NSCalendar *gCal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSLog(@"cal done");
     [gCal setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
     NSDate *date = [format dateFromString:self.dateButton.currentTitle];
-    NSLog(@"date done: %@", date);
-    NSString *check = self.dateButton.currentTitle;
-    NSLog(@"%@", check);
     [format setDateFormat:@"HH:mm a"];
     NSDate *time = [format dateFromString:self.timeButton.currentTitle];
-    NSLog(@"time button: %@", self.timeButton.currentTitle);
-    NSLog(@"time done: %@", time);
     NSDateComponents *dateComp = [gCal components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
-    NSLog(@"datecomp");
     NSDateComponents *timeComp = [gCal components:NSHourCalendarUnit | NSMinuteCalendarUnit |NSSecondCalendarUnit fromDate:time];
-    NSLog(@"timecomp");
     NSDateComponents *combine = [[NSDateComponents alloc] init];
-    NSLog(@"combine");
     [combine setYear:dateComp.year];
     [combine setMonth:dateComp.month];
     [combine setDay:dateComp.day];
     [combine setHour:timeComp.hour];
     [combine setMinute:timeComp.minute];
-    NSLog(@"final");
     newEvent.eventDate = [gCal dateFromComponents:combine];
-    NSLog(@"after: %@", newEvent.eventDate);
-    // Need to work out how to add in the time here
     newEvent.players = [@[appDelegate.user] copy];
     newEvent.host = appDelegate.user;
     newEvent.equipment = equipList;
