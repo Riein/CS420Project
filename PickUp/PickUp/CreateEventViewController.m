@@ -75,7 +75,7 @@
     return NO;
 }
 
-#define kOFFSET_FOR_KEYBOARD 90.0
+#define kOFFSET_FOR_KEYBOARD 80.0
 
 -(void)keyboardWillShow {
     // Animate the current view out of the way
@@ -333,7 +333,31 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     newEvent.longitude = @-122.639008;
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"MMM d, yyyy"];
-    newEvent.eventDate = [format dateFromString:self.dateButton.currentTitle];
+    NSCalendar *gCal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSLog(@"cal done");
+    [gCal setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
+    NSDate *date = [format dateFromString:self.dateButton.currentTitle];
+    NSLog(@"date done: %@", date);
+    NSString *check = self.dateButton.currentTitle;
+    NSLog(@"%@", check);
+    [format setDateFormat:@"HH:mm a"];
+    NSDate *time = [format dateFromString:self.timeButton.currentTitle];
+    NSLog(@"time button: %@", self.timeButton.currentTitle);
+    NSLog(@"time done: %@", time);
+    NSDateComponents *dateComp = [gCal components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
+    NSLog(@"datecomp");
+    NSDateComponents *timeComp = [gCal components:NSHourCalendarUnit | NSMinuteCalendarUnit |NSSecondCalendarUnit fromDate:time];
+    NSLog(@"timecomp");
+    NSDateComponents *combine = [[NSDateComponents alloc] init];
+    NSLog(@"combine");
+    [combine setYear:dateComp.year];
+    [combine setMonth:dateComp.month];
+    [combine setDay:dateComp.day];
+    [combine setHour:timeComp.hour];
+    [combine setMinute:timeComp.minute];
+    NSLog(@"final");
+    newEvent.eventDate = [gCal dateFromComponents:combine];
+    NSLog(@"after: %@", newEvent.eventDate);
     // Need to work out how to add in the time here
     newEvent.players = [@[appDelegate.user] copy];
     newEvent.host = appDelegate.user;

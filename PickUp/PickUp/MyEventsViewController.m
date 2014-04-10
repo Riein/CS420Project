@@ -76,6 +76,7 @@
     detail = [appDelegate.events objectAtIndex:indexPath.row];
     NSDateFormatter *dateForm = [[NSDateFormatter alloc] init];
     [dateForm setDateFormat:@"MMMM d, yyyy : hh:mm a"];
+    [dateForm setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
     cell.detailTextLabel.text = [dateForm stringFromDate:temp.eventDate];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
