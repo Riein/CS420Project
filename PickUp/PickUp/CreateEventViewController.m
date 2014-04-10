@@ -278,12 +278,28 @@
         incomplete = YES;
         errs[4] = 1;
     }
-    NSDate *checkDate = [[NSDate alloc] init];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MMM d, yyyy"];
-    checkDate = [formatter dateFromString:self.dateButton.currentTitle];
-    NSTimeInterval secondsBetween = [checkDate timeIntervalSinceDate:[NSDate date]];
-    if (secondsBetween < 360) {
+    // Should error check for time now, not just date. Having issues with check. Only working on date still.
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"MMM d, yyyy"];
+    //NSCalendar *gCal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *gCal = [NSCalendar currentCalendar];
+    [gCal setTimeZone:[NSTimeZone systemTimeZone]];
+    NSDate *date = [format dateFromString:self.dateButton.currentTitle];
+    [format setDateFormat:@"HH:mm a"];
+    NSDate *time = [format dateFromString:self.timeButton.currentTitle];
+    NSLog(@"%@", time);
+    NSDateComponents *dateComp = [gCal components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
+    NSDateComponents *timeComp = [gCal components:NSHourCalendarUnit | NSMinuteCalendarUnit |NSSecondCalendarUnit fromDate:time];
+    NSDateComponents *combine = [[NSDateComponents alloc] init];
+    NSLog(@"parts-hr:%d,mi:%d", timeComp.hour, timeComp.minute);
+    [combine setYear:dateComp.year];
+    [combine setMonth:dateComp.month];
+    [combine setDay:dateComp.day];
+    [combine setHour:timeComp.hour];
+    [combine setMinute:timeComp.minute];
+    NSDate *checkDate = [gCal dateFromComponents:combine];
+    NSLog(@"checkDate: %@, now: %@, diff: %f", checkDate, [NSDate date], [checkDate timeIntervalSinceNow]);
+    if ([checkDate timeIntervalSinceNow] <= 0) {
         incomplete = YES;
         errs[5] = 1;
     }
