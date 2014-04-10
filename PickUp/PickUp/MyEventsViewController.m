@@ -8,6 +8,8 @@
 
 #import "MyEventsViewController.h"
 #import "EventInfoViewController.h"
+#import "PickUpAppDelegate.h"
+#import "Event.h"
 
 @interface MyEventsViewController ()
 
@@ -17,7 +19,8 @@
     NSDictionary *_localList;
     NSMutableArray *_localKeys;
     NSString *_keyToPass;
-    NSDictionary *_dictToPass;
+    Event *_dictToPass;
+    PickUpAppDelegate *appDelegate;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -38,6 +41,7 @@
         _localList = [[NSDictionary alloc] initWithContentsOfFile:path];
         _localKeys = [[[_localList allKeys] sortedArrayUsingSelector:@selector(compare:)] mutableCopy];
     }
+    appDelegate = [[UIApplication sharedApplication] delegate];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,7 +59,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_localKeys count];
+    return [appDelegate.events count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,13 +69,14 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    
-    cell.textLabel.text = [_localKeys objectAtIndex:indexPath.row];
+    Event *temp = [[Event alloc] init];
+    temp = [appDelegate.events objectAtIndex:indexPath.row];
+    cell.textLabel.text = temp.eventName;
     NSDictionary *detail = [[NSDictionary alloc] init];
-    detail = [_localList objectForKey:cell.textLabel.text];
+    detail = [appDelegate.events objectAtIndex:indexPath.row];
     NSDateFormatter *dateForm = [[NSDateFormatter alloc] init];
     [dateForm setDateFormat:@"MMMM d, yyyy : hh:mm a"];
-    cell.detailTextLabel.text = [dateForm stringFromDate:[detail objectForKey:@"Date"]];
+    cell.detailTextLabel.text = [dateForm stringFromDate:temp.eventDate];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -80,8 +85,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    _keyToPass = [_localKeys objectAtIndex:indexPath.row];
-    _dictToPass = [_localList objectForKey:_keyToPass];
+    Event *temp = [[Event alloc] init];
+    temp = [appDelegate.events objectAtIndex:indexPath.row];
+    _keyToPass = temp.eventName;
+    _dictToPass = temp;
     
     EventInfoViewController *detailViewController = [[EventInfoViewController alloc] init];
     detailViewController.info = _dictToPass;

@@ -7,6 +7,9 @@
 //
 
 #import "PickUpFirstViewController.h"
+#import "SearchResultsViewController.h"
+#import "PickUpAppDelegate.h"
+#import "Event.h"
 
 @interface PickUpFirstViewController ()
 
@@ -15,6 +18,7 @@
 @implementation PickUpFirstViewController{
     //UIPopoverController *popoverController;
     NSDate *dateToSet;
+    PickUpAppDelegate *appDelegate;
 }
 
 - (void)viewDidLoad
@@ -22,6 +26,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     _sports = @[@"All",@"Soccer", @"Baseball", @"Basketball", @"Disc Golf", @"Golf", @"Jousting"];
+    appDelegate = [[UIApplication sharedApplication] delegate];
 
 }
 
@@ -209,10 +214,6 @@
     } completion:^(BOOL finished) {}];
 }
 
-- (IBAction)helpbutton:(id)sender {
-    UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"Frequently Asked Questions \n\n QUESTION: Can I search based on one thing? \n\n ANSWER: Yes. But the more information you give the application the better the app works.\n\n QUESTION: What if I do not see the sport I am looking for?\n\n  ANSWER: If you do not see your sport in the roll-a-dex then someone has not created an event for that sport.\n\n QUESTION: If somebody wrote a biography of you, what would it be titled?\n\n ANSWER: Scorned... Hopeful\n\n" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
-    [helpSheet showInView:self.view];
-}
 
 -(void)setTimeForButton:(id)sender{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -220,6 +221,73 @@
     NSString *newDate = [formatter stringFromDate:self.picker.date];
     [self.timeBut setTitle:newDate forState:UIControlStateNormal];
     [_customView removeFromSuperview];
+}
+
+- (IBAction)helpbutton:(id)sender {
+    UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"Frequently Asked Questions \n\n QUESTION: Can I search based on one thing? \n\n ANSWER: Yes. But the more information you give the application the better the app works.\n\n QUESTION: What if I do not see the sport I am looking for?\n\n  ANSWER: If you do not see your sport in the roll-a-dex then someone has not created an event for that sport.\n\n QUESTION: If somebody wrote a biography of you, what would it be titled?\n\n ANSWER: Scorned... Hopeful\n\n" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    [helpSheet showInView:self.view];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    SearchResultsViewController *destView = segue.destinationViewController;
+    destView.events = [self eventsSearched];
+}
+
+-(NSMutableArray*)eventsSearched{
+    NSMutableArray *temp = [[NSMutableArray alloc] initWithArray:appDelegate.events copyItems:YES];
+    int remove[temp.count];
+    for (int i = 0; i < temp.count; i++) {
+        remove[i] = 0;
+    }
+    // Need to remove events that don't match constraints from temp
+    if ([_sports[[self.sportPicker selectedRowInComponent:0]] isEqualToString:@"All"]
+            && [self.location.text  isEqual: @""] && [self.eventName.text  isEqual: @""] &&
+        [self.dateBut.currentTitle isEqualToString:@"Select a Date"] && [self.timeBut.currentTitle isEqualToString:@"Select a Time"]) {
+        return temp;
+    }
+    else{
+        if (![_sports[[self.sportPicker selectedRowInComponent:0]] isEqualToString:@"All"]){
+            NSLog(@"not all sports");
+            for (int i = 0; i < temp.count; i++) {
+                Event *event = [temp objectAtIndex:i];
+                if (![_sports[[self.sportPicker selectedRowInComponent:i]] isEqualToString:event.eventSport]) {
+                    remove[i] = 1;
+                }
+            }
+        }
+        for (int i = 0; i < temp.count; i++) {
+            Event *event = [temp objectAtIndex:i];
+            if (![self.eventName.text isEqualToString:event.eventName] && ![self.eventName.text isEqualToString:@""]) {
+                NSLog(@"event name differs");
+                remove[i] = 1;
+            }
+            if (![self.location.text isEqualToString:event.location] && ![self.location.text isEqualToString:@""]) {
+                NSLog(@"location differs");
+                remove[i] = 1;
+            }
+            NSDateFormatter *format = [[NSDateFormatter alloc] init];
+            [format setDateFormat:@"MMMM d, yyyy"];
+            if (![self.dateBut.currentTitle isEqualToString:[format stringFromDate:event.eventDate]] && ![self.dateBut.currentTitle isEqualToString:@"Select a Date"]) {
+                NSLog(@"date differs");
+                NSLog(@"%@ : %@", self.dateBut.currentTitle, [format stringFromDate:event.eventDate]);
+                remove[i] = 1;
+            }
+            [format setDateFormat:@"HH:mm"];
+            if (![self.timeBut.currentTitle isEqualToString:[format stringFromDate:event.eventDate]] && ![self.timeBut.currentTitle isEqualToString:@"Select a Time"]) {
+                NSLog(@"time differs");
+                NSLog(@"%@ : %@", self.timeBut.currentTitle, [format stringFromDate:event.eventDate]);
+                remove[i] = 1;
+            }
+        }
+    }
+    NSMutableArray *events = [[NSMutableArray alloc] init];
+    for (int i = 0; i < temp.count; i++) {
+        if (remove[i] == 0) {
+            [events addObject:[temp objectAtIndex:i]];
+        }
+    }
+
+    return events;
 }
 
 @end

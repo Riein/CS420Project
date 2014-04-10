@@ -12,7 +12,6 @@
 
 @property (strong, nonatomic) NSArray *sports;
 @property (weak, nonatomic) IBOutlet UITextField *eventName;
-//@property (strong, nonatomic) UIPopoverController *popoverController;
 
 - (IBAction)dateFieldClicked:(id)sender;
 - (IBAction)timeFieldClicked:(id)sender;
@@ -24,5 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *timeBut;
 @property (strong, nonatomic) UIDatePicker *picker;
 @property (strong, nonatomic) UIView *customView;
+@property (strong, nonatomic) IBOutlet UIPickerView *sportPicker;
+@property (strong, nonatomic) IBOutlet UITextField *location;
 
 @end

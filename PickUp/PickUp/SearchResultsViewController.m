@@ -8,16 +8,15 @@
 
 #import "SearchResultsViewController.h"
 #import "EventInfoViewController.h"
+#import "Event.h"
 
 @interface SearchResultsViewController ()
 
 @end
 
 @implementation SearchResultsViewController{
-    NSDictionary *_localList;
-    NSMutableArray *_localKeys;
     NSString *_keyToPass;
-    NSDictionary *_dictToPass;
+    Event *_dictToPass;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,11 +32,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    if (_localList == nil) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"PickUpGames" ofType:@"plist"];
-        _localList = [[NSDictionary alloc] initWithContentsOfFile:path];
-        _localKeys = [[[_localList allKeys] sortedArrayUsingSelector:@selector(compare:)] mutableCopy];
-    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -57,7 +51,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_localKeys count];
+    return [self.events count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -67,12 +61,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
     }
     
-    cell.textLabel.text = [_localKeys objectAtIndex:indexPath.row];
-    NSDictionary *detail = [[NSDictionary alloc] init];
-    detail = [_localList objectForKey:cell.textLabel.text];
+    Event *temp = [[Event alloc] init];
+    temp = [self.events objectAtIndex:indexPath.row];
+    cell.textLabel.text = temp.eventName;
     NSDateFormatter *dateForm = [[NSDateFormatter alloc] init];
     [dateForm setDateFormat:@"MMMM d, yyyy : hh:mm a"];
-    cell.detailTextLabel.text = [dateForm stringFromDate:[detail objectForKey:@"Date"]];
+    cell.detailTextLabel.text = [dateForm stringFromDate:temp.eventDate];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -82,8 +76,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    _keyToPass = [_localKeys objectAtIndex:indexPath.row];
-    _dictToPass = [_localList objectForKey:_keyToPass];
+    Event *temp = [[Event alloc] init];
+    temp = [self.events objectAtIndex:indexPath.row];
+    _keyToPass = temp.eventName;
+    _dictToPass = temp;
     
     EventInfoViewController *detailViewController = [[EventInfoViewController alloc] init];
     detailViewController.info = _dictToPass;
