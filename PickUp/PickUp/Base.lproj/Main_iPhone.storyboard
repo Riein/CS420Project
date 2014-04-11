@@ -703,7 +703,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <color key="tintColor" patternImage="AE36CDD4-5083-45F4-8995-140493046E40" colorSpace="pattern"/>
+                        <color key="tintColor" patternImage="9FB3ED65-2AB8-4D9A-94CD-009E78AD0F12" colorSpace="pattern"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="W35-oL-0Xk">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Fa7-rh-Dls"/>
@@ -977,7 +977,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AE36CDD4-5083-45F4-8995-140493046E40" width="275" height="183">
+        <image name="9FB3ED65-2AB8-4D9A-94CD-009E78AD0F12" width="275" height="183">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPD1YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYtMDY5VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
