@@ -49,6 +49,15 @@
     _region.span.latitudeDelta = 0.02;
     _region.span.longitudeDelta = 0.02;
     _mapView.region = _region;
+
+    //------------ ADDING PIN TO MAP HERE --------------------
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+	CLLocationCoordinate2D coordinate;
+	coordinate.latitude = latitude.doubleValue;
+	coordinate.longitude = longitude.doubleValue;
+    [annotation setCoordinate:coordinate];
+	[annotation setTitle:self.info.location]; //You can set the subtitle too
+    [_mapView addAnnotation:annotation];
     [self.scrollView addSubview:_mapView];
     NSLog(@"mapView.region set");
 
