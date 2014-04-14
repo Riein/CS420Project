@@ -42,19 +42,20 @@
     [self.view addSubview:self.scrollView];
     //[self.view setBackgroundColor:[UIColor whiteColor]];
     _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 65, 320, 200)];
-    NSNumber *latitude = self.info.latitude;
-    NSNumber *longitude = self.info.longitude;
-    _region.center.latitude = latitude.doubleValue;
-    _region.center.longitude = longitude.doubleValue;
+    CLLocationCoordinate2D newCoord = [self geoCodeUsingAddress:self.info.location];
+    //NSNumber *latitude = self.info.latitude;
+    //NSNumber *longitude = self.info.longitude;
+    _region.center.latitude = newCoord.latitude;
+    _region.center.longitude = newCoord.longitude;
     _region.span.latitudeDelta = 0.02;
     _region.span.longitudeDelta = 0.02;
     _mapView.region = _region;
-
+    
     //------------ ADDING PIN TO MAP HERE --------------------
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
 	CLLocationCoordinate2D coordinate;
-	coordinate.latitude = latitude.doubleValue;
-	coordinate.longitude = longitude.doubleValue;
+	coordinate.latitude = newCoord.latitude;
+	coordinate.longitude = newCoord.longitude;
     [annotation setCoordinate:coordinate];
 	[annotation setTitle:self.info.location]; //You can set the subtitle too
     [_mapView addAnnotation:annotation];
@@ -217,4 +218,25 @@
     }
 }
 
+
+- (CLLocationCoordinate2D) geoCodeUsingAddress:(NSString *)address
+{
+    double latitude = 0, longitude = 0;
+    NSString *esc_addr =  [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *req = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?sensor=false&address=%@", esc_addr];
+    NSString *result = [NSString stringWithContentsOfURL:[NSURL URLWithString:req] encoding:NSUTF8StringEncoding error:NULL];
+    if (result) {
+        NSScanner *scanner = [NSScanner scannerWithString:result];
+        if ([scanner scanUpToString:@"\"lat\" :" intoString:nil] && [scanner scanString:@"\"lat\" :" intoString:nil]) {
+            [scanner scanDouble:&latitude];
+            if ([scanner scanUpToString:@"\"lng\" :" intoString:nil] && [scanner scanString:@"\"lng\" :" intoString:nil]) {
+                [scanner scanDouble:&longitude];
+            }
+        }
+    }
+    CLLocationCoordinate2D center;
+    center.latitude = latitude;
+    center.longitude = longitude;
+    return center;
+}
 @end

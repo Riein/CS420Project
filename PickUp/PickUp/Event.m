@@ -66,7 +66,7 @@
     [aCoder encodeObject:num forKey:kEventID];
     [aCoder encodeObject:self.eventName forKey:kEventName];
     [aCoder encodeObject:self.eventSport forKey:kSportKey];
-    [aCoder encodeObject:self.isDeleted forKey:kIsDeleted];
+    //[aCoder encodeObject:self.isDeleted forKey:kIsDeleted];
     [aCoder encodeObject:self.eventDate forKey:kEventDate];
     [aCoder encodeObject:self.timeStamp forKey:kTimeKey];
     [aCoder encodeObject:self.host forKey:kHostKey];
