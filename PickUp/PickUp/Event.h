@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *eventName;
 @property (strong, nonatomic) NSDate *eventDate;
 @property (strong, nonatomic) NSDate *timeStamp;
+@property BOOL isDeleted;
 @property (copy, nonatomic) NSString *host;
 @property (copy, nonatomic) NSString *location;
 @property (strong, nonatomic) NSNumber *latitude;
