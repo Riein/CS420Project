@@ -152,19 +152,40 @@
                                               otherButtonTitles:nil, nil];
         [alert show];
     }
+    if ([self.username.text length] < 4){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect Username Length"
+                                                        message:@"Username must be at least 4 characters long."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+ 
+    }
+    
+    if ([self.pass.text length] < 6){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect Password Length"
+                                                        message:@"Password must be at least 6 characters long."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+
+    
     else{
-        NSString *email = self.email.text;
-        NSString *name = self.username.text;
-        NSString *pass = self.pass.text;
-        NSDictionary *params = @{@"email" : email, @"username" : name, @"password" : pass};
-        [conn registerUser:params];
-        if (appDelegate.sessionToken != nil) {
-            NSDictionary *log = @{@"email" : email, @"password" : pass};
-            [conn loginUser:log];
+        //NSString *email = self.email.text;
+        //NSString *name = self.username.text;
+        //NSString *pass = self.pass.text;
+        //NSDictionary *params = @{@"email" : email, @"username" : name, @"password" : pass};
+        //[conn registerUser:params];
+        //if (appDelegate.sessionToken != nil) {
+          //  NSDictionary *log = @{@"email" : email, @"password" : pass};
+            //[conn loginUser:log];
             if (appDelegate.sessionToken != 0) {
                 [self performSegueWithIdentifier:@"register" sender:self];
             }
         }
     }
-}
+//}
 @end

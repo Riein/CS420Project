@@ -153,10 +153,10 @@
         [alert show];
     }
     else {
-        NSString *email = self.email.text;
-        NSString *pass = self.pass.text;
-        NSDictionary *params = @{@"email" : email, @"password" : pass};
-        [conn loginUser:params];
+       // NSString *email = self.email.text;
+        //NSString *pass = self.pass.text;
+        //NSDictionary *params = @{@"email" : email, @"password" : pass};
+        //[conn loginUser:params];
         if (appDelegate.sessionToken != 0) {
             [self performSegueWithIdentifier:@"login" sender:self];
         }
