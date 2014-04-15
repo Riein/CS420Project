@@ -45,7 +45,7 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super init]) {
-        self.event_id = [[aDecoder decodeObjectForKey:kEventID] integerValue];
+        self.event_id = [aDecoder decodeObjectForKey:kEventID];
         self.eventSport = [aDecoder decodeObjectForKey:kSportKey];
         self.eventName = [aDecoder decodeObjectForKey:kEventName];
         self.isDeleted = [aDecoder decodeBoolForKey:kIsDeleted];
@@ -62,7 +62,7 @@
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeInt:self.event_id forKey:kEventID];
+    [aCoder encodeObject:self.event_id forKey:kEventID];
     [aCoder encodeObject:self.eventName forKey:kEventName];
     [aCoder encodeObject:self.eventSport forKey:kSportKey];
     [aCoder encodeBool:self.isDeleted forKey:kIsDeleted];

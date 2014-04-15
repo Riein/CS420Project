@@ -34,21 +34,21 @@
     else{
         // Temp event added for testing
         self.events = [[NSMutableArray alloc] init];
-        Event *event = [[Event alloc] init];
-        event.event_id = 0;
-        event.eventName = @"Something";
-        event.eventSport = @"Bowling";
-        event.eventDate = [NSDate date];
-        event.timeStamp = [NSDate date];
-        event.host = @"ME!";
-        event.location = @"Home";
-        event.latitude = @45.72918;
-        event.longitude = @-122.639008;
-        event.players = [@[@"mpessa", @"jpessa"] copy];
-        event.equipment = [@[@"rags", @"bats"] copy];
-        [self.events addObject:event];
+//        Event *event = [[Event alloc] init];
+//        event.event_id = 0;
+//        event.eventName = @"Something";
+//        event.eventSport = @"Bowling";
+//        event.eventDate = [NSDate date];
+//        event.timeStamp = [NSDate date];
+//        event.host = @"ME!";
+//        event.location = @"Home";
+//        event.latitude = @45.72918;
+//        event.longitude = @-122.639008;
+//        event.players = [@[@"mpessa", @"jpessa"] copy];
+//        event.equipment = [@[@"rags", @"bats"] copy];
+//        [self.events addObject:event];
     }
-    self.user = @"Cpt. America";
+    self.user = @"";
     self.sessionToken = nil;
     return YES;
 }

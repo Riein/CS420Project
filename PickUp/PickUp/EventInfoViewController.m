@@ -80,7 +80,7 @@
     UILabel *locLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 292, 100, 21)];
     locLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
     locLabel.textColor = [UIColor blackColor];
-    locLabel.text = @"Location";
+    locLabel.text = @"Address";
 
     [self.insideView addSubview:locLabel];
     _dateField = [[UITextField alloc] initWithFrame:CGRectMake(110, 331, 190, 30)];
