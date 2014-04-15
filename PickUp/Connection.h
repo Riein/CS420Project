@@ -7,14 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ConnectionResponse.h"
 
 @interface Connection : NSObject
 
+
 -(id)init;
--(int)loginWithUsername:(NSString*)username Password:(NSString*)password;
--(int)registerWithUsername:(NSString*)username Password:(NSString*)password EMail:(NSString*)email;
--(int)addEventWithEventID:(NSInteger)event_id Sport:(NSString*)sport Name:(NSString*)name Date:(NSDate*)date TimeStamp:(NSDate*)time Host:(NSString*)host Location:(NSString*)location Latitude:(NSNumber*)latitude Longitude:(NSNumber*)longitude Players:(NSMutableArray*)players Equipment:(NSMutableArray*)equipment;
--(int)findEventWithSport:(NSString*)sport Name:(NSString*)name Location:(NSString*)location Date:(NSDate*)date;
--(int)modEventWithEventID:(NSInteger)event_id Username:(NSString*)username IsDeleted:(BOOL)isDeleted;
+-(ConnectionResponse*)loginWithUsername:(NSString*)username Password:(NSString*)password;
+-(ConnectionResponse*)registerWithUsername:(NSString*)username Password:(NSString*)password EMail:(NSString*)email;
+-(ConnectionResponse*)addEventWithEventID:(NSInteger)event_id Sport:(NSString*)sport Name:(NSString*)name Date:(NSDate*)date TimeStamp:(NSDate*)time Host:(NSString*)host Location:(NSString*)location Latitude:(NSNumber*)latitude Longitude:(NSNumber*)longitude Players:(NSMutableArray*)players Equipment:(NSMutableArray*)equipment;
+-(ConnectionResponse*)getEventsAfter:(NSDate*)time;
+-(ConnectionResponse*)modEventWithEventID:(NSInteger)event_id Username:(NSString*)username IsDeleted:(BOOL)isDeleted;
 
 @end

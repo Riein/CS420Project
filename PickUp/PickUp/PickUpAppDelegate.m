@@ -49,6 +49,7 @@
         [self.events addObject:event];
     }
     self.user = @"Cpt. America";
+    self.sessionToken = nil;
     return YES;
 }
 							

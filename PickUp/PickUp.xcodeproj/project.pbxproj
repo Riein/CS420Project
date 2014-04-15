@@ -46,6 +46,7 @@
 		2EEC290318CAA98500706067 /* mybutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC290218CAA98500706067 /* mybutton.png */; };
 		2EEC290518CAA9C800706067 /* mybutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC290418CAA9C800706067 /* mybutton@2x.png */; };
 		C742D50018FC793800C61CC7 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = C742D4FF18FC793800C61CC7 /* Connection.m */; };
+		C7CD343618FCA47F00D53FB8 /* ConnectionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CD343518FCA47F00D53FB8 /* ConnectionResponse.m */; };
 		D512D64518C91B9300E788E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D64418C91B9300E788E1 /* Foundation.framework */; };
 		D512D64718C91B9300E788E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D64618C91B9300E788E1 /* CoreGraphics.framework */; };
 		D512D64918C91B9300E788E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D512D64818C91B9300E788E1 /* UIKit.framework */; };
@@ -152,6 +153,8 @@
 		2EEC290418CAA9C800706067 /* mybutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mybutton@2x.png"; sourceTree = "<group>"; };
 		C742D4FE18FC793800C61CC7 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connection.h; path = ../Connection.h; sourceTree = "<group>"; };
 		C742D4FF18FC793800C61CC7 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Connection.m; path = ../Connection.m; sourceTree = "<group>"; };
+		C7CD343418FCA47F00D53FB8 /* ConnectionResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionResponse.h; sourceTree = "<group>"; };
+		C7CD343518FCA47F00D53FB8 /* ConnectionResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionResponse.m; sourceTree = "<group>"; };
 		D512D64118C91B9300E788E1 /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D512D64418C91B9300E788E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D512D64618C91B9300E788E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -321,6 +324,8 @@
 				2E29773018F0E38100E07A3A /* Event.m */,
 				C742D4FE18FC793800C61CC7 /* Connection.h */,
 				C742D4FF18FC793800C61CC7 /* Connection.m */,
+				C7CD343418FCA47F00D53FB8 /* ConnectionResponse.h */,
+				C7CD343518FCA47F00D53FB8 /* ConnectionResponse.m */,
 				D512D65618C91B9300E788E1 /* Main_iPhone.storyboard */,
 				2E3FC47818DDF1A3006D0FE5 /* PickUp.h */,
 				2E3FC47918DDF1A3006D0FE5 /* PickUp.m */,
@@ -536,6 +541,7 @@
 				2E3FC47A18DDF1A3006D0FE5 /* PickUp.m in Sources */,
 				D512D65E18C91B9300E788E1 /* PickUpFirstViewController.m in Sources */,
 				2E29772B18F0E1C000E07A3A /* AFURLConnectionOperation.m in Sources */,
+				C7CD343618FCA47F00D53FB8 /* ConnectionResponse.m in Sources */,
 				2E29771E18F0E1C000E07A3A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				D512D65518C91B9300E788E1 /* PickUpAppDelegate.m in Sources */,
 				D59AE14018C9438E00037820 /* LoginViewController.m in Sources */,
