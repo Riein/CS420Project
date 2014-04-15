@@ -77,6 +77,8 @@
 		D59AE13D18C93D8700037820 /* PickUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59AE13C18C93D8700037820 /* PickUpViewController.m */; };
 		D59AE14018C9438E00037820 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59AE13F18C9438E00037820 /* LoginViewController.m */; };
 		D59DA8AA18E5EDD400F427B3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59DA8A918E5EDD400F427B3 /* CoreData.framework */; };
+		D5D5D51C18FC81EC0052F7FD /* Connections.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D5D51B18FC81EC0052F7FD /* Connections.m */; };
+		F72480CA18FC983C00CE710A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F72480C918FC983C00CE710A /* CoreLocation.framework */; };
 		F7BB96E518CD202F000D4746 /* nfl.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7BB96E418CD202F000D4746 /* nfl.plist */; };
 		F7BB96E718CD2035000D4746 /* nba.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7BB96E618CD2035000D4746 /* nba.plist */; };
 /* End PBXBuildFile section */
@@ -201,6 +203,9 @@
 		D59AE13E18C9438E00037820 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D59AE13F18C9438E00037820 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D59DA8A918E5EDD400F427B3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D5D5D51A18FC81EC0052F7FD /* Connections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connections.h; sourceTree = "<group>"; };
+		D5D5D51B18FC81EC0052F7FD /* Connections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connections.m; sourceTree = "<group>"; };
+		F72480C918FC983C00CE710A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F7BB96E418CD202F000D4746 /* nfl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nfl.plist; sourceTree = "<group>"; };
 		F7BB96E618CD2035000D4746 /* nba.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nba.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F72480CA18FC983C00CE710A /* CoreLocation.framework in Frameworks */,
 				D59DA8AA18E5EDD400F427B3 /* CoreData.framework in Frameworks */,
 				D56B679518CE3E4A00B15EB1 /* MapKit.framework in Frameworks */,
 				D512D64718C91B9300E788E1 /* CoreGraphics.framework in Frameworks */,
@@ -303,6 +309,7 @@
 		D512D64318C91B9300E788E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F72480C918FC983C00CE710A /* CoreLocation.framework */,
 				D59DA8A918E5EDD400F427B3 /* CoreData.framework */,
 				D56B679418CE3E4A00B15EB1 /* MapKit.framework */,
 				D512D64418C91B9300E788E1 /* Foundation.framework */,
@@ -347,6 +354,8 @@
 				D59AE13C18C93D8700037820 /* PickUpViewController.m */,
 				D5526B1F18CA5122001AF659 /* CreateEventViewController.h */,
 				D5526B2018CA5122001AF659 /* CreateEventViewController.m */,
+				D5D5D51A18FC81EC0052F7FD /* Connections.h */,
+				D5D5D51B18FC81EC0052F7FD /* Connections.m */,
 				D54D21BB18CBCEB300B2C4D0 /* EventInfoViewController.h */,
 				D54D21BC18CBCEB300B2C4D0 /* EventInfoViewController.m */,
 				D512D65C18C91B9300E788E1 /* PickUpFirstViewController.h */,
@@ -548,6 +557,7 @@
 				2E29772E18F0E1C000E07A3A /* AFURLSessionManager.m in Sources */,
 				2E29772318F0E1C000E07A3A /* UIProgressView+AFNetworking.m in Sources */,
 				D54D21C218CBD8F000B2C4D0 /* ProfessionalViewController.m in Sources */,
+				D5D5D51C18FC81EC0052F7FD /* Connections.m in Sources */,
 				D54D21BA18CBC42000B2C4D0 /* SearchResultsViewController.m in Sources */,
 				D546388118CA78C70028D662 /* RegisterViewController.m in Sources */,
 				2E29772118F0E1C000E07A3A /* UIButton+AFNetworking.m in Sources */,

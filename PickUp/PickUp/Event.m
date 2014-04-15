@@ -16,6 +16,7 @@
         self.event_id = 0;
         self.eventName = @"";
         self.eventSport = @"";
+        self.isDeleted = NO;
         self.eventDate = [NSDate date];
         self.timeStamp = [NSDate date];
         self.host = @"";
@@ -32,6 +33,7 @@
 #define kEventID @"event_id"
 #define kEventName @"eventName"
 #define kSportKey @"eventSport"
+#define kIsDeleted @"isDeleted"
 #define kEventDate @"date"
 #define kTimeKey @"timeStamp"
 #define kHostKey @"host"
@@ -46,6 +48,7 @@
         self.event_id = [[aDecoder decodeObjectForKey:kEventID] integerValue];
         self.eventSport = [aDecoder decodeObjectForKey:kSportKey];
         self.eventName = [aDecoder decodeObjectForKey:kEventName];
+        self.isDeleted = [aDecoder decodeBoolForKey:kIsDeleted];
         self.eventDate = [aDecoder decodeObjectForKey:kEventDate];
         self.timeStamp = [aDecoder decodeObjectForKey:kTimeKey];
         self.host = [aDecoder decodeObjectForKey:kHostKey];
@@ -63,6 +66,7 @@
     [aCoder encodeObject:num forKey:kEventID];
     [aCoder encodeObject:self.eventName forKey:kEventName];
     [aCoder encodeObject:self.eventSport forKey:kSportKey];
+    //[aCoder encodeObject:self.isDeleted forKey:kIsDeleted];
     [aCoder encodeObject:self.eventDate forKey:kEventDate];
     [aCoder encodeObject:self.timeStamp forKey:kTimeKey];
     [aCoder encodeObject:self.host forKey:kHostKey];
