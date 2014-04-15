@@ -349,9 +349,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     newEvent.eventName = self.eventField.text;
     newEvent.eventSport = _sports[[self.sportPicker selectedRowInComponent:0]];
     newEvent.location = self.locationField.text;
-    // Need to add in pulling the lat and long
-    newEvent.latitude = @45.72918;
-    newEvent.longitude = @-122.639008;
+    //Location lat-long magic happens here
+    CLLocationCoordinate2D newCoord = [self geoCodeUsingAddress:newEvent.location];
+    newEvent.latitude = newCoord.latitude;
+    newEvent.longitude = newCoord.longitude;
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"MMM d, yyyy"];
     NSCalendar *gCal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -460,6 +461,27 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *newDate = [formatter stringFromDate:self.picker.date];
     [self.timeButton setTitle:newDate forState:UIControlStateNormal];
     [_customView removeFromSuperview];
+}
+
+- (CLLocationCoordinate2D) geoCodeUsingAddress:(NSString *)address
+{
+    double latitude = 0, longitude = 0;
+    NSString *esc_addr =  [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *req = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?sensor=false&address=%@", esc_addr];
+    NSString *result = [NSString stringWithContentsOfURL:[NSURL URLWithString:req] encoding:NSUTF8StringEncoding error:NULL];
+    if (result) {
+        NSScanner *scanner = [NSScanner scannerWithString:result];
+        if ([scanner scanUpToString:@"\"lat\" :" intoString:nil] && [scanner scanString:@"\"lat\" :" intoString:nil]) {
+            [scanner scanDouble:&latitude];
+            if ([scanner scanUpToString:@"\"lng\" :" intoString:nil] && [scanner scanString:@"\"lng\" :" intoString:nil]) {
+                [scanner scanDouble:&longitude];
+            }
+        }
+    }
+    CLLocationCoordinate2D center;
+    center.latitude = latitude;
+    center.longitude = longitude;
+    return center;
 }
 
 #pragma mark - Table View Data Source
