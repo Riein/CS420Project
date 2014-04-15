@@ -11,6 +11,9 @@
 @interface RegisterViewController : UIViewController <UITextFieldDelegate,UIActionSheetDelegate>
 
 - (IBAction)helpbutton:(id)sender;
+- (IBAction)registerPressed:(UIButton *)sender;
 
 @property (weak, nonatomic) IBOutlet UITextField *pass;
+@property (weak, nonatomic) IBOutlet UITextField *username;
+@property (weak, nonatomic) IBOutlet UITextField *email;
 @end

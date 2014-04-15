@@ -62,11 +62,10 @@
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    NSNumber *num = [[NSNumber alloc] initWithInt:self.event_id];
-    [aCoder encodeObject:num forKey:kEventID];
+    [aCoder encodeInt:self.event_id forKey:kEventID];
     [aCoder encodeObject:self.eventName forKey:kEventName];
     [aCoder encodeObject:self.eventSport forKey:kSportKey];
-    //[aCoder encodeObject:self.isDeleted forKey:kIsDeleted];
+    [aCoder encodeBool:self.isDeleted forKey:kIsDeleted];
     [aCoder encodeObject:self.eventDate forKey:kEventDate];
     [aCoder encodeObject:self.timeStamp forKey:kTimeKey];
     [aCoder encodeObject:self.host forKey:kHostKey];

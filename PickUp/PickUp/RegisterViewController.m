@@ -7,8 +7,13 @@
 //
 
 #import "RegisterViewController.h"
+#import "Connection.h"
+#import "PickUpAppDelegate.h"
 
-@interface RegisterViewController ()
+@interface RegisterViewController (){
+    Connection *conn;
+    PickUpAppDelegate *appDelegate;
+}
 
 @end
 
@@ -27,6 +32,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    conn = [[Connection alloc] init];
+    appDelegate = [[UIApplication sharedApplication] delegate];
 }
 
 - (void)didReceiveMemoryWarning
@@ -134,5 +141,30 @@
     
     
     
+}
+
+- (IBAction)registerPressed:(UIButton *)sender {
+    if ([self.email.text isEqualToString:@""] || [self.username.text isEqualToString:@""] || [self.pass.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Missing Fields"
+                                                        message:@"All fields must be entered"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else{
+        NSString *email = self.email.text;
+        NSString *name = self.username.text;
+        NSString *pass = self.pass.text;
+        NSDictionary *params = @{@"email" : email, @"username" : name, @"password" : pass};
+        [conn registerUser:params];
+        if (appDelegate.sessionToken != nil) {
+            NSDictionary *log = @{@"email" : email, @"password" : pass};
+            [conn loginUser:log];
+            if (appDelegate.sessionToken != 0) {
+                [self performSegueWithIdentifier:@"register" sender:self];
+            }
+        }
+    }
 }
 @end

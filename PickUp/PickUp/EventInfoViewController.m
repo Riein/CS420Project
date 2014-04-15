@@ -7,8 +7,13 @@
 //
 
 #import "EventInfoViewController.h"
+#import "Connection.h"
+#import "PickUpAppDelegate.h"
 
-@interface EventInfoViewController ()
+@interface EventInfoViewController (){
+    Connection *conn;
+    PickUpAppDelegate *appDelegate;
+}
 
 @end
 
@@ -26,6 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    conn = [[Connection alloc] init];
+    appDelegate = [[UIApplication sharedApplication] delegate];
     _scrollView = [[UIScrollView alloc] init];
     _scrollView.frame = self.view.frame;
     self.scrollView.ContentSize = CGSizeMake(320, 800);
@@ -45,8 +52,8 @@
     //CLLocationCoordinate2D newCoord = [self geoCodeUsingAddress:self.info.location];
     //NSNumber *latitude = self.info.latitude;
     //NSNumber *longitude = self.info.longitude;
-    _region.center.latitude = self.info.latitude;
-    _region.center.longitude = self.info.longitude;
+    _region.center.latitude = [self.info.latitude doubleValue];
+    _region.center.longitude = [self.info.longitude doubleValue];
     _region.span.latitudeDelta = 0.02;
     _region.span.longitudeDelta = 0.02;
     _mapView.region = _region;
@@ -54,8 +61,8 @@
     //------------ ADDING PIN TO MAP HERE --------------------
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
 	CLLocationCoordinate2D coordinate;
-	coordinate.latitude = self.info.latitude;
-	coordinate.longitude = self.info.longitude;
+	coordinate.latitude = [self.info.latitude doubleValue];
+	coordinate.longitude = [self.info.longitude doubleValue];
     [annotation setCoordinate:coordinate];
 	[annotation setTitle:self.info.location]; //You can set the subtitle too
     [_mapView addAnnotation:annotation];
@@ -199,6 +206,8 @@
     // Add user to list
     // Send update to server
     if ([_button.currentTitle isEqual: @"Join"]) {
+        NSDictionary *params = @{@"event_id" : self.info.event_id, @"username" : appDelegate.user};
+        [conn modEvent:params];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
                                                         message:@"You have joined this event"
                                                        delegate:self
@@ -208,6 +217,8 @@
         [_button setTitle:@"Unjoin" forState:UIControlStateNormal];
     }
     else{
+        NSDictionary *params = @{@"event_id" : self.info.event_id, @"username" : appDelegate.user};
+        [conn modEvent:params];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
                                                         message:@"You have removed yourself from his event"
                                                        delegate:self

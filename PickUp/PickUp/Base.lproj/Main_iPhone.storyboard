@@ -686,7 +686,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="8YX-ce-x5E" kind="modal" id="xX8-wh-Tr3"/>
+                                    <action selector="loginPressed:" destination="Put-Dd-ZBO" eventType="touchUpInside" id="srY-lJ-bel"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1K4-hS-mbk">
@@ -703,13 +703,15 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <color key="tintColor" patternImage="73FFED30-51B7-43F2-94B6-EE3D9AD05171" colorSpace="pattern"/>
+                        <color key="tintColor" patternImage="DE31DEED-0D42-4258-AECA-DCD9DDBD31B1" colorSpace="pattern"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="W35-oL-0Xk">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Fa7-rh-Dls"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="email" destination="GO1-Di-Jm4" id="UJf-2B-4iR"/>
                         <outlet property="pass" destination="PXU-OU-k19" id="iNj-zL-8Kz"/>
+                        <segue destination="8YX-ce-x5E" kind="modal" identifier="login" id="DPa-Og-Hq1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uRU-ZJ-PVw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -764,7 +766,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="8YX-ce-x5E" kind="modal" id="48Q-oD-YWJ"/>
+                                    <action selector="registerPressed:" destination="HPt-GK-kFF" eventType="touchUpInside" id="hwy-yg-TkN"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter the following info..." minimumFontSize="17" id="FNg-ta-mFf">
@@ -809,7 +811,10 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="pzm-R3-Ttu"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="pass" destination="rIK-9s-rut" id="4om-pV-eKR"/>
+                        <outlet property="email" destination="rtf-G8-aep" id="sOl-m6-EAV"/>
+                        <outlet property="pass" destination="o7P-7a-7oP" id="CW5-LM-BAC"/>
+                        <outlet property="username" destination="KBh-Ys-YjL" id="dZ8-hf-KUr"/>
+                        <segue destination="8YX-ce-x5E" kind="modal" identifier="register" id="dkg-CM-eKT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOq-eL-2ie" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -977,7 +982,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="73FFED30-51B7-43F2-94B6-EE3D9AD05171" width="275" height="183">
+        <image name="DE31DEED-0D42-4258-AECA-DCD9DDBD31B1" width="275" height="183">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPD1YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYtMDY5VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
@@ -1007,7 +1012,7 @@ NAI8Aj8CUQJUAlkAAAAAAAACAQAAAAAAAABAAAAAAAAAAAAAAAAAAAACWw
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="48Q-oD-YWJ"/>
+        <segue reference="dkg-CM-eKT"/>
         <segue reference="c1f-TW-H1X"/>
     </inferredMetricsTieBreakers>
 </document>

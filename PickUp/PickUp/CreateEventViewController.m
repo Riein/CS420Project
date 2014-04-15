@@ -9,6 +9,8 @@
 #import "CreateEventViewController.h"
 #import "Event.h"
 #import "PickUpAppDelegate.h"
+#import "Connection.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface CreateEventViewController (){
     NSMutableString *equip;
@@ -18,6 +20,7 @@
     NSInteger rowIndex;
     int errs[7];
     PickUpAppDelegate *appDelegate;
+    Connection *conn;
 }
 
 @end
@@ -62,6 +65,7 @@
     for (int i = 0; i < 6; i++) {
         errs[i] = 0;
     }
+    conn = [[Connection alloc] init];
     appDelegate = [[UIApplication sharedApplication] delegate];
 }
 
@@ -160,14 +164,6 @@
         }
         NSString *newEquip = textField.text;
         [equipList addObject:newEquip];
-//        if (first) {
-//            self.textView.text = @"";
-//            first = NO;
-//        }
-//        [equip setString:self.textView.text];
-//        [equip appendString:@"\n"];
-//        [equip appendString:textField.text];
-//        self.textView.text = equip;
         [self.tableView reloadData];
     }
     [textField resignFirstResponder];
@@ -345,14 +341,13 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
 
 -(void)addEvent{
     Event *newEvent = [[Event alloc] init];
-    //newEvent.event_id = [appDelegate.events count] + 1; // Handle this on the server
     newEvent.eventName = self.eventField.text;
     newEvent.eventSport = _sports[[self.sportPicker selectedRowInComponent:0]];
     newEvent.location = self.locationField.text;
     //Location lat-long magic happens here
     CLLocationCoordinate2D newCoord = [self geoCodeUsingAddress:newEvent.location];
-    newEvent.latitude = newCoord.latitude;
-    newEvent.longitude = newCoord.longitude;
+    newEvent.latitude = [NSNumber numberWithDouble:newCoord.latitude];
+    newEvent.longitude = [NSNumber numberWithDouble:newCoord.longitude];
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"MMM d, yyyy"];
     NSCalendar *gCal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -373,7 +368,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     newEvent.host = appDelegate.user;
     newEvent.equipment = equipList;
     
-    [appDelegate.events insertObject:newEvent atIndex:0];
+    NSDictionary *params = @{@"host" : newEvent.host, @"eventName" : newEvent.eventName, @"eventDate" : [format stringFromDate:newEvent.eventDate], @"location" : newEvent.location, @"latitude" : newEvent.latitude, @"longitude" : newEvent.longitude, @"players" : newEvent.players, @"equipment" : newEvent.equipment};
+    [conn addEvent:params];
+    //[appDelegate.events insertObject:newEvent atIndex:0];
     
     UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"YOUR EVENT HAS BEEN CREATED" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
     [helpSheet showInView:self.view];

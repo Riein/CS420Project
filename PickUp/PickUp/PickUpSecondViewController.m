@@ -8,8 +8,14 @@
 
 #import "PickUpSecondViewController.h"
 #import "ProfessionalViewController.h"
+#import "Connection.h"
+#import "PickUpAppDelegate.h"
+#import "Event.h"
 
-@interface PickUpSecondViewController ()
+@interface PickUpSecondViewController (){
+    PickUpAppDelegate *appDelegate;
+    Connection *conn;
+}
 
 @end
 
@@ -19,6 +25,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    appDelegate = [[UIApplication sharedApplication] delegate];
+    conn = [[Connection alloc] init];
+    if (appDelegate.events.count > 0) {
+        Event *latest = [appDelegate.events objectAtIndex:0];
+        NSDate *checkDate = latest.timeStamp;
+        NSDictionary *params = @{@"time_stamp" : checkDate};
+        [conn getEvents:params];
+    }
+    else{
+        NSDate *checkDate = [NSDate distantPast];
+        NSDictionary *params = @{@"time_stamp" : checkDate};
+        [conn getEvents:params];
+    }
 }
 
 - (void)didReceiveMemoryWarning

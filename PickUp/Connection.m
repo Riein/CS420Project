@@ -13,203 +13,290 @@
 
 #define BaseURLString @"http://bend.encs.vancouver.wsu.edu/~mpessa/"
 
+#define kEventID @"event_id"
+#define kEventName @"eventName"
+#define kSportKey @"eventSport"
+#define kIsDeleted @"isDeleted"
+#define kEventDate @"date"
+#define kTimeKey @"timeStamp"
+#define kHostKey @"host"
+#define kLocKey @"location"
+#define kLatKey @"latitude"
+#define kLongKey @"longitude"
+#define kPlayersKey @"players"
+#define kEquipmentKey @"equipment"
 
-@implementation Connection
+#define kUsername @"username"
+
+@implementation Connection{
+    PickUpAppDelegate *appDelegate;
+    AFHTTPSessionManager *manager;
+}
 
 -(id)init{
     if(self == nil){
         self = [super init];
     }
+    NSURL *baseURL = [NSURL URLWithString:BaseURLString];
+    manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    appDelegate = [[UIApplication sharedApplication] delegate];
     return self;
 }
 
--(ConnectionResponse*)loginWithUsername:(NSString*)username Password:(NSString*)password{
-    ConnectionResponse* result = [[ConnectionResponse alloc] init];
-    NSURL *baseURL = [NSURL URLWithString:BaseURLString];
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    PickUpAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    NSDictionary *parameters = @{@"username": username, @"password": password, @"session_token": delegate.sessionToken};
-    [manager POST:@"login.cgi"
-      parameters:parameters
-         success: ^(NSURLSessionDataTask *task, id responseObject) {
-             NSString* sessionKey = [responseObject objectForKey:@"session_token"];
-             result.success = YES;
-             result.response = sessionKey;
-             result.statusCode = 0;
-             
-         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-             int statuscode = response.statusCode;
-             result.success = NO;
-             result.statusCode = statuscode;
-         }];
-    
-    manager = nil;
-    
-    return result;
-}
--(ConnectionResponse*)registerWithUsername:(NSString*)username Password:(NSString*)password EMail:(NSString*)email{
-    ConnectionResponse* result = [[ConnectionResponse alloc] init];
-    NSURL *baseURL = [NSURL URLWithString:BaseURLString];
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    PickUpAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    NSDictionary *parameters = @{@"username": username, @"password": password, @"email": email};
-    [manager POST:@"register.cgi"
-       parameters:parameters
+-(void)loginUser:(NSDictionary*)params{
+    [manager POST:@"login"
+       parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
-              NSString* sessionKey = [responseObject objectForKey:@"session_token"];
-              result.success = YES;
-              result.response = sessionKey;
-              result.statusCode = 0;
-              delegate.sessionToken = sessionKey;
-              
-          } failure:^(NSURLSessionDataTask *task, NSError *error) {
-              NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-              int statuscode = response.statusCode;
-              result.success = NO;
-              result.statusCode = statuscode;
-          }];
-    
-    
-    return result;
-}
-
--(ConnectionResponse*)addEventWithEventID:(NSInteger)event_id Sport:(NSString*)sport Name:(NSString*)name Date:(NSDate*)date TimeStamp:(NSDate*)time Host:(NSString*)host Location:(NSString*)location Latitude:(NSNumber*)latitude Longitude:(NSNumber*)longitude Players:(NSMutableArray*)players Equipment:(NSMutableArray*)equipment{
-    ConnectionResponse* result = [[ConnectionResponse alloc] init];
-    NSURL *baseURL = [NSURL URLWithString:BaseURLString];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    NSString* eid = [NSString stringWithFormat: @"%d", (int)event_id];
-    NSDictionary *parameters = @{@"event_id": eid, @"eventSport": sport, @"eventName": name, @"eventDate": [dateFormatter stringFromDate:date], @"timeStamp": [dateFormatter stringFromDate:time], @"host": host, @"location": location, @"latitude": [latitude stringValue], @"longitude": [longitude stringValue], @"players": [players componentsJoinedByString:@", "], @"equipment": [equipment componentsJoinedByString:@", "]};
-    [manager POST:@"addEvent.cgi"
-       parameters:parameters
-          success: ^(NSURLSessionDataTask *task, id responseObject) {
-              
-              result.success = YES;
-              
-              result.statusCode = 0;
-              
-          } failure:^(NSURLSessionDataTask *task, NSError *error) {
-              NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-              int statuscode = response.statusCode;
-              result.success = NO;
-              result.statusCode = statuscode;
-          }];
-    
-    
-    
-    
-    return result;
-}
-
--(ConnectionResponse*)getEventsAfter:(NSDate*)time{
-    ConnectionResponse* result = [[ConnectionResponse alloc] init];
-    PickUpAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    NSURL *baseURL = [NSURL URLWithString:BaseURLString];
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
-    NSDictionary *parameters = @{@"timeStamp": [dateFormatter stringFromDate:time]};
-    [manager POST:@"event.cgi"
-       parameters:parameters
-          success: ^(NSURLSessionDataTask *task, id responseObject) {
-              NSMutableArray *arrayOfDicts = [responseObject objectForKey:@"events"];
-              result.success = YES;
-              
-              result.statusCode = 0;
-              
-              for (NSDictionary *x in arrayOfDicts) {
-               
-                  NSInteger i = [[x objectForKey:@"event_id"] integerValue];
-                  NSString *eventSport = [x objectForKey:@"eventSport"];
-                  NSString *eventName = [x objectForKey:@"eventName"];
-                  NSString* d = [x objectForKey:@"eventDate"];
-                  NSDate* eventDate = [dateFormatter dateFromString:d];
-                  NSString* t = [x objectForKey:@"timeStamp"];
-                  NSDate* timeStamp = [dateFormatter dateFromString:t];
-                  NSString *host = [x objectForKey:@"host"];
-                  NSString *location = [x objectForKey:@"location"];
-                  NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-                  NSString *l = [x objectForKey:@"latitude"];
-                  NSNumber *latitude = [numberFormatter numberFromString:l];
-                  l = [x objectForKey:@"longitude"];
-                  NSNumber *longitude = [numberFormatter numberFromString:l];
-                  NSString *p = [x objectForKey:@"players"];
-                  NSMutableArray *players = [[p componentsSeparatedByString:@", "] mutableCopy];
-                  NSString *e = [x objectForKey:@"equipment"];
-                  NSMutableArray *equipment = [[e componentsSeparatedByString:@", "] mutableCopy];
-                  
-                  Event *event = [[Event alloc] init];
-                  event.event_id = i;
-                  event.eventName = eventName;
-                  event.eventSport = eventSport;
-                  event.eventDate = eventDate;
-                  event.timeStamp = timeStamp;
-                  event.host = host;
-                  event.location = location;
-                  event.latitude = latitude;
-                  event.longitude = longitude;
-                  event.players = players;
-                  event.equipment = equipment;
-                  
-                  [delegate.events insertObject:event atIndex:0];
+              // Enter success stuff here
+              if ([[responseObject objectForKey:@"session_token"] isEqualToString:@"0"]){
+                  UIAlertView *logout = [[UIAlertView alloc] initWithTitle:@"Logout"
+                                                                   message:@"You have successfully logged out"
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"OK"
+                                                         otherButtonTitles:nil, nil];
+                  [logout show];
+                  appDelegate.user = nil;
+                  appDelegate.password = nil;
+                  appDelegate.sessionToken = 0;
               }
-              
-              
+              else{
+                  //appDelegate.loggedIn = YES;
+                  appDelegate.user = [params objectForKey:kUsername];
+                  appDelegate.password = [params objectForKey:@"password"];
+                  appDelegate.sessionToken = [responseObject objectForKey:@"session_token"];
+              }
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
               NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-              int statuscode = response.statusCode;
-              result.success = NO;
-              result.statusCode = statuscode;
+              const int statuscode = response.statusCode;
+              //
+              // Display AlertView with appropriate error message.
+              //
+              if (statuscode == 500) {
+                  UIAlertView *err = [[UIAlertView alloc] initWithTitle:@"Something stranged happened....."
+                                                                message:@"There was an issue logging in\nPlease try again later"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                  [err show];
+              }
+              if (statuscode == 400) {
+                  UIAlertView *err = [[UIAlertView alloc] initWithTitle:@"Missing Fields"
+                                                                message:@"Username and password must be entered"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                  [err show];
+              }
+              if (statuscode == 404) {
+                  UIAlertView *err = [[UIAlertView alloc] initWithTitle:@"User does not exist"
+                                                                message:@"Please register before attempting to log in"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                  [err show];
+              }
           }];
-    
-    
-    
-    
-    return result;
 }
 
--(ConnectionResponse*)modEventWithEventID:(NSInteger)event_id Username:(NSString*)username IsDeleted:(BOOL)isDeleted{
-    ConnectionResponse* result = [[ConnectionResponse alloc] init];
-    NSURL *baseURL = [NSURL URLWithString:BaseURLString];
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    NSString* eid = [NSString stringWithFormat: @"%d", (int)event_id];
-    NSString* del;
-    if(isDeleted){
-        del = @"1";
-    }
-    else{
-        del = @"0";
-    }
-    NSDictionary *parameters = @{@"event_id": eid, @"username": username, @"isDeleted": del};
-    [manager POST:@"modEvent.cgi"
-       parameters:parameters
+-(void)registerUser:(NSDictionary*)params{
+    [manager POST:@"register"
+       parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
-              
-              result.success = YES;
-              
-              result.statusCode = 0;
-              
+              // Enter success stuff here
+              if ([responseObject objectForKey:@"session_token"] != nil){
+                  appDelegate.sessionToken = [responseObject objectForKey:@"session_token"];
+                  UIAlertView *reg = [[UIAlertView alloc] initWithTitle:@"Success!"
+                                                                message:@"You have successfully registered\nPlease log in to continue"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                  [reg show];
+              }
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
+              NSLog(@"in failure");
               NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-              int statuscode = response.statusCode;
-              result.success = NO;
-              result.statusCode = statuscode;
+              const int statuscode = response.statusCode;
+              //
+              // Display AlertView with appropriate error message.
+              //
+              if (statuscode == 500) {
+                  UIAlertView *err = [[UIAlertView alloc] initWithTitle:@"Something stranged happened....."
+                                                                message:@"There was an issue logging in\nPlease try again later"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                  [err show];
+              }
+              if (statuscode == 400) {
+                  UIAlertView *err = [[UIAlertView alloc] initWithTitle:@"Missing Fields"
+                                                                message:@"Username and password must be entered"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                  [err show];
+              }
+              if (statuscode == 409) {
+                  UIAlertView *err = [[UIAlertView alloc] initWithTitle:@"User already exists"
+                                                                message:@"The username already exists\nPlease try a different username"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                  [err show];
+              }
           }];
     
-    
-    
-    
-    return result;
 }
 
+-(void)addEvent:(NSDictionary*)params{
+    [manager POST:@"addEvent"
+       parameters:params
+          success: ^(NSURLSessionDataTask *task, id responseObject) {
+              // Enter success stuff here
+              NSDictionary *something = @{@"time_stamp" : [responseObject objectForKey:kTimeKey]};
+              [self getEvents:something]; // Hopefully this will work
+          } failure:^(NSURLSessionDataTask *task, NSError *error) {
+              //NSLog(@"in failure");
+              NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+              const int statuscode = response.statusCode;
+              //
+              // Display AlertView with appropriate error message.
+              //
+              if (statuscode == 500) {
+                  UIAlertView *err = [[UIAlertView alloc] initWithTitle:@"Something stranged happened....."
+                                                                message:@"There was an issue logging in\nPlease try again later"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                  [err show];
+              }
+              if (statuscode == 400) {
+                  UIAlertView *err = [[UIAlertView alloc] initWithTitle:@"Missing Fields"
+                                                                message:@"All fields must be entered"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                  [err show];
+              }
+          }];
+}
+
+-(void)getEvents:(NSDictionary*)params{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
+    [manager GET:@"getEvents"
+      parameters:params
+         success: ^(NSURLSessionDataTask *task, id responseObject) {
+             if ([responseObject objectForKey:@"events"] != nil) {
+                 NSMutableArray *arrayOfDicts = [responseObject objectForKey:@"events"];
+                 
+                 for (int i = 0; i < arrayOfDicts.count; i++) {
+                     if ([[arrayOfDicts[i] objectForKey:kIsDeleted] intValue] == 0) {
+                         Event *event = [[Event alloc] init];
+                         event.event_id = [[arrayOfDicts[i] objectForKey:kEventID] intValue];
+                         event.eventName = [arrayOfDicts[i] objectForKey:kEventName];
+                         event.eventSport = [arrayOfDicts[i] objectForKey:kSportKey];
+                         event.isDeleted = [[arrayOfDicts[i] objectForKey:kIsDeleted] intValue];
+                         event.eventDate = [arrayOfDicts[i] objectForKey:kEventDate];
+                         event.timeStamp = [arrayOfDicts[i] objectForKey:kTimeKey];
+                         event.host = [arrayOfDicts[i] objectForKey:kHostKey];
+                         event.location = [arrayOfDicts[i] objectForKey:kLocKey];
+                         event.latitude = [arrayOfDicts[i] objectForKey:kLatKey];
+                         event.longitude = [arrayOfDicts[i] objectForKey:kLongKey];
+                         event.players = [arrayOfDicts[i] objectForKey:kPlayersKey];
+                         event.equipment = [arrayOfDicts[i] objectForKey:kEquipmentKey];
+                         [appDelegate.events insertObject:event atIndex:0];
+                     }
+                     else{
+                         // If the tweet was deleted, go through the local tweet list and remove it
+                         for (int j = 0; j < arrayOfDicts.count; j++) {
+                             int spot = [[arrayOfDicts[i] objectForKey:kEventID] intValue];
+                             for (int i = 0; i < appDelegate.events.count; i++) {
+                                 Event *event = [appDelegate.events objectAtIndex:i];
+                                 if (spot == event.event_id) {
+                                     [appDelegate.events removeObjectAtIndex:i];
+                                     break;
+                                 }
+                             }
+                         }
+                     }
+                 }
+             }
+         } failure:^(NSURLSessionDataTask *task, NSError *error) {
+             NSLog(@"in failure");
+             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+             const int statuscode = response.statusCode;
+             //
+             // Display AlertView with appropriate error message.
+             //
+             if (statuscode == 500) {
+                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                 message:@"You shouldn't be seeing this"
+                                                                delegate:self
+                                                       cancelButtonTitle:@"OK"
+                                                       otherButtonTitles:nil, nil];
+                 [alert show];
+             }
+         }];
+}
+
+-(void)modEvent:(NSDictionary*)params{
+    [manager POST:@"addEvent"
+       parameters:params
+          success: ^(NSURLSessionDataTask *task, id responseObject) {
+              // Enter success stuff here
+              NSDictionary *something = @{@"time_stamp" : [responseObject objectForKey:kTimeKey]};
+              [self getEvents:something]; // Hopefully this will work
+          } failure:^(NSURLSessionDataTask *task, NSError *error) {
+              //NSLog(@"in failure");
+              NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+              const int statuscode = response.statusCode;
+              //
+              // Display AlertView with appropriate error message.
+              //
+              if (statuscode == 500) {
+                  UIAlertView *err = [[UIAlertView alloc] initWithTitle:@"Something stranged happened....."
+                                                                message:@"There was an issue logging in\nPlease try again later"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                  [err show];
+              }
+              if (statuscode == 400) {
+                  UIAlertView *err = [[UIAlertView alloc] initWithTitle:@"Missing Fields"
+                                                                message:@"All fields must be entered"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                  [err show];
+              }
+          }];
+}
+
+-(void)deleteEvent:(NSDictionary*)params{
+    [manager POST:@"deleteEvent"
+       parameters:params
+          success: ^(NSURLSessionDataTask *task, id responseObject) {
+              // Enter success stuff here
+              NSDictionary *something = @{@"time_stamp" : [responseObject objectForKey:kTimeKey]};
+              [self getEvents:something]; // Hopefully this will work
+          } failure:^(NSURLSessionDataTask *task, NSError *error) {
+              //NSLog(@"in failure");
+              NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+              const int statuscode = response.statusCode;
+              //
+              // Display AlertView with appropriate error message.
+              //
+              if (statuscode == 500) {
+                  UIAlertView *err = [[UIAlertView alloc] initWithTitle:@"Something stranged happened....."
+                                                                message:@"There was an issue logging in\nPlease try again later"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                  [err show];
+              }
+          }];
+}
 
 @end

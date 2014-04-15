@@ -9,11 +9,13 @@
 #import "LoginViewController.h"
 #import "PickUpAppDelegate.h"
 #import "AFHTTPSessionManager.h"
+#import "Connection.h"
 
-#define BaseURLString @"https://bend.encs.vancouver.wsu.edu/~mpessa/appServer/"
 
-
-@interface LoginViewController ()
+@interface LoginViewController (){
+    Connection *conn;
+    PickUpAppDelegate *appDelegate;
+}
 
 @end
 
@@ -23,8 +25,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
+    
     return self;
 }
 
@@ -32,6 +34,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    conn = [[Connection alloc] init];
+    appDelegate = [[UIApplication sharedApplication] delegate];
 }
 
 - (void)didReceiveMemoryWarning
@@ -137,5 +141,25 @@
 - (IBAction)forgotpasswordbutton:(id)sender {
     UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"Frequently Asked Questions \n\n QUESTION: How do reset my password? \n\n ANSWER: To reset your password, email: passwordreset@gmail.com.\n\n QUESTION: How do I retrieve my current password?\n\n  ANSWER: Not gunna do it. Nope! Can't make me. Sorry sucka!\n\n" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
     [helpSheet showInView:self.view];
+}
+
+- (IBAction)loginPressed:(UIButton *)sender {
+    if ([self.email.text isEqualToString:@""] || [self.pass.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Missing Fields"
+                                                        message:@"Email and password must be entered"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else {
+        NSString *email = self.email.text;
+        NSString *pass = self.pass.text;
+        NSDictionary *params = @{@"email" : email, @"password" : pass};
+        [conn loginUser:params];
+        if (appDelegate.sessionToken != 0) {
+            [self performSegueWithIdentifier:@"login" sender:self];
+        }
+    }
 }
 @end

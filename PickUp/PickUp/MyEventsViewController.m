@@ -36,11 +36,6 @@
 {
     [super viewDidLoad];
 
-    if (_localList == nil) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"PickUpGames" ofType:@"plist"];
-        _localList = [[NSDictionary alloc] initWithContentsOfFile:path];
-        _localKeys = [[[_localList allKeys] sortedArrayUsingSelector:@selector(compare:)] mutableCopy];
-    }
     appDelegate = [[UIApplication sharedApplication] delegate];
 }
 

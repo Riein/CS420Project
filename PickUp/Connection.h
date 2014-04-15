@@ -7,16 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ConnectionResponse.h"
 
 @interface Connection : NSObject
 
-
 -(id)init;
--(ConnectionResponse*)loginWithUsername:(NSString*)username Password:(NSString*)password;
--(ConnectionResponse*)registerWithUsername:(NSString*)username Password:(NSString*)password EMail:(NSString*)email;
--(ConnectionResponse*)addEventWithEventID:(NSInteger)event_id Sport:(NSString*)sport Name:(NSString*)name Date:(NSDate*)date TimeStamp:(NSDate*)time Host:(NSString*)host Location:(NSString*)location Latitude:(NSNumber*)latitude Longitude:(NSNumber*)longitude Players:(NSMutableArray*)players Equipment:(NSMutableArray*)equipment;
--(ConnectionResponse*)getEventsAfter:(NSDate*)time;
--(ConnectionResponse*)modEventWithEventID:(NSInteger)event_id Username:(NSString*)username IsDeleted:(BOOL)isDeleted;
+-(void)loginUser:(NSDictionary*)params;
+-(void)registerUser:(NSDictionary*)params;
+-(void)addEvent:(NSDictionary*)params;
+-(void)getEvents:(NSDictionary*)params;
+-(void)modEvent:(NSDictionary*)params;
+-(void)deleteEvent:(NSDictionary*)params;
 
 @end

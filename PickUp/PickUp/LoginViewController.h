@@ -10,6 +10,9 @@
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *pass;
+@property (weak, nonatomic) IBOutlet UITextField *email;
+
 - (IBAction)forgotpasswordbutton:(id)sender;
+- (IBAction)loginPressed:(UIButton *)sender;
 
 @end

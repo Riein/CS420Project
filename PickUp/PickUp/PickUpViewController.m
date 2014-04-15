@@ -9,8 +9,14 @@
 #import "PickUpViewController.h"
 #import "CreateEventViewController.h"
 #import "MyEventsViewController.h"
+#import "Connection.h"
+#import "PickUpAppDelegate.h"
+#import "Event.h"
 
-@interface PickUpViewController ()
+@interface PickUpViewController (){
+    PickUpAppDelegate *appDelegate;
+    Connection *conn;
+}
 
 @end
 
@@ -29,7 +35,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    appDelegate = [[UIApplication sharedApplication] delegate];
+    conn = [[Connection alloc] init];
+    if (appDelegate.events.count > 0) {
+        Event *latest = [appDelegate.events objectAtIndex:0];
+        NSDate *checkDate = latest.timeStamp;
+        NSDictionary *params = @{@"time_stamp" : checkDate};
+        [conn getEvents:params];
+    }
+    else{
+        NSDate *checkDate = [NSDate distantPast];
+        NSDictionary *params = @{@"time_stamp" : checkDate};
+        [conn getEvents:params];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -50,6 +68,8 @@
 
 - (IBAction)logout:(id)sender {
     // Add actions to log user out of server
+    NSDictionary *params = @{@"username" : appDelegate.user, @"password" : appDelegate.password, @"session_token" : appDelegate.sessionToken};
+    [conn loginUser:params];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

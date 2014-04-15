@@ -10,7 +10,7 @@
 
 @interface Event : NSObject <NSCopying, NSCoding>
 
-@property (assign, nonatomic) NSInteger event_id;
+@property (assign, nonatomic) NSNumber *event_id;
 @property (strong, nonatomic) NSString *eventSport;
 @property (strong, nonatomic) NSString *eventName;
 @property (strong, nonatomic) NSDate *eventDate;
@@ -18,8 +18,8 @@
 @property BOOL isDeleted;
 @property (copy, nonatomic) NSString *host;
 @property (copy, nonatomic) NSString *location;
-@property (strong, nonatomic) double *latitude;
-@property (strong, nonatomic) double *longitude;
+@property (strong, nonatomic) NSNumber *latitude;
+@property (strong, nonatomic) NSNumber *longitude;
 @property (strong, nonatomic) NSMutableArray *players;
 @property (strong, nonatomic) NSMutableArray *equipment;
 
