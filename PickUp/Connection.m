@@ -46,11 +46,14 @@
 
 -(void)loginUser:(NSDictionary*)params{
     appDelegate.success = NO;
+    NSLog(@"start of login");
     [manager POST:@"login"
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
               // Enter success stuff here
-              if ([[responseObject objectForKey:@"session_token"] isEqualToString:@"0"]){
+              NSLog(@"success, received:%@", responseObject);
+              if ([[responseObject objectForKey:@"session_token"] isEqual:0]){ // Error on this line!!!!!
+                  NSLog(@"log out");
                   UIAlertView *logout = [[UIAlertView alloc] initWithTitle:@"Logout"
                                                                    message:@"You have successfully logged out"
                                                                   delegate:self
@@ -63,11 +66,15 @@
               }
               else{
                   //appDelegate.loggedIn = YES;
+                  NSLog(@"logged in");
                   appDelegate.user = [params objectForKey:kUsername];
-                  appDelegate.password = [params objectForKey:@"password"];
+                  NSLog(@"username set");
+                  //appDelegate.password = [params objectForKey:@"password"];
                   appDelegate.sessionToken = [responseObject objectForKey:@"session_token"];
+                  NSLog(@"session token set");
               }
               appDelegate.success = YES;
+              NSLog(@"end of success loop");
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
               NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
               const int statuscode = response.statusCode;

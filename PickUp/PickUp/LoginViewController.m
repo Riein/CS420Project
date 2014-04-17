@@ -162,6 +162,7 @@
         }
         NSDictionary *params = @{@"email" : email, @"password" : pass, @"session_token" : appDelegate.sessionToken};
         [conn loginUser:params];
+        NSLog(@"after conn, success: %d", appDelegate.success);
         if (appDelegate.sessionToken != 0 && appDelegate.success) {
             [self performSegueWithIdentifier:@"login" sender:self];
         }
