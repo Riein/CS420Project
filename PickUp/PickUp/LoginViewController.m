@@ -144,7 +144,9 @@
 }
 
 - (IBAction)loginPressed:(UIButton *)sender {
+    NSLog(@"%@, %@", self.email.text, self.pass.text);
     if ([self.email.text isEqualToString:@""] || [self.pass.text isEqualToString:@""]) {
+        NSLog(@"shouldn't be here");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Missing Fields"
                                                         message:@"Email and password must be entered"
                                                        delegate:self
@@ -153,11 +155,14 @@
         [alert show];
     }
     else {
-       // NSString *email = self.email.text;
-        //NSString *pass = self.pass.text;
-        //NSDictionary *params = @{@"email" : email, @"password" : pass};
-        //[conn loginUser:params];
-        if (appDelegate.sessionToken != 0) {
+        NSString *email = self.email.text;
+        NSString *pass = self.pass.text;
+        if (appDelegate.sessionToken == nil) {
+            appDelegate.sessionToken = @"0";
+        }
+        NSDictionary *params = @{@"email" : email, @"password" : pass, @"session_token" : appDelegate.sessionToken};
+        [conn loginUser:params];
+        if (appDelegate.sessionToken != 0 && appDelegate.success) {
             [self performSegueWithIdentifier:@"login" sender:self];
         }
     }

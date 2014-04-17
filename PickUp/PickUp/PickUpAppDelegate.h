@@ -16,5 +16,6 @@
 @property (strong, nonatomic) NSString *user;
 @property (strong, nonatomic) NSString *sessionToken;
 @property (strong, nonatomic) NSString *password;
+@property BOOL success;
 
 @end

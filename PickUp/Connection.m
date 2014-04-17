@@ -11,7 +11,7 @@
 #import "PickUpAppDelegate.h"
 #import "Event.h"
 
-#define BaseURLString @"http://bend.encs.vancouver.wsu.edu/~mpessa/"
+#define BaseURLString @"http://bend.encs.vancouver.wsu.edu:12121/"
 
 #define kEventID @"event_id"
 #define kEventName @"eventName"
@@ -45,6 +45,7 @@
 }
 
 -(void)loginUser:(NSDictionary*)params{
+    appDelegate.success = NO;
     [manager POST:@"login"
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
@@ -66,9 +67,11 @@
                   appDelegate.password = [params objectForKey:@"password"];
                   appDelegate.sessionToken = [responseObject objectForKey:@"session_token"];
               }
+              appDelegate.success = YES;
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
               NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
               const int statuscode = response.statusCode;
+              NSLog(@"login fail: %d", statuscode);
               //
               // Display AlertView with appropriate error message.
               //
@@ -100,6 +103,7 @@
 }
 
 -(void)registerUser:(NSDictionary*)params{
+    appDelegate.success = NO;
     [manager POST:@"register"
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
@@ -113,6 +117,8 @@
                                                       otherButtonTitles:nil, nil];
                   [reg show];
               }
+              appDelegate.success = YES;
+              NSLog(@"tok:%@, success:%d", appDelegate.sessionToken, appDelegate.success);              
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
               NSLog(@"in failure");
               NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
@@ -150,12 +156,14 @@
 }
 
 -(void)addEvent:(NSDictionary*)params{
+    appDelegate.success = NO;
     [manager POST:@"addEvent"
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
               // Enter success stuff here
               NSDictionary *something = @{@"time_stamp" : [responseObject objectForKey:kTimeKey]};
               [self getEvents:something]; // Hopefully this will work
+              appDelegate.success = YES;
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
               //NSLog(@"in failure");
               NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
@@ -183,6 +191,7 @@
 }
 
 -(void)getEvents:(NSDictionary*)params{
+    appDelegate.success = NO;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
@@ -224,6 +233,7 @@
                      }
                  }
              }
+             appDelegate.success = YES;
          } failure:^(NSURLSessionDataTask *task, NSError *error) {
              NSLog(@"in failure");
              NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
@@ -243,12 +253,14 @@
 }
 
 -(void)modEvent:(NSDictionary*)params{
+    appDelegate.success = NO;
     [manager POST:@"addEvent"
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
               // Enter success stuff here
               NSDictionary *something = @{@"time_stamp" : [responseObject objectForKey:kTimeKey]};
               [self getEvents:something]; // Hopefully this will work
+              appDelegate.success = YES;
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
               //NSLog(@"in failure");
               NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
@@ -276,12 +288,14 @@
 }
 
 -(void)deleteEvent:(NSDictionary*)params{
+    appDelegate.success = NO;
     [manager POST:@"deleteEvent"
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
               // Enter success stuff here
               NSDictionary *something = @{@"time_stamp" : [responseObject objectForKey:kTimeKey]};
               [self getEvents:something]; // Hopefully this will work
+              appDelegate.success = YES;
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
               //NSLog(@"in failure");
               NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;

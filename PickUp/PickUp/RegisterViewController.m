@@ -174,18 +174,20 @@
 
     
     else{
-        //NSString *email = self.email.text;
-        //NSString *name = self.username.text;
-        //NSString *pass = self.pass.text;
-        //NSDictionary *params = @{@"email" : email, @"username" : name, @"password" : pass};
-        //[conn registerUser:params];
-        //if (appDelegate.sessionToken != nil) {
-          //  NSDictionary *log = @{@"email" : email, @"password" : pass};
-            //[conn loginUser:log];
-            if (appDelegate.sessionToken != 0) {
+        NSString *email = self.email.text;
+        NSString *name = self.username.text;
+        NSString *pass = self.pass.text;
+        NSDictionary *params = @{@"email" : email, @"username" : name, @"password" : pass};
+        [conn registerUser:params];
+        NSLog(@"registered, success:%d", appDelegate.success);
+        if (appDelegate.sessionToken != nil && appDelegate.success) {
+            NSLog(@"logging in after register");
+            NSDictionary *log = @{@"email" : email, @"password" : pass, @"session_token" : appDelegate.sessionToken};
+            [conn loginUser:log];
+            if (appDelegate.sessionToken != 0 && appDelegate.success) {
                 [self performSegueWithIdentifier:@"register" sender:self];
             }
         }
     }
-//}
+}
 @end

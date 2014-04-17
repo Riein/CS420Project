@@ -50,6 +50,7 @@
     }
     self.user = @"";
     self.sessionToken = nil;
+    self.success = NO;
     return YES;
 }
 							
