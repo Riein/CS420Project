@@ -7,8 +7,13 @@
 //
 
 #import "EventInfoViewController.h"
+#import "Connection.h"
+#import "PickUpAppDelegate.h"
 
-@interface EventInfoViewController ()
+@interface EventInfoViewController (){
+    Connection *conn;
+    PickUpAppDelegate *appDelegate;
+}
 
 @end
 
@@ -26,6 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    conn = [[Connection alloc] init];
+    appDelegate = [[UIApplication sharedApplication] delegate];
     _scrollView = [[UIScrollView alloc] init];
     _scrollView.frame = self.view.frame;
     self.scrollView.ContentSize = CGSizeMake(320, 800);
@@ -42,26 +49,26 @@
     [self.view addSubview:self.scrollView];
     //[self.view setBackgroundColor:[UIColor whiteColor]];
     _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 65, 320, 200)];
-    NSNumber *latitude = self.info.latitude;
-    NSNumber *longitude = self.info.longitude;
-    _region.center.latitude = latitude.doubleValue;
-    _region.center.longitude = longitude.doubleValue;
+    //CLLocationCoordinate2D newCoord = [self geoCodeUsingAddress:self.info.location];
+    //NSNumber *latitude = self.info.latitude;
+    //NSNumber *longitude = self.info.longitude;
+    _region.center.latitude = [self.info.latitude doubleValue];
+    _region.center.longitude = [self.info.longitude doubleValue];
     _region.span.latitudeDelta = 0.02;
     _region.span.longitudeDelta = 0.02;
     _mapView.region = _region;
+    
     //------------ ADDING PIN TO MAP HERE --------------------
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
 	CLLocationCoordinate2D coordinate;
-	coordinate.latitude = latitude.doubleValue;
-	coordinate.longitude = longitude.doubleValue;
+	coordinate.latitude = [self.info.latitude doubleValue];
+	coordinate.longitude = [self.info.longitude doubleValue];
     [annotation setCoordinate:coordinate];
 	[annotation setTitle:self.info.location]; //You can set the subtitle too
     [_mapView addAnnotation:annotation];
     [self.scrollView addSubview:_mapView];
-    
-    
     NSLog(@"mapView.region set");
-    
+
     _locField = [[UITextField alloc] initWithFrame:CGRectMake(110, 288, 190, 30)];
     _locField.borderStyle = UITextBorderStyleBezel;
     [_locField setEnabled:NO];
@@ -73,7 +80,7 @@
     UILabel *locLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 292, 100, 21)];
     locLabel.font = [UIFont fontWithName:@"DIN Alternate Bold" size:17];
     locLabel.textColor = [UIColor blackColor];
-    locLabel.text = @"Location";
+    locLabel.text = @"Address";
 
     [self.insideView addSubview:locLabel];
     _dateField = [[UITextField alloc] initWithFrame:CGRectMake(110, 331, 190, 30)];
@@ -199,6 +206,8 @@
     // Add user to list
     // Send update to server
     if ([_button.currentTitle isEqual: @"Join"]) {
+        NSDictionary *params = @{@"event_id" : self.info.event_id, @"username" : appDelegate.user};
+        [conn modEvent:params];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
                                                         message:@"You have joined this event"
                                                        delegate:self
@@ -208,6 +217,8 @@
         [_button setTitle:@"Unjoin" forState:UIControlStateNormal];
     }
     else{
+        NSDictionary *params = @{@"event_id" : self.info.event_id, @"username" : appDelegate.user};
+        [conn modEvent:params];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
                                                         message:@"You have removed yourself from his event"
                                                        delegate:self
