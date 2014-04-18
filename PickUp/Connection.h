@@ -17,5 +17,6 @@
 -(void)getEvents:(NSDictionary*)params;
 -(void)modEvent:(NSDictionary*)params;
 -(void)deleteEvent:(NSDictionary*)params;
+@property BOOL finished;
 
 @end

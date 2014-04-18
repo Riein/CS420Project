@@ -180,14 +180,32 @@
         NSDictionary *params = @{@"email" : email, @"username" : name, @"password" : pass};
         [conn registerUser:params];
         NSLog(@"registered, success:%d", appDelegate.success);
-        if (appDelegate.sessionToken != nil && appDelegate.success) {
-            NSLog(@"logging in after register");
-            NSDictionary *log = @{@"email" : email, @"password" : pass, @"session_token" : appDelegate.sessionToken};
-            [conn loginUser:log];
-            if (appDelegate.sessionToken != 0 && appDelegate.success) {
-                [self performSegueWithIdentifier:@"register" sender:self];
-            }
-        }
+        [self performSelector:@selector(finishRegister) withObject:nil afterDelay:1.5];
+//        if (appDelegate.sessionToken != nil && appDelegate.success) {
+//            NSLog(@"logging in after register");
+//            NSDictionary *log = @{@"email" : email, @"password" : pass, @"session_token" : appDelegate.sessionToken};
+//            [conn loginUser:log];
+//            if (appDelegate.sessionToken != 0 && appDelegate.success) {
+//                [self performSegueWithIdentifier:@"register" sender:self];
+//            }
+//        }
     }
 }
+
+-(void)finishRegister{
+    if (appDelegate.sessionToken != nil && appDelegate.success) {
+        NSString *email = self.email.text;
+        NSString *pass = self.pass.text;
+        NSDictionary *log = @{@"email" : email, @"password" : pass, @"session_token" : appDelegate.sessionToken};
+        [conn loginUser:log];
+        [self performSelector:@selector(loginAfterRegister) withObject:nil afterDelay:1.5];
+    }
+}
+
+-(void)loginAfterRegister{
+    if (appDelegate.sessionToken != 0 && appDelegate.success) {
+        [self performSegueWithIdentifier:@"register" sender:self];
+    }
+}
+
 @end

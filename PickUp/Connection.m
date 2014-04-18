@@ -41,6 +41,7 @@
     manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     appDelegate = [[UIApplication sharedApplication] delegate];
+    self.finished = NO;
     return self;
 }
 
@@ -107,10 +108,12 @@
                   [err show];
               }
           }];
+    //self.finished = YES;
 }
 
 -(void)registerUser:(NSDictionary*)params{
     appDelegate.success = NO;
+    self.finished = NO;
     [manager POST:@"register"
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
@@ -159,7 +162,7 @@
                   [err show];
               }
           }];
-    
+    self.finished = YES;
 }
 
 -(void)addEvent:(NSDictionary*)params{
