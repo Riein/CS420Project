@@ -283,18 +283,18 @@
     NSDate *date = [format dateFromString:self.dateButton.currentTitle];
     [format setDateFormat:@"HH:mm a"];
     NSDate *time = [format dateFromString:self.timeButton.currentTitle];
-    NSLog(@"%@", time);
+    //NSLog(@"%@", time);
     NSDateComponents *dateComp = [gCal components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
     NSDateComponents *timeComp = [gCal components:NSHourCalendarUnit | NSMinuteCalendarUnit |NSSecondCalendarUnit fromDate:time];
     NSDateComponents *combine = [[NSDateComponents alloc] init];
-    NSLog(@"parts-hr:%d,mi:%d", timeComp.hour, timeComp.minute);
+    //NSLog(@"parts-hr:%d,mi:%d", timeComp.hour, timeComp.minute);
     [combine setYear:dateComp.year];
     [combine setMonth:dateComp.month];
     [combine setDay:dateComp.day];
     [combine setHour:timeComp.hour];
     [combine setMinute:timeComp.minute];
     NSDate *checkDate = [gCal dateFromComponents:combine];
-    NSLog(@"checkDate: %@, now: %@, diff: %f", checkDate, [NSDate date], [checkDate timeIntervalSinceNow]);
+    //NSLog(@"checkDate: %@, now: %@, diff: %f", checkDate, [NSDate date], [checkDate timeIntervalSinceNow]);
     if ([checkDate timeIntervalSinceNow] <= 0) {
         incomplete = YES;
         errs[5] = 1;
@@ -355,6 +355,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSDate *date = [format dateFromString:self.dateButton.currentTitle];
     [format setDateFormat:@"HH:mm a"];
     NSDate *time = [format dateFromString:self.timeButton.currentTitle];
+    [format setDateStyle:NSDateFormatterMediumStyle];
+    [format setTimeStyle:NSDateFormatterMediumStyle];
     NSDateComponents *dateComp = [gCal components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
     NSDateComponents *timeComp = [gCal components:NSHourCalendarUnit | NSMinuteCalendarUnit |NSSecondCalendarUnit fromDate:time];
     NSDateComponents *combine = [[NSDateComponents alloc] init];
@@ -370,18 +372,25 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     NSDictionary *params = @{@"host" : newEvent.host, @"eventName" : newEvent.eventName, @"eventDate" : [format stringFromDate:newEvent.eventDate], @"location" : newEvent.location, @"latitude" : newEvent.latitude, @"longitude" : newEvent.longitude, @"players" : newEvent.players, @"equipment" : newEvent.equipment};
     
-    // Locking current thread until addEvent is complete
+    NSLog(@"params:%@", params);
     
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    
-    [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(addEvent:) object:params]];
-    
-    [queue waitUntilAllOperationsAreFinished];
-    
-    //[appDelegate.events insertObject:newEvent atIndex:0];
-    
-    UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"YOUR EVENT HAS BEEN CREATED" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
-    [helpSheet showInView:self.view];
+    [conn addEvent:params];
+    [self performSelector:@selector(finishAddEvent) withObject:nil afterDelay:0.5];
+}
+
+-(void)finishAddEvent{
+    if (appDelegate.success) {
+        UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"YOUR EVENT HAS BEEN CREATED" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+        [helpSheet showInView:self.view];
+    }
+    else{
+        UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Problem Creating Event"
+                                                        message:@"There was a problem creating your event"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [error show];
+    }
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{

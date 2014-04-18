@@ -156,13 +156,15 @@
     }
     else {
         NSString *email = self.email.text;
+        [self.email setText:@""];
         NSString *pass = self.pass.text;
+        [self.pass setText:@""];
         if (appDelegate.sessionToken == nil) {
             appDelegate.sessionToken = @"0";
         }
         NSDictionary *params = @{@"email" : email, @"password" : pass, @"session_token" : appDelegate.sessionToken};
         [conn loginUser:params];
-        [self performSelector:@selector(finishLogin) withObject:nil afterDelay:2];
+        [self performSelector:@selector(finishLogin) withObject:nil afterDelay:1];
 //        NSLog(@"after conn, success: %d", appDelegate.success);
 //        if (appDelegate.sessionToken != 0 && appDelegate.success) {
 //            [self performSegueWithIdentifier:@"login" sender:self];

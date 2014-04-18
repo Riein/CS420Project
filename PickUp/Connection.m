@@ -18,7 +18,7 @@
 #define kSportKey @"eventSport"
 #define kIsDeleted @"isDeleted"
 #define kEventDate @"date"
-#define kTimeKey @"timeStamp"
+#define kTimeKey @"time_stamp"
 #define kHostKey @"host"
 #define kLocKey @"location"
 #define kLatKey @"latitude"
@@ -63,14 +63,16 @@
                   [logout show];
                   appDelegate.user = nil;
                   appDelegate.password = nil;
+                  appDelegate.email = nil;
                   appDelegate.sessionToken = 0;
               }
               else{
                   //appDelegate.loggedIn = YES;
                   NSLog(@"logged in");
-                  appDelegate.user = [params objectForKey:kUsername];
+                  appDelegate.user = [responseObject objectForKey:@"username"];
                   NSLog(@"username set");
-                  //appDelegate.password = [params objectForKey:@"password"];
+                  appDelegate.password = [params objectForKey:@"password"];
+                  appDelegate.email = [params objectForKey:@"email"];
                   appDelegate.sessionToken = [responseObject objectForKey:@"session_token"];
                   NSLog(@"session token set");
               }
@@ -158,12 +160,16 @@
 
 -(void)addEvent:(NSDictionary*)params{
     appDelegate.success = NO;
+    NSLog(@"adding event");
     [manager POST:@"addEvent"
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
+              NSLog(@"in success");
               // Enter success stuff here
-              NSDictionary *something = @{@"time_stamp" : [responseObject objectForKey:kTimeKey]};
+              NSLog(@"responseObject:%@", responseObject);
+              NSDictionary *something = @{@"time_stamp" : [responseObject objectForKey:@"time_stamp"]};
               [self getEvents:something]; // Hopefully this will work
+              NSLog(@"getting events");
               appDelegate.success = YES;
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
               //NSLog(@"in failure");
@@ -193,16 +199,20 @@
 
 -(void)getEvents:(NSDictionary*)params{
     appDelegate.success = NO;
+    NSLog(@"start of getEvents");
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
-    [manager GET:@"getEvents"
+    [manager GET:@"events"
       parameters:params
          success: ^(NSURLSessionDataTask *task, id responseObject) {
+             NSLog(@"in success");
              if ([responseObject objectForKey:@"events"] != nil) {
                  NSMutableArray *arrayOfDicts = [responseObject objectForKey:@"events"];
+                 NSLog(@"arrayOfDicts created");
                  
                  for (int i = 0; i < arrayOfDicts.count; i++) {
+                     NSLog(@"in for loop");
                      if ([[arrayOfDicts[i] objectForKey:kIsDeleted] intValue] == 0) {
                          Event *event = [[Event alloc] init];
                          event.event_id = [arrayOfDicts[i] objectForKey:kEventID];
@@ -236,9 +246,10 @@
              }
              appDelegate.success = YES;
          } failure:^(NSURLSessionDataTask *task, NSError *error) {
-             NSLog(@"in failure");
+             
              NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
              const int statuscode = response.statusCode;
+             NSLog(@"in failure, code:%d", statuscode);
              //
              // Display AlertView with appropriate error message.
              //

@@ -42,27 +42,14 @@
         NSDate *checkDate = latest.timeStamp;
         NSDictionary *params = @{@"time_stamp" : checkDate};
         
-        // Locking current thread until getEvents is complete
-        
-        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-        
-        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(getEvents:) object:params]];
-        
-        [queue waitUntilAllOperationsAreFinished];
+        [conn getEvents:params];
         
     }
     else{
         NSDate *checkDate = [NSDate distantPast];
         NSDictionary *params = @{@"time_stamp" : checkDate};
+        [conn getEvents:params];
         
-        // Locking current thread until getEvents is complete
-        
-        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-        
-        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(getEvents:) object:params]];
-        
-        [queue waitUntilAllOperationsAreFinished];
-
     }
 }
 
@@ -84,17 +71,19 @@
 
 - (IBAction)logout:(id)sender {
     // Add actions to log user out of server
-    NSDictionary *params = @{@"username" : appDelegate.user, @"password" : appDelegate.password, @"session_token" : appDelegate.sessionToken};
-    
-    // Locking current thread until login is complete
-    
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    
-    [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(loginUser:) object:params]];
-    
-    [queue waitUntilAllOperationsAreFinished];
+    NSLog(@"logout hit");
+    NSLog(@"email: %@, pass: %@, sess: %@", appDelegate.email, appDelegate.password, appDelegate.sessionToken);
+    NSDictionary *params = @{@"email" : appDelegate.email, @"password" : appDelegate.password, @"session_token" : appDelegate.sessionToken};
+    NSLog(@"params:%@", params);
+    [conn loginUser:params];
+    [self performSelector:@selector(finishLogout) withObject:nil afterDelay:1];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+}
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+-(void)finishLogout{
+    if (appDelegate.success) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end

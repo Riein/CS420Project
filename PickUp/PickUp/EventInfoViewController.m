@@ -31,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"eventDate:%@", self.info.eventDate);
     conn = [[Connection alloc] init];
     appDelegate = [[UIApplication sharedApplication] delegate];
     _scrollView = [[UIScrollView alloc] init];

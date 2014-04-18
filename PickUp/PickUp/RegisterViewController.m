@@ -187,7 +187,7 @@
         NSDictionary *params = @{@"email" : email, @"username" : name, @"password" : pass};
                 
         [conn registerUser:params];
-        [self performSelector:@selector(finishRegister) withObject:nil afterDelay:1.5];
+        [self performSelector:@selector(finishRegister) withObject:nil afterDelay:1];
 //        if (appDelegate.sessionToken != nil && appDelegate.success) {
 //            NSLog(@"logging in after register");
 //            NSDictionary *log = @{@"email" : email, @"password" : pass, @"session_token" : appDelegate.sessionToken};
@@ -205,7 +205,7 @@
         NSString *pass = self.pass.text;
         NSDictionary *log = @{@"email" : email, @"password" : pass, @"session_token" : appDelegate.sessionToken};
         [conn loginUser:log];
-        [self performSelector:@selector(loginAfterRegister) withObject:nil afterDelay:1.5];
+        [self performSelector:@selector(loginAfterRegister) withObject:nil afterDelay:1];
     }
 }
 
