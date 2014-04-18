@@ -161,7 +161,15 @@
             appDelegate.sessionToken = @"0";
         }
         NSDictionary *params = @{@"email" : email, @"password" : pass, @"session_token" : appDelegate.sessionToken};
-        [conn loginUser:params];
+        
+        // Locking current thread until login is complete
+        
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        
+        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(loginUser:) object:params]];
+        
+        [queue waitUntilAllOperationsAreFinished];
+        
         NSLog(@"after conn, success: %d", appDelegate.success);
         if (appDelegate.sessionToken != 0 && appDelegate.success) {
             [self performSegueWithIdentifier:@"login" sender:self];

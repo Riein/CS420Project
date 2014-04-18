@@ -178,12 +178,29 @@
         NSString *name = self.username.text;
         NSString *pass = self.pass.text;
         NSDictionary *params = @{@"email" : email, @"username" : name, @"password" : pass};
-        [conn registerUser:params];
+        
+        // Locking current thread until register is complete
+        
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        
+        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(registerUser:) object:params]];
+        
+        [queue waitUntilAllOperationsAreFinished];
+        
         NSLog(@"registered, success:%d", appDelegate.success);
         if (appDelegate.sessionToken != nil && appDelegate.success) {
             NSLog(@"logging in after register");
             NSDictionary *log = @{@"email" : email, @"password" : pass, @"session_token" : appDelegate.sessionToken};
-            [conn loginUser:log];
+            
+            // Locking current thread until login is complete
+            
+            NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+            
+            [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(loginUser:) object:log]];
+            
+            [queue waitUntilAllOperationsAreFinished];
+
+            
             if (appDelegate.sessionToken != 0 && appDelegate.success) {
                 [self performSegueWithIdentifier:@"register" sender:self];
             }

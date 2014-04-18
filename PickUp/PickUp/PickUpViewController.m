@@ -41,12 +41,28 @@
         Event *latest = [appDelegate.events objectAtIndex:0];
         NSDate *checkDate = latest.timeStamp;
         NSDictionary *params = @{@"time_stamp" : checkDate};
-        [conn getEvents:params];
+        
+        // Locking current thread until getEvents is complete
+        
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        
+        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(getEvents:) object:params]];
+        
+        [queue waitUntilAllOperationsAreFinished];
+        
     }
     else{
         NSDate *checkDate = [NSDate distantPast];
         NSDictionary *params = @{@"time_stamp" : checkDate};
-        [conn getEvents:params];
+        
+        // Locking current thread until getEvents is complete
+        
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        
+        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(getEvents:) object:params]];
+        
+        [queue waitUntilAllOperationsAreFinished];
+
     }
 }
 
@@ -69,7 +85,15 @@
 - (IBAction)logout:(id)sender {
     // Add actions to log user out of server
     NSDictionary *params = @{@"username" : appDelegate.user, @"password" : appDelegate.password, @"session_token" : appDelegate.sessionToken};
-    [conn loginUser:params];
+    
+    // Locking current thread until login is complete
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(loginUser:) object:params]];
+    
+    [queue waitUntilAllOperationsAreFinished];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
