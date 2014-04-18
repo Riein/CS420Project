@@ -369,7 +369,15 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     newEvent.equipment = equipList;
     
     NSDictionary *params = @{@"host" : newEvent.host, @"eventName" : newEvent.eventName, @"eventDate" : [format stringFromDate:newEvent.eventDate], @"location" : newEvent.location, @"latitude" : newEvent.latitude, @"longitude" : newEvent.longitude, @"players" : newEvent.players, @"equipment" : newEvent.equipment};
-    [conn addEvent:params];
+    
+    // Locking current thread until addEvent is complete
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(addEvent:) object:params]];
+    
+    [queue waitUntilAllOperationsAreFinished];
+    
     //[appDelegate.events insertObject:newEvent atIndex:0];
     
     UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"YOUR EVENT HAS BEEN CREATED" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];

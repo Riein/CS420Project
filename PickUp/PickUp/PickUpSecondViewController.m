@@ -31,12 +31,28 @@
         Event *latest = [appDelegate.events objectAtIndex:0];
         NSDate *checkDate = latest.timeStamp;
         NSDictionary *params = @{@"time_stamp" : checkDate};
-        [conn getEvents:params];
+        
+        // Locking current thread until getEvents is complete
+        
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        
+        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(getEvents:) object:params]];
+        
+        [queue waitUntilAllOperationsAreFinished];
+        
     }
     else{
         NSDate *checkDate = [NSDate distantPast];
         NSDictionary *params = @{@"time_stamp" : checkDate};
-        [conn getEvents:params];
+        
+        // Locking current thread until getEvents is complete
+        
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        
+        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(getEvents:) object:params]];
+        
+        [queue waitUntilAllOperationsAreFinished];
+        
     }
 }
 

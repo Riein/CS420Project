@@ -207,7 +207,15 @@
     // Send update to server
     if ([_button.currentTitle isEqual: @"Join"]) {
         NSDictionary *params = @{@"event_id" : self.info.event_id, @"username" : appDelegate.user};
-        [conn modEvent:params];
+        
+        // Locking current thread until modEvent is complete
+        
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        
+        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(modEvent:) object:params]];
+        
+        [queue waitUntilAllOperationsAreFinished];
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
                                                         message:@"You have joined this event"
                                                        delegate:self
@@ -218,7 +226,15 @@
     }
     else{
         NSDictionary *params = @{@"event_id" : self.info.event_id, @"username" : appDelegate.user};
-        [conn modEvent:params];
+        
+        // Locking current thread until modEvent is complete
+        
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        
+        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(modEvent:) object:params]];
+        
+        [queue waitUntilAllOperationsAreFinished];
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
                                                         message:@"You have removed yourself from his event"
                                                        delegate:self
