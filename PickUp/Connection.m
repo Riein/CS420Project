@@ -118,15 +118,6 @@
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
               // Enter success stuff here
-              if ([responseObject objectForKey:@"session_token"] != nil){
-                  appDelegate.sessionToken = [responseObject objectForKey:@"session_token"];
-                  UIAlertView *reg = [[UIAlertView alloc] initWithTitle:@"Success!"
-                                                                message:@"You have successfully registered\nPlease log in to continue"
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil, nil];
-                  [reg show];
-              }
               appDelegate.success = YES;
               NSLog(@"tok:%@, success:%d", appDelegate.sessionToken, appDelegate.success);              
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
