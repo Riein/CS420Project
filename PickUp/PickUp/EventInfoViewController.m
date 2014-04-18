@@ -31,6 +31,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if ( [appDelegate.user isEqualToString:self.info.host] ) {
+        UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteEvent:)];
+        self.navigationItem.rightBarButtonItem = deleteButton;
+    }
+    
     NSLog(@"eventDate:%@", self.info.eventDate);
     conn = [[Connection alloc] init];
     appDelegate = [[UIApplication sharedApplication] delegate];
@@ -199,8 +204,9 @@
     return NO;
 }
 
-
-
+-(void)deleteEvent{
+    /////////////////////////
+}
 
 -(void)buttonPressed:(id)sender{
     NSLog(@"button pressed");
