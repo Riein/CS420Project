@@ -13,7 +13,7 @@
 @property (assign, nonatomic) NSNumber *event_id;
 @property (strong, nonatomic) NSString *eventSport;
 @property (strong, nonatomic) NSString *eventName;
-@property (strong, nonatomic) NSDate *eventDate;
+@property (strong, nonatomic) NSString *eventDate;
 @property (strong, nonatomic) NSDate *timeStamp;
 @property BOOL isDeleted;
 @property (copy, nonatomic) NSString *host;

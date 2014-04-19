@@ -17,7 +17,7 @@
 #define kEventName @"eventName"
 #define kSportKey @"eventSport"
 #define kIsDeleted @"isDeleted"
-#define kEventDate @"date"
+#define kEventDate @"eventDate"
 #define kTimeKey @"time_stamp"
 #define kHostKey @"host"
 #define kLocKey @"location"
@@ -68,16 +68,12 @@
               }
               else{
                   //appDelegate.loggedIn = YES;
-                  NSLog(@"logged in");
                   appDelegate.user = [responseObject objectForKey:@"username"];
-                  NSLog(@"username set");
                   appDelegate.password = [params objectForKey:@"password"];
                   appDelegate.email = [params objectForKey:@"email"];
                   appDelegate.sessionToken = [responseObject objectForKey:@"session_token"];
-                  NSLog(@"session token set");
               }
               appDelegate.success = YES;
-              NSLog(@"end of success loop");
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
               NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
               const int statuscode = response.statusCode;
@@ -199,20 +195,16 @@
 
 -(void)getEvents:(NSDictionary*)params{
     appDelegate.success = NO;
-    NSLog(@"start of getEvents");
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
     [manager GET:@"events"
       parameters:params
          success: ^(NSURLSessionDataTask *task, id responseObject) {
-             NSLog(@"in success");
              if ([responseObject objectForKey:@"events"] != nil) {
                  NSMutableArray *arrayOfDicts = [responseObject objectForKey:@"events"];
-                 NSLog(@"arrayOfDicts created");
                  
                  for (int i = 0; i < arrayOfDicts.count; i++) {
-                     NSLog(@"in for loop");
                      if ([[arrayOfDicts[i] objectForKey:kIsDeleted] intValue] == 0) {
                          Event *event = [[Event alloc] init];
                          event.event_id = [arrayOfDicts[i] objectForKey:kEventID];

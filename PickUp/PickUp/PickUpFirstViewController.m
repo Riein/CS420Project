@@ -273,15 +273,15 @@
             }
             NSDateFormatter *format = [[NSDateFormatter alloc] init];
             [format setDateFormat:@"MMMM d, yyyy"];
-            if (![self.dateBut.currentTitle isEqualToString:[format stringFromDate:event.eventDate]] && ![self.dateBut.currentTitle isEqualToString:@"Select a Date"]) {
+            if (![self.dateBut.currentTitle isEqualToString:event.eventDate] && ![self.dateBut.currentTitle isEqualToString:@"Select a Date"]) {
                 NSLog(@"date differs");
-                NSLog(@"%@ : %@", self.dateBut.currentTitle, [format stringFromDate:event.eventDate]);
+                NSLog(@"%@ : %@", self.dateBut.currentTitle, event.eventDate);
                 remove[i] = 1;
             }
             [format setDateFormat:@"HH:mm"];
-            if (![self.timeBut.currentTitle isEqualToString:[format stringFromDate:event.eventDate]] && ![self.timeBut.currentTitle isEqualToString:@"Select a Time"]) {
+            if (![self.timeBut.currentTitle isEqualToString:event.eventDate] && ![self.timeBut.currentTitle isEqualToString:@"Select a Time"]) {
                 NSLog(@"time differs");
-                NSLog(@"%@ : %@", self.timeBut.currentTitle, [format stringFromDate:event.eventDate]);
+                NSLog(@"%@ : %@", self.timeBut.currentTitle, event.eventDate);
                 remove[i] = 1;
             }
         }

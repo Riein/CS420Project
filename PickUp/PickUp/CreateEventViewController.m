@@ -348,6 +348,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     CLLocationCoordinate2D newCoord = [self geoCodeUsingAddress:newEvent.location];
     newEvent.latitude = [NSNumber numberWithDouble:newCoord.latitude];
     newEvent.longitude = [NSNumber numberWithDouble:newCoord.longitude];
+    
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"MMM d, yyyy"];
     NSCalendar *gCal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -365,12 +366,13 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     [combine setDay:dateComp.day];
     [combine setHour:timeComp.hour];
     [combine setMinute:timeComp.minute];
-    newEvent.eventDate = [gCal dateFromComponents:combine];
+    newEvent.eventDate = [format stringFromDate:[gCal dateFromComponents:combine]];
+    
     newEvent.players = [@[appDelegate.user] copy];
     newEvent.host = appDelegate.user;
     newEvent.equipment = equipList;
     
-    NSDictionary *params = @{@"host" : newEvent.host, @"eventName" : newEvent.eventName, @"eventDate" : [format stringFromDate:newEvent.eventDate], @"location" : newEvent.location, @"latitude" : newEvent.latitude, @"longitude" : newEvent.longitude, @"players" : newEvent.players, @"equipment" : newEvent.equipment};
+    NSDictionary *params = @{@"host" : newEvent.host, @"eventName" : newEvent.eventName, @"eventDate" : newEvent.eventDate, @"location" : newEvent.location, @"latitude" : newEvent.latitude, @"longitude" : newEvent.longitude, @"players" : newEvent.players, @"equipment" : newEvent.equipment};
     
     NSLog(@"params:%@", params);
     

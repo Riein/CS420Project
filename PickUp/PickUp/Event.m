@@ -17,7 +17,7 @@
         self.eventName = @"";
         self.eventSport = @"";
         self.isDeleted = NO;
-        self.eventDate = [NSDate date];
+        self.eventDate = @"";
         self.timeStamp = [NSDate date];
         self.host = @"";
         self.location = @"";

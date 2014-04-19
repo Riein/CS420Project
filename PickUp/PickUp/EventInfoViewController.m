@@ -31,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    appDelegate = [[UIApplication sharedApplication] delegate];
     if ( [appDelegate.user isEqualToString:self.info.host] ) {
         UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteEvent:)];
         self.navigationItem.rightBarButtonItem = deleteButton;
@@ -38,7 +39,7 @@
     
     NSLog(@"eventDate:%@", self.info.eventDate);
     conn = [[Connection alloc] init];
-    appDelegate = [[UIApplication sharedApplication] delegate];
+    
     _scrollView = [[UIScrollView alloc] init];
     _scrollView.frame = self.view.frame;
     self.scrollView.ContentSize = CGSizeMake(320, 800);
@@ -93,6 +94,7 @@
     _dateField.borderStyle = UITextBorderStyleBezel;
     [_dateField setEnabled:NO];
     [_dateField setBackgroundColor:[UIColor whiteColor]];
+    [_dateField setText:[self.info.eventDate substringToIndex:12]];
 
     [self.insideView addSubview:_dateField];
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 335, 67, 21)];
@@ -100,12 +102,13 @@
     dateLabel.textColor = [UIColor blackColor];
 
     dateLabel.text = @"Date";
-
     [self.scrollView addSubview:dateLabel];
+    
     _timeField = [[UITextField alloc] initWithFrame:CGRectMake(110, 374, 190, 30)];
     _timeField.borderStyle = UITextBorderStyleBezel;
     [_timeField setEnabled:NO];
     [_timeField setBackgroundColor:[UIColor whiteColor]];
+    [_timeField setText:[self.info.eventDate substringFromIndex:13]];
 
     [self.insideView addSubview:_timeField];
     UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 378, 67, 21)];
@@ -144,12 +147,12 @@
     _locField.text = self.info.location;
     NSDateFormatter *day = [[NSDateFormatter alloc] init];
     [day setDateFormat:@"MMM d, yyyy"];
-    NSString *date = [day stringFromDate:self.info.eventDate];
-    _dateField.text = date;
+    //NSString *date = [day stringFromDate:self.info.eventDate];
+    //_dateField.text = date;
     NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
     [timeFormat setDateFormat:@"hh:mm a"];
-    NSString *time = [timeFormat stringFromDate:self.info.eventDate];
-    _timeField.text = time;
+    //NSString *time = [timeFormat stringFromDate:self.info.eventDate];
+    //_timeField.text = time;
     NSArray *ppl = [[NSArray alloc] initWithArray:self.info.players];
     NSMutableString *play = [[NSMutableString alloc] init];
     for (int i = 0; i < ppl.count; i++) {
