@@ -90,7 +90,7 @@
     EventInfoViewController *detailViewController = [[EventInfoViewController alloc] init];
     detailViewController.info = _dictToPass;
     detailViewController.title = _keyToPass;
-    
+    //NSLog(@"event_id passed:%@", _dictToPass.event_id); // Does not like event_id
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 /*

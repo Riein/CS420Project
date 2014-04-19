@@ -203,11 +203,12 @@
          success: ^(NSURLSessionDataTask *task, id responseObject) {
              if ([responseObject objectForKey:@"events"] != nil) {
                  NSMutableArray *arrayOfDicts = [responseObject objectForKey:@"events"];
-                 
+                 NSLog(@"events:%@", responseObject);
                  for (int i = 0; i < arrayOfDicts.count; i++) {
                      if ([[arrayOfDicts[i] objectForKey:kIsDeleted] intValue] == 0) {
                          Event *event = [[Event alloc] init];
                          event.event_id = [arrayOfDicts[i] objectForKey:kEventID];
+                         NSLog(@"id:%@", event.event_id);
                          event.eventName = [arrayOfDicts[i] objectForKey:kEventName];
                          event.eventSport = [arrayOfDicts[i] objectForKey:kSportKey];
                          event.isDeleted = [[arrayOfDicts[i] objectForKey:kIsDeleted] intValue];
@@ -224,10 +225,10 @@
                      else{
                          // If the tweet was deleted, go through the local tweet list and remove it
                          for (int j = 0; j < arrayOfDicts.count; j++) {
-                             NSNumber *spot = [arrayOfDicts[i] objectForKey:kEventID];
+                             NSString *spot = [arrayOfDicts[i] objectForKey:kEventID];
                              for (int i = 0; i < appDelegate.events.count; i++) {
                                  Event *event = [appDelegate.events objectAtIndex:i];
-                                 if (spot == event.event_id) {
+                                 if ([spot isEqualToString:event.event_id]) {
                                      [appDelegate.events removeObjectAtIndex:i];
                                      break;
                                  }
@@ -258,7 +259,7 @@
 
 -(void)modEvent:(NSDictionary*)params{
     appDelegate.success = NO;
-    [manager POST:@"addEvent"
+    [manager POST:@"modEvent"
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
               // Enter success stuff here

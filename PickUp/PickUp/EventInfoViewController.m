@@ -38,6 +38,7 @@
     }
     
     NSLog(@"eventDate:%@", self.info.eventDate);
+    NSLog(@"event_id:%@", self.info.event_id);
     conn = [[Connection alloc] init];
     
     _scrollView = [[UIScrollView alloc] init];
@@ -208,50 +209,77 @@
 }
 
 -(void)deleteEvent{
-    /////////////////////////
+    // Create params and send to server for delete.
+    // Not quite sure of best way to deal with success.
+    // Need to dismiss this controller and getEvents.
 }
 
 -(void)buttonPressed:(id)sender{
     NSLog(@"button pressed");
     // Add user to list
     // Send update to server
-    if ([_button.currentTitle isEqual: @"Join"]) {
-        NSDictionary *params = @{@"event_id" : self.info.event_id, @"username" : appDelegate.user};
+    NSLog(@"event_id:%@", self.info.event_id);
+    NSLog(@"user:%@", appDelegate.user);
+    NSDictionary *params = @{@"event_id" : self.info.event_id, @"username" : appDelegate.user};
+    NSLog(@"params created");
+    [conn modEvent:params];
+    NSLog(@"conn called");
         
-        // Locking current thread until modEvent is complete
+    [self performSelector:@selector(finishJoin) withObject:nil afterDelay:1];
+
+}
+
+-(void)finishJoin{
+    if (appDelegate.success) {
+        if ([_button.currentTitle isEqualToString:@"Join"]) {
+            NSLog(@"About to insert player");
+            //[self.info.players insertObject:appDelegate.user atIndex:self.info.players.count];
+            NSMutableArray *cpy = [[NSMutableArray alloc] initWithArray:self.info.players copyItems:YES];
+            NSLog(@"cpy made");
+            [cpy insertObject:appDelegate.user atIndex:cpy.count];
+            NSLog(@"inserted");
+            self.info.players = cpy;
+            NSLog(@"reset players");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
+                                                            message:@"You have joined this event"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil, nil];
+            [alert show];
+            NSArray *ppl = [[NSArray alloc] initWithArray:self.info.players];
+            NSMutableString *play = [[NSMutableString alloc] init];
+            for (int i = 0; i < ppl.count; i++) {
+                [play appendString:[ppl objectAtIndex:i]];
+                [play appendString:@"\n"];
+            }
+            _players.text = play;
+            [self.players setNeedsDisplay]; // Not sure if needed yet
+            [_button setTitle:@"Unjoin" forState:UIControlStateNormal];
+        }
+        else{
+            for (int i = 0; i < self.info.players.count; i++) {
+                if ([self.info.players[i] isEqualToString:appDelegate.user]) {
+                    [self.info.players removeObjectAtIndex:i];
+                    break;
+                }
+            }
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
+                                                            message:@"You have removed yourself from his event"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil, nil];
+            [alert show];
+            NSArray *ppl = [[NSArray alloc] initWithArray:self.info.players];
+            NSMutableString *play = [[NSMutableString alloc] init];
+            for (int i = 0; i < ppl.count; i++) {
+                [play appendString:[ppl objectAtIndex:i]];
+                [play appendString:@"\n"];
+            }
+            _players.text = play;
+            [self.players setNeedsDisplay]; // Not sure if needed yet
+            [_button setTitle:@"Join" forState:UIControlStateNormal];
+        }
         
-        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-        
-        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(modEvent:) object:params]];
-        
-        [queue waitUntilAllOperationsAreFinished];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
-                                                        message:@"You have joined this event"
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil, nil];
-        [alert show];
-        [_button setTitle:@"Unjoin" forState:UIControlStateNormal];
-    }
-    else{
-        NSDictionary *params = @{@"event_id" : self.info.event_id, @"username" : appDelegate.user};
-        
-        // Locking current thread until modEvent is complete
-        
-        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-        
-        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:conn selector:@selector(modEvent:) object:params]];
-        
-        [queue waitUntilAllOperationsAreFinished];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Join Event"
-                                                        message:@"You have removed yourself from his event"
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil, nil];
-        [alert show];
-        [_button setTitle:@"Join" forState:UIControlStateNormal];
     }
 }
 
