@@ -226,7 +226,8 @@
     NSLog(@"finishDelete");
     // After completion, dismiss current view controller
     if (appDelegate.success) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+        //[self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

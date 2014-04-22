@@ -203,12 +203,12 @@
          success: ^(NSURLSessionDataTask *task, id responseObject) {
              if ([responseObject objectForKey:@"events"] != nil) {
                  NSMutableArray *arrayOfDicts = [responseObject objectForKey:@"events"];
-                 NSLog(@"events:%@", responseObject);
+                 //NSLog(@"events:%@", responseObject);
                  for (int i = 0; i < arrayOfDicts.count; i++) {
                      if ([[arrayOfDicts[i] objectForKey:kIsDeleted] intValue] == 0) {
                          Event *event = [[Event alloc] init];
                          event.event_id = [arrayOfDicts[i] objectForKey:kEventID];
-                         NSLog(@"id:%@", event.event_id);
+                         //NSLog(@"id:%@", event.event_id);
                          event.eventName = [arrayOfDicts[i] objectForKey:kEventName];
                          event.eventSport = [arrayOfDicts[i] objectForKey:kSportKey];
                          event.isDeleted = [[arrayOfDicts[i] objectForKey:kIsDeleted] intValue];
@@ -222,21 +222,9 @@
                          event.equipment = [arrayOfDicts[i] objectForKey:kEquipmentKey];
                          [appDelegate.events insertObject:event atIndex:0];
                      }
-                     else{
-                         // If the tweet was deleted, go through the local tweet list and remove it
-                         for (int j = 0; j < arrayOfDicts.count; j++) {
-                             NSString *spot = [arrayOfDicts[i] objectForKey:kEventID];
-                             for (int i = 0; i < appDelegate.events.count; i++) {
-                                 Event *event = [appDelegate.events objectAtIndex:i];
-                                 if ([spot isEqualToString:event.event_id]) {
-                                     [appDelegate.events removeObjectAtIndex:i];
-                                     break;
-                                 }
-                             }
-                         }
-                     }
                  }
              }
+             // Attempt to remove duplicates - Need to add this
              appDelegate.success = YES;
          } failure:^(NSURLSessionDataTask *task, NSError *error) {
              
@@ -263,6 +251,7 @@
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
               // Enter success stuff here
+              //NSLog(responseObject);
               Event *temp = [appDelegate.events objectAtIndex:0];
               NSDictionary *something = @{@"time_stamp" : temp.timeStamp};
               [self getEvents:something]; // Hopefully this will work
@@ -295,7 +284,7 @@
 
 -(void)deleteEvent:(NSDictionary*)params{
     appDelegate.success = NO;
-    [manager DELETE:@"deleteEvent"
+    [manager DELETE:@"deleteevent"
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
               // Enter success stuff here
