@@ -39,6 +39,9 @@
     appDelegate = [[UIApplication sharedApplication] delegate];
     
 }
+-(void)viewDidAppear:(BOOL)animated{
+    [self.tableView reloadData];
+}
 
 - (void)didReceiveMemoryWarning
 {

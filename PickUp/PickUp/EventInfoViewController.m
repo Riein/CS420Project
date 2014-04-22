@@ -218,8 +218,9 @@
     // Need to dismiss this controller and getEvents. Done.
     NSLog(@"deleteEvent called");
     NSDictionary *params = @{@"event_id" : self.info.event_id, @"username" : appDelegate.user, @"isDeleted" : @"1"};
+    [appDelegate.events removeObject:self.info];
     [conn deleteEvent:params];
-    [self performSelector:@selector(finishDelete) withObject:nil afterDelay:1];
+    [self performSelector:@selector(finishDelete) withObject:nil afterDelay:1.5];
 }
 
 -(void)finishDelete{

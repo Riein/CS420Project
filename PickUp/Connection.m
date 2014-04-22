@@ -220,8 +220,18 @@
                          event.longitude = [arrayOfDicts[i] objectForKey:kLongKey];
                          event.players = [arrayOfDicts[i] objectForKey:kPlayersKey];
                          event.equipment = [arrayOfDicts[i] objectForKey:kEquipmentKey];
-                         [appDelegate.events insertObject:event atIndex:0];
+                         BOOL test = NO;
+                         for (Event * e in appDelegate.events) {
+                             if([e.event_id isEqual:event.event_id]){
+                                 test = YES;
+                             }
+                         }
+                         if(!test){
+                             [appDelegate.events insertObject:event atIndex:0];
+                         }
+                         
                      }
+                     
                  }
              }
              // Attempt to remove duplicates - Need to add this
