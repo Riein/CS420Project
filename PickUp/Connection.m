@@ -263,7 +263,8 @@
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
               // Enter success stuff here
-              NSDictionary *something = @{@"time_stamp" : [responseObject objectForKey:kTimeKey]};
+              Event *temp = [appDelegate.events objectAtIndex:0];
+              NSDictionary *something = @{@"time_stamp" : temp.timeStamp};
               [self getEvents:something]; // Hopefully this will work
               appDelegate.success = YES;
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -294,17 +295,18 @@
 
 -(void)deleteEvent:(NSDictionary*)params{
     appDelegate.success = NO;
-    [manager POST:@"deleteEvent"
+    [manager DELETE:@"deleteEvent"
        parameters:params
           success: ^(NSURLSessionDataTask *task, id responseObject) {
               // Enter success stuff here
-              NSDictionary *something = @{@"time_stamp" : [responseObject objectForKey:kTimeKey]};
+              Event *temp = [appDelegate.events objectAtIndex:0];
+              NSDictionary *something = @{@"time_stamp" : temp.timeStamp};
               [self getEvents:something]; // Hopefully this will work
               appDelegate.success = YES;
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
-              //NSLog(@"in failure");
               NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
               const int statuscode = response.statusCode;
+              NSLog(@"in failure, %d", statuscode);
               //
               // Display AlertView with appropriate error message.
               //

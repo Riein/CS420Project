@@ -26,7 +26,7 @@
 
 @property (strong, nonatomic) Event *info;
 
-
+-(void)deleteEvent;
 
 
 @end
