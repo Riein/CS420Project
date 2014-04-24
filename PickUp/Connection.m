@@ -195,22 +195,22 @@
 
 -(void)getEvents:(NSDictionary*)params{
     appDelegate.success = NO;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+//    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
     [manager GET:@"events"
       parameters:params
          success: ^(NSURLSessionDataTask *task, id responseObject) {
              if ([responseObject objectForKey:@"events"] != nil) {
                  NSMutableArray *arrayOfDicts = [responseObject objectForKey:@"events"];
-                 //NSLog(@"events:%@", responseObject);
+                 NSLog(@"events:%@", responseObject);
                  for (int i = 0; i < arrayOfDicts.count; i++) {
                      if ([[arrayOfDicts[i] objectForKey:kIsDeleted] intValue] == 0) {
                          Event *event = [[Event alloc] init];
                          event.event_id = [arrayOfDicts[i] objectForKey:kEventID];
                          //NSLog(@"id:%@", event.event_id);
                          event.eventName = [arrayOfDicts[i] objectForKey:kEventName];
-                         event.eventSport = [arrayOfDicts[i] objectForKey:kSportKey];
+                         event.eventSport = [arrayOfDicts[i] objectForKey:@"sport"];
                          event.isDeleted = [[arrayOfDicts[i] objectForKey:kIsDeleted] intValue];
                          event.eventDate = [arrayOfDicts[i] objectForKey:kEventDate];
                          event.timeStamp = [arrayOfDicts[i] objectForKey:kTimeKey];

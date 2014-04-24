@@ -240,6 +240,10 @@
     for (int i = 0; i < temp.count; i++) {
         remove[i] = 0;
     }
+    for (Event* e in appDelegate.events) {
+        NSLog(@"Event Sport = %s", [e.eventSport cStringUsingEncoding:NSStringEncodingConversionAllowLossy]);
+    }
+    
     // Need to remove events that don't match constraints from temp
     if ([_sports[[self.sportPicker selectedRowInComponent:0]] isEqualToString:@"All"]
             && [self.location.text  isEqual: @""] && [self.eventName.text  isEqual: @""] &&
@@ -251,6 +255,7 @@
             NSLog(@"not all sports");
             for (int i = 0; i < temp.count; i++) {
                 Event *event = [temp objectAtIndex:i];
+                NSLog(@"Event %d Sport = %s", i, [event.eventSport cStringUsingEncoding:NSStringEncodingConversionAllowLossy]);
                 if ([_sports[[self.sportPicker selectedRowInComponent:0]] isEqualToString:event.eventSport]) {
                     NSLog(@"is %@", _sports[[self.sportPicker selectedRowInComponent:0]]);
                     remove[i] = 0;
@@ -272,16 +277,26 @@
                 remove[i] = 1;
             }
             NSDateFormatter *format = [[NSDateFormatter alloc] init];
-            [format setDateFormat:@"MMMM d, yyyy"];
-            if (![self.dateBut.currentTitle isEqualToString:event.eventDate] && ![self.dateBut.currentTitle isEqualToString:@"Select a Date"]) {
+            [format setDateFormat:@"MMM d, yyyy"];
+            //NSLog(@"event.eventDate: %@", event.eventDate); // Good
+            //NSLog(@"butTitle: %@", self.dateBut.currentTitle);
+            NSDate *checkDate = [format dateFromString:self.dateBut.currentTitle];
+            //NSLog(@"checkDate: %@", checkDate); // No worky
+            NSString *intermediate = [format stringFromDate:checkDate];
+            //NSLog(@"inter: %@", intermediate);
+            NSString *searchDate = [intermediate substringToIndex:12];
+            //NSLog(@"searchDate: %@", searchDate);
+            NSString *date = [event.eventDate substringToIndex:12];
+            //NSLog(@"date before check: %@", date);
+            if (![searchDate isEqualToString:date] && ![self.dateBut.currentTitle isEqualToString:@"Select a Date"]) {
                 NSLog(@"date differs");
-                NSLog(@"%@ : %@", self.dateBut.currentTitle, event.eventDate);
+                //NSLog(@"%@ : %@", self.dateBut.currentTitle, date);
                 remove[i] = 1;
             }
-            [format setDateFormat:@"HH:mm"];
-            if (![self.timeBut.currentTitle isEqualToString:event.eventDate] && ![self.timeBut.currentTitle isEqualToString:@"Select a Time"]) {
+            NSString *time = [event.eventDate substringFromIndex:13];
+            if (![self.timeBut.currentTitle isEqualToString:time] && ![self.timeBut.currentTitle isEqualToString:@"Select a Time"]) {
                 NSLog(@"time differs");
-                NSLog(@"%@ : %@", self.timeBut.currentTitle, event.eventDate);
+                //NSLog(@"%@ : %@", self.timeBut.currentTitle, time);
                 remove[i] = 1;
             }
         }

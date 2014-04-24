@@ -350,7 +350,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     newEvent.longitude = [NSNumber numberWithDouble:newCoord.longitude];
     
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MMM d, yyyy"];
+    [format setDateFormat:@"MMMM d, yyyy"];
     NSCalendar *gCal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     [gCal setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
     NSDate *date = [format dateFromString:self.dateButton.currentTitle];
@@ -372,7 +372,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     newEvent.host = appDelegate.user;
     newEvent.equipment = equipList;
     
-    NSDictionary *params = @{@"host" : newEvent.host, @"eventName" : newEvent.eventName, @"eventDate" : newEvent.eventDate, @"location" : newEvent.location, @"latitude" : newEvent.latitude, @"longitude" : newEvent.longitude, @"players" : newEvent.players, @"equipment" : newEvent.equipment};
+    NSDictionary *params = @{@"host" : newEvent.host, @"eventName" : newEvent.eventName, @"eventSport" : newEvent.eventSport, @"eventDate" : newEvent.eventDate, @"location" : newEvent.location, @"latitude" : newEvent.latitude, @"longitude" : newEvent.longitude, @"players" : newEvent.players, @"equipment" : newEvent.equipment};
     
     NSLog(@"params:%@", params);
     
