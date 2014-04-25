@@ -367,7 +367,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     [combine setHour:timeComp.hour];
     [combine setMinute:timeComp.minute];
     newEvent.eventDate = [format stringFromDate:[gCal dateFromComponents:combine]];
-    
+    NSLog(@"Date: %@", newEvent.eventDate);
     newEvent.players = [@[appDelegate.user] copy];
     newEvent.host = appDelegate.user;
     newEvent.equipment = equipList;
