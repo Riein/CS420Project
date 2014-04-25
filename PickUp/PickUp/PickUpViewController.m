@@ -82,6 +82,7 @@
 
 -(void)finishLogout{
     if (appDelegate.success) {
+        
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }

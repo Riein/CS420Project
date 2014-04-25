@@ -16,8 +16,7 @@
 @end
 
 @implementation MyEventsViewController{
-    NSDictionary *_localList;
-    NSMutableArray *_localKeys;
+    NSMutableArray *_myEvents;
     NSString *_keyToPass;
     Event *_dictToPass;
     PickUpAppDelegate *appDelegate;
@@ -35,11 +34,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    _myEvents = [[NSMutableArray alloc] init];
     appDelegate = [[UIApplication sharedApplication] delegate];
     
 }
 -(void)viewDidAppear:(BOOL)animated{
+    [_myEvents removeAllObjects];
+    for (Event *e in appDelegate.events) {
+        for (NSString *player in e.players) {
+            if ([appDelegate.user isEqualToString:player]) {
+                [_myEvents addObject:e];
+            }
+        }
+    }
     [self.tableView reloadData];
 }
 
@@ -58,7 +65,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [appDelegate.events count];
+    return [_myEvents count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,10 +76,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     Event *temp = [[Event alloc] init];
-    temp = [appDelegate.events objectAtIndex:indexPath.row];
+    temp = [_myEvents objectAtIndex:indexPath.row];
     cell.textLabel.text = temp.eventName;
     NSDictionary *detail = [[NSDictionary alloc] init];
-    detail = [appDelegate.events objectAtIndex:indexPath.row];
+    detail = [_myEvents objectAtIndex:indexPath.row];
     NSDateFormatter *dateForm = [[NSDateFormatter alloc] init];
     [dateForm setDateFormat:@"MMMM d, yyyy : hh:mm a"];
     [dateForm setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
@@ -86,7 +93,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     Event *temp = [[Event alloc] init];
-    temp = [appDelegate.events objectAtIndex:indexPath.row];
+    temp = [_myEvents objectAtIndex:indexPath.row];
     _keyToPass = temp.eventName;
     _dictToPass = temp;
     

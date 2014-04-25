@@ -211,6 +211,7 @@
 
 -(void)loginAfterRegister{
     if (appDelegate.sessionToken != 0 && appDelegate.success) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
         [self performSegueWithIdentifier:@"register" sender:self];
     }
 }

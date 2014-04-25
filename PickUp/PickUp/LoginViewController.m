@@ -174,6 +174,7 @@
 
 -(void)finishLogin{
     if (appDelegate.sessionToken != 0 && appDelegate.success) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
         [self performSegueWithIdentifier:@"login" sender:self];
     }
 }

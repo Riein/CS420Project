@@ -65,7 +65,7 @@
     temp = [self.events objectAtIndex:indexPath.row];
     cell.textLabel.text = temp.eventName;
     NSDateFormatter *dateForm = [[NSDateFormatter alloc] init];
-    [dateForm setDateFormat:@"MMMM d, yyyy : hh:mm a"];
+    [dateForm setDateFormat:@"MMMM d, yyyy : HH:mm a"];
     [dateForm setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
     NSDateFormatter *tempFormat = [[NSDateFormatter alloc] init];
     [tempFormat setDateFormat:@"MMM d, yyyy, HH:mm:ss a"];
