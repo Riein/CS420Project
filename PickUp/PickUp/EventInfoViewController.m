@@ -90,18 +90,15 @@
     locLabel.text = @"Address";
     [self.insideView addSubview:locLabel];
     
-    NSDateFormatter *getDate = [[NSDateFormatter alloc] init];
-    [getDate setDateFormat:@"MMM d, yyyy HH:mm a"];
-    NSDate *date = [getDate dateFromString:self.info.eventDate];
-    NSLog(@"Date: %@", date);
+    NSArray *dateAndTime = [self.info.eventDate componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *date = [NSString stringWithFormat:@"%@ %@ %@", [dateAndTime objectAtIndex:0], [dateAndTime objectAtIndex:1], [dateAndTime objectAtIndex:2]];
+    NSString *time= [NSString stringWithFormat:@"%@ %@", [dateAndTime objectAtIndex:3], [dateAndTime objectAtIndex:4]];
     // Create text field to hold the date
     _dateField = [[UITextField alloc] initWithFrame:CGRectMake(110, 331, 190, 30)];
     _dateField.borderStyle = UITextBorderStyleBezel;
     [_dateField setEnabled:NO];
     [_dateField setBackgroundColor:[UIColor whiteColor]];
-    NSDateFormatter *dateFor = [[NSDateFormatter alloc] init];
-    [dateFor setDateFormat:@"MMM d, yyyy"];
-    [_dateField setText:[dateFor stringFromDate:date]];
+    [_dateField setText:date];
     [self.insideView addSubview:_dateField];
     
     // Add a label for the date
@@ -116,10 +113,7 @@
     _timeField.borderStyle = UITextBorderStyleBezel;
     [_timeField setEnabled:NO];
     [_timeField setBackgroundColor:[UIColor whiteColor]];
-    NSDateFormatter *time = [[NSDateFormatter alloc] init];
-    [time setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
-    [time setDateFormat:@"HH:mm a"];
-    [_timeField setText:[time stringFromDate:date]];
+     [_timeField setText:time];
     [self.insideView addSubview:_timeField];
     
     // Add a label for the time

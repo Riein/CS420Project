@@ -89,6 +89,18 @@
     return cell;
 }
 
+-(IBAction)refreshControlValueChanged:(UIRefreshControl *) sender{
+    [_myEvents removeAllObjects];
+    for (Event *e in appDelegate.events) {
+        for (NSString *player in e.players) {
+            if ([appDelegate.user isEqualToString:player]) {
+                [_myEvents addObject:e];
+            }
+        }
+    }
+    [self.tableView reloadData];
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 

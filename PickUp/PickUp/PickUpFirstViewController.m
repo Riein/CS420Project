@@ -156,15 +156,21 @@
     _picker.datePickerMode = UIDatePickerModeDate;
     [_customView addSubview:_picker];
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(130, 220, 80, 30)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(50, 220, 80, 30)];
     [button setTitle:@"Save" forState:UIControlStateNormal];
     //[button setBackgroundColor:[UIColor whiteColor]];
     [button addTarget:self action:@selector(setDateForButton:)forControlEvents:UIControlEventTouchUpInside];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button setBackgroundImage:[UIImage imageNamed:@"mybutton.png"] forState:UIControlStateNormal];
     
-
+    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 220, 80, 30)];
+    [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(cancelDateForButton:) forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [cancelButton setBackgroundImage:[UIImage imageNamed:@"mybutton.png"] forState:UIControlStateNormal];
+    
     [_customView addSubview:button];
+    [_customView addSubview:cancelButton];
     
     [self.view addSubview:_customView];
     
@@ -178,6 +184,11 @@
     [formatter setDateFormat:@"MMMM d, yyyy"];
     NSString *newDate = [formatter stringFromDate:self.picker.date];
     [self.dateBut setTitle:newDate forState:UIControlStateNormal];
+    [_customView removeFromSuperview];
+}
+
+-(void)cancelDateForButton:(id)sender{
+    [self.dateBut setTitle:@"Select a Date" forState:UIControlStateNormal];
     [_customView removeFromSuperview];
 }
 
@@ -197,15 +208,21 @@
     _picker.datePickerMode = UIDatePickerModeTime;
     [_customView addSubview:_picker];
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(130, 220, 80, 30)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(50, 220, 80, 30)];
     [button setTitle:@"Save" forState:UIControlStateNormal];
     //[button setBackgroundColor:[UIColor lightGrayColor]];
     [button addTarget:self action:@selector(setTimeForButton:)forControlEvents:UIControlEventTouchUpInside];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button setBackgroundImage:[UIImage imageNamed:@"mybutton.png"] forState:UIControlStateNormal];
     
-
+    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 220, 80, 30)];
+    [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(cancelTimeForButton:) forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [cancelButton setBackgroundImage:[UIImage imageNamed:@"mybutton.png"] forState:UIControlStateNormal];
+    
     [_customView addSubview:button];
+    [_customView addSubview:cancelButton];
     
     [self.view addSubview:_customView];
     
@@ -220,6 +237,11 @@
     [formatter setDateFormat:@"hh:mm a"];
     NSString *newDate = [formatter stringFromDate:self.picker.date];
     [self.timeBut setTitle:newDate forState:UIControlStateNormal];
+    [_customView removeFromSuperview];
+}
+
+-(void)cancelTimeForButton:(id)sender{
+    [self.timeBut setTitle:@"Select a Time" forState:UIControlStateNormal];
     [_customView removeFromSuperview];
 }
 
@@ -276,6 +298,11 @@
                 NSLog(@"location differs");
                 remove[i] = 1;
             }
+            
+            NSArray *dateAndTime = [event.eventDate componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            NSString *date = [NSString stringWithFormat:@"%@ %@ %@", [dateAndTime objectAtIndex:0], [dateAndTime objectAtIndex:1], [dateAndTime objectAtIndex:2]];
+            NSString *time= [NSString stringWithFormat:@"%@ %@", [dateAndTime objectAtIndex:3], [dateAndTime objectAtIndex:4]];
+            
             NSDateFormatter *format = [[NSDateFormatter alloc] init];
             [format setDateFormat:@"MMM d, yyyy"];
             NSLog(@"event.eventDate: %@", event.eventDate); // Good
@@ -286,7 +313,6 @@
             NSLog(@"inter: %@", intermediate);
             NSString *searchDate = [intermediate substringToIndex:12];
             NSLog(@"searchDate: %@", searchDate);
-            NSString *date = [event.eventDate substringToIndex:12];
             NSLog(@"date before check: %@", date);
             if (![searchDate isEqualToString:date] && ![self.dateBut.currentTitle isEqualToString:@"Select a Date"]) {
                 NSLog(@"date differs");
@@ -305,7 +331,6 @@
             [tempFormat setDateFormat:@"MMM d, yyyy, HH:mm:ss a"];
             NSDate *temp = [tempFormat dateFromString:event.eventDate];
             NSLog(@"temp: %@", temp);
-            NSString* time = [timeFormat stringFromDate:temp];
             NSLog(@"time: %@", time);
             if (![searchTime isEqualToString:time] && ![self.timeBut.currentTitle isEqualToString:@"Select a Time"]) {
                 NSLog(@"time differs");
