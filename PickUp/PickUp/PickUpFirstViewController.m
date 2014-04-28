@@ -302,37 +302,17 @@
             NSArray *dateAndTime = [event.eventDate componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             NSString *date = [NSString stringWithFormat:@"%@ %@ %@", [dateAndTime objectAtIndex:0], [dateAndTime objectAtIndex:1], [dateAndTime objectAtIndex:2]];
             NSString *time= [NSString stringWithFormat:@"%@ %@", [dateAndTime objectAtIndex:3], [dateAndTime objectAtIndex:4]];
-            
-            NSDateFormatter *format = [[NSDateFormatter alloc] init];
-            [format setDateFormat:@"MMM d, yyyy"];
             NSLog(@"event.eventDate: %@", event.eventDate); // Good
             NSLog(@"butTitle: %@", self.dateBut.currentTitle);
-            NSDate *checkDate = [format dateFromString:self.dateBut.currentTitle];
-            NSLog(@"checkDate: %@", checkDate); // No worky
-            NSString *intermediate = [format stringFromDate:checkDate];
-            NSLog(@"inter: %@", intermediate);
-            NSString *searchDate = [intermediate substringToIndex:12];
-            NSLog(@"searchDate: %@", searchDate);
             NSLog(@"date before check: %@", date);
-            if (![searchDate isEqualToString:date] && ![self.dateBut.currentTitle isEqualToString:@"Select a Date"]) {
+            if (![self.dateBut.currentTitle isEqualToString:date] && ![self.dateBut.currentTitle isEqualToString:@"Select a Date"]) {
                 NSLog(@"date differs");
                 //NSLog(@"%@ : %@", self.dateBut.currentTitle, date);
                 remove[i] = 1;
             }
-            NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
-            [timeFormat setDateFormat:@"HH:mm a"];
-            [timeFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
             NSLog(@"butTitle: %@", self.timeBut.currentTitle);
-            NSDate *checkTime = [timeFormat dateFromString:self.timeBut.currentTitle];
-            NSLog(@"checkTime: %@", checkTime);
-            NSString *searchTime = [timeFormat stringFromDate:checkTime];
-            NSLog(@"searchTime: %@", searchTime);
-            NSDateFormatter *tempFormat = [[NSDateFormatter alloc] init];
-            [tempFormat setDateFormat:@"MMM d, yyyy, HH:mm:ss a"];
-            NSDate *temp = [tempFormat dateFromString:event.eventDate];
-            NSLog(@"temp: %@", temp);
             NSLog(@"time: %@", time);
-            if (![searchTime isEqualToString:time] && ![self.timeBut.currentTitle isEqualToString:@"Select a Time"]) {
+            if (![self.timeBut.currentTitle isEqualToString:time] && ![self.timeBut.currentTitle isEqualToString:@"Select a Time"]) {
                 NSLog(@"time differs");
                 //NSLog(@"%@ : %@", self.timeBut.currentTitle, time);
                 remove[i] = 1;
