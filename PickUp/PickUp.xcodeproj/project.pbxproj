@@ -212,6 +212,7 @@
 		D5D2B0881910542E005F96DE /* Sports_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sports_icon.png; sourceTree = "<group>"; };
 		D5D2B08B1910547F005F96DE /* Sports_icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sports_icon3.png; sourceTree = "<group>"; };
 		D5D2B08E191054AA005F96DE /* Sports_icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sports_icon2.png; sourceTree = "<group>"; };
+		D5D2B0901910557C005F96DE /* server.tgz */ = {isa = PBXFileReference; lastKnownFileType = file; name = server.tgz; path = AFNetworking/server.tgz; sourceTree = "<group>"; };
 		F72480C918FC983C00CE710A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F7BB96E418CD202F000D4746 /* nfl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nfl.plist; sourceTree = "<group>"; };
 		F7BB96E618CD2035000D4746 /* nba.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nba.plist; sourceTree = "<group>"; };
@@ -392,6 +393,7 @@
 				2EEC290418CAA9C800706067 /* mybutton@2x.png */,
 				2EC47C4818CBBD24001F23F6 /* soccerball.png */,
 				2EC47C7918CD7D39001F23F6 /* multiple.png */,
+				D5D2B0901910557C005F96DE /* server.tgz */,
 				D54D21C318CBE77D00B2C4D0 /* mlb.plist */,
 				F7BB96E418CD202F000D4746 /* nfl.plist */,
 				F7BB96E618CD2035000D4746 /* nba.plist */,
