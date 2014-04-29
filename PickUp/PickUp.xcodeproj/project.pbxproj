@@ -77,6 +77,11 @@
 		D59AE13D18C93D8700037820 /* PickUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59AE13C18C93D8700037820 /* PickUpViewController.m */; };
 		D59AE14018C9438E00037820 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59AE13F18C9438E00037820 /* LoginViewController.m */; };
 		D59DA8AA18E5EDD400F427B3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59DA8A918E5EDD400F427B3 /* CoreData.framework */; };
+		D5D2B08419105314005F96DE /* soccerBack1.png in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B08219105314005F96DE /* soccerBack1.png */; };
+		D5D2B08719105362005F96DE /* soccerBack2.png in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B08619105362005F96DE /* soccerBack2.png */; };
+		D5D2B0891910542E005F96DE /* Sports_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B0881910542E005F96DE /* Sports_icon.png */; };
+		D5D2B08D1910547F005F96DE /* Sports_icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B08B1910547F005F96DE /* Sports_icon3.png */; };
+		D5D2B08F191054AA005F96DE /* Sports_icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B08E191054AA005F96DE /* Sports_icon2.png */; };
 		F72480CA18FC983C00CE710A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F72480C918FC983C00CE710A /* CoreLocation.framework */; };
 		F7BB96E518CD202F000D4746 /* nfl.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7BB96E418CD202F000D4746 /* nfl.plist */; };
 		F7BB96E718CD2035000D4746 /* nba.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7BB96E618CD2035000D4746 /* nba.plist */; };
@@ -202,6 +207,11 @@
 		D59AE13E18C9438E00037820 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D59AE13F18C9438E00037820 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D59DA8A918E5EDD400F427B3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D5D2B08219105314005F96DE /* soccerBack1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soccerBack1.png; sourceTree = "<group>"; };
+		D5D2B08619105362005F96DE /* soccerBack2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soccerBack2.png; sourceTree = "<group>"; };
+		D5D2B0881910542E005F96DE /* Sports_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sports_icon.png; sourceTree = "<group>"; };
+		D5D2B08B1910547F005F96DE /* Sports_icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sports_icon3.png; sourceTree = "<group>"; };
+		D5D2B08E191054AA005F96DE /* Sports_icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sports_icon2.png; sourceTree = "<group>"; };
 		F72480C918FC983C00CE710A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F7BB96E418CD202F000D4746 /* nfl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nfl.plist; sourceTree = "<group>"; };
 		F7BB96E618CD2035000D4746 /* nba.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nba.plist; sourceTree = "<group>"; };
@@ -359,6 +369,11 @@
 				D512D66018C91B9300E788E1 /* PickUpSecondViewController.m */,
 				2EC47C6918CBE795001F23F6 /* PickUpGames.plist */,
 				D512D65918C91B9300E788E1 /* Main_iPad.storyboard */,
+				D5D2B08219105314005F96DE /* soccerBack1.png */,
+				D5D2B08619105362005F96DE /* soccerBack2.png */,
+				D5D2B0881910542E005F96DE /* Sports_icon.png */,
+				D5D2B08E191054AA005F96DE /* Sports_icon2.png */,
+				D5D2B08B1910547F005F96DE /* Sports_icon3.png */,
 				2E3FC47B18DFA04A006D0FE5 /* sport-shoes.png */,
 				2E3CC38318CE4D5300CC2133 /* clipboard.png */,
 				2EC47C7118CD733F001F23F6 /* gray2.png */,
@@ -496,12 +511,17 @@
 				D54D21C618CBE78400B2C4D0 /* mls.plist in Resources */,
 				2EC47C7C18CD83BF001F23F6 /* groupbasketball.png in Resources */,
 				D512D65B18C91B9300E788E1 /* Main_iPad.storyboard in Resources */,
+				D5D2B08419105314005F96DE /* soccerBack1.png in Resources */,
+				D5D2B08719105362005F96DE /* soccerBack2.png in Resources */,
 				2EC47C4D18CBBD24001F23F6 /* soccerball.png in Resources */,
 				2EC47C6C18CBEC69001F23F6 /* scheduling.png in Resources */,
 				2EC47C7418CD733F001F23F6 /* gray.png in Resources */,
+				D5D2B08F191054AA005F96DE /* Sports_icon2.png in Resources */,
 				2E3FC47C18DFA04A006D0FE5 /* sport-shoes.png in Resources */,
+				D5D2B08D1910547F005F96DE /* Sports_icon3.png in Resources */,
 				D512D66318C91B9300E788E1 /* Images.xcassets in Resources */,
 				2E3FC48218DFA128006D0FE5 /* sportshoesTab.png in Resources */,
+				D5D2B0891910542E005F96DE /* Sports_icon.png in Resources */,
 				2EEC290118CAA2B300706067 /* soccerwall.jpg in Resources */,
 				D512D65818C91B9300E788E1 /* Main_iPhone.storyboard in Resources */,
 				F7BB96E718CD2035000D4746 /* nba.plist in Resources */,
