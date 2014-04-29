@@ -41,12 +41,15 @@
         Event *latest = [appDelegate.events objectAtIndex:0];
         NSDate *checkDate = latest.timeStamp;
         NSDictionary *params = @{@"time_stamp" : checkDate};
+        
         [conn getEvents:params];
+        
     }
     else{
         NSDate *checkDate = [NSDate distantPast];
         NSDictionary *params = @{@"time_stamp" : checkDate};
         [conn getEvents:params];
+        
     }
 }
 
@@ -68,9 +71,20 @@
 
 - (IBAction)logout:(id)sender {
     // Add actions to log user out of server
-    NSDictionary *params = @{@"username" : appDelegate.user, @"password" : appDelegate.password, @"session_token" : appDelegate.sessionToken};
+    NSLog(@"logout hit");
+    NSLog(@"email: %@, pass: %@, sess: %@", appDelegate.email, appDelegate.password, appDelegate.sessionToken);
+    NSDictionary *params = @{@"email" : appDelegate.email, @"password" : appDelegate.password, @"session_token" : appDelegate.sessionToken};
+    NSLog(@"params:%@", params);
     [conn loginUser:params];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self performSelector:@selector(finishLogout) withObject:nil afterDelay:1];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)finishLogout{
+    if (appDelegate.success) {
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end

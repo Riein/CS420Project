@@ -50,7 +50,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="eg.1234 NW 3rd CT, Vancouver, WA 98685" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" id="8Oc-Ys-6Kb">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="eg.1234 NW 3rd CT, Vancouver, WA 98685" minimumFontSize="17" clearButtonMode="whileEditing" id="8Oc-Ys-6Kb">
                                 <rect key="frame" x="150" y="215" width="150" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
@@ -421,6 +421,20 @@
                     <navigationItem key="navigationItem" title="My Events" id="iot-9w-6ty">
                         <barButtonItem key="backBarButtonItem" title="Back" id="NeK-Xy-1bU"/>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="X8u-0A-pIQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <attributedString key="attributedTitle">
+                            <fragment content="Retrieving Events">
+                                <attributes>
+                                    <font key="NSFont" metaFont="toolTip"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <connections>
+                            <action selector="refreshControlValueChanged:" destination="h6C-60-fZZ" eventType="valueChanged" id="Lyy-xc-BKo"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <outlet property="tableView" destination="Vy9-Lb-btJ" id="zCd-Le-8hU"/>
                     </connections>
@@ -703,7 +717,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <color key="tintColor" patternImage="4E1C61D3-5798-4698-B874-2F5DDBF96EC3" colorSpace="pattern"/>
+                        <color key="tintColor" patternImage="177D4A28-D1AF-479C-B51E-80F5FEE5C2FC" colorSpace="pattern"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="W35-oL-0Xk">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Fa7-rh-Dls"/>
@@ -982,7 +996,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="4E1C61D3-5798-4698-B874-2F5DDBF96EC3" width="275" height="183">
+        <image name="177D4A28-D1AF-479C-B51E-80F5FEE5C2FC" width="275" height="183">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPD1YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYtMDY5VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

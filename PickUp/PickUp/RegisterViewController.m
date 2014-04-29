@@ -152,7 +152,7 @@
                                               otherButtonTitles:nil, nil];
         [alert show];
     }
-    if ([self.username.text length] < 4){
+    else if ([self.username.text length] < 4){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect Username Length"
                                                         message:@"Username must be at least 4 characters long."
                                                        delegate:self
@@ -162,7 +162,7 @@
  
     }
     
-    if ([self.pass.text length] < 6){
+    else if ([self.pass.text length] < 6){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect Password Length"
                                                         message:@"Password must be at least 6 characters long."
                                                        delegate:self
@@ -171,21 +171,59 @@
         [alert show];
         
     }
-
     
-    else{
-        //NSString *email = self.email.text;
-        //NSString *name = self.username.text;
-        //NSString *pass = self.pass.text;
-        //NSDictionary *params = @{@"email" : email, @"username" : name, @"password" : pass};
-        //[conn registerUser:params];
-        //if (appDelegate.sessionToken != nil) {
-          //  NSDictionary *log = @{@"email" : email, @"password" : pass};
-            //[conn loginUser:log];
-            if (appDelegate.sessionToken != 0) {
-                [self performSegueWithIdentifier:@"register" sender:self];
-            }
-        }
+    else if (![self NSStringIsValidEmail:self.email.text]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid email address"
+                                                        message:@"Please enter a valid email address"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
     }
-//}
+    else{
+        NSString *email = self.email.text;
+        NSString *name = self.username.text;
+        NSString *pass = self.pass.text;
+        NSDictionary *params = @{@"email" : email, @"username" : name, @"password" : pass};
+                
+        [conn registerUser:params];
+        [self performSelector:@selector(finishRegister) withObject:nil afterDelay:1];
+//        if (appDelegate.sessionToken != nil && appDelegate.success) {
+//            NSLog(@"logging in after register");
+//            NSDictionary *log = @{@"email" : email, @"password" : pass, @"session_token" : appDelegate.sessionToken};
+//            [conn loginUser:log];
+//            if (appDelegate.sessionToken != 0 && appDelegate.success) {
+//                [self performSegueWithIdentifier:@"register" sender:self];
+//            }
+//        }
+    }
+}
+
+-(void)finishRegister{
+    if (appDelegate.sessionToken != nil && appDelegate.success) {
+        NSString *email = self.email.text;
+        NSString *pass = self.pass.text;
+        NSDictionary *log = @{@"email" : email, @"password" : pass, @"session_token" : appDelegate.sessionToken};
+        [conn loginUser:log];
+        [self performSelector:@selector(loginAfterRegister) withObject:nil afterDelay:1];
+    }
+}
+
+-(void)loginAfterRegister{
+    if (appDelegate.sessionToken != 0 && appDelegate.success) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self performSegueWithIdentifier:@"register" sender:self];
+    }
+}
+
+-(BOOL) NSStringIsValidEmail:(NSString *)checkString
+{
+    BOOL stricterFilter = YES; // Discussion http://blog.logichigh.com/2010/09/02/validating-an-e-mail-address/
+    NSString *stricterFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
+    NSString *laxString = @".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
+}
+
 @end

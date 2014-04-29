@@ -239,7 +239,7 @@
 
 - (IBAction)helpbutton:(id)sender {
     UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"Frequently Asked Questions \n\n QUESTION: How do I remove just one item from the equipment list? \n\n ANSWER: To remove one item, select it and click the Remove button.\n\n QUESTION: Do I have to fill in all of the fields to create an event?\n\n  ANSWER: Yes. All of the fields are important information for anyone to know when joining a pickup game.\n\n QUESTION: How much wood WOULD a woodchuck chuck, if a woodchuck could chuck wood?\n\n ANSWER: I really have no idea!\n\n" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
-    helpSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
+    helpSheet.actionSheetStyle = UIActionSheetStyleDefault;
     [helpSheet showInView:self.view];
 }
 
@@ -248,7 +248,7 @@
 
 - (IBAction)createeventbutton:(id)sender {
     incomplete = NO;
-    NSArray *errMess = [[NSArray alloc] initWithObjects:@"Event name is blank\n", @"Location is blank\n", @"Players needed is blank\n", @"Date needs to be selected\n", @"Time needs to be selected\n", @"The date must be in the future", @"Number of players must be an integer", nil];
+    NSArray *errMess = [[NSArray alloc] initWithObjects:@"Event name is blank\n", @"Location is blank\n", @"Players needed is blank\n", @"Date needs to be selected\n", @"Time needs to be selected\n", @"The date must be in the future\n", @"Number of players must be an integer", nil];
     if ([self.eventField.text isEqualToString:@""]) {
         incomplete = YES;
         errs[0] = 1;
@@ -276,26 +276,12 @@
     }
     // Should error check for time now, not just date. Having issues with check. Only working on date still.
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MMM d, yyyy"];
-    //NSCalendar *gCal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSCalendar *gCal = [NSCalendar currentCalendar];
-    [gCal setTimeZone:[NSTimeZone systemTimeZone]];
-    NSDate *date = [format dateFromString:self.dateButton.currentTitle];
-    [format setDateFormat:@"HH:mm a"];
-    NSDate *time = [format dateFromString:self.timeButton.currentTitle];
-    NSLog(@"%@", time);
-    NSDateComponents *dateComp = [gCal components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
-    NSDateComponents *timeComp = [gCal components:NSHourCalendarUnit | NSMinuteCalendarUnit |NSSecondCalendarUnit fromDate:time];
-    NSDateComponents *combine = [[NSDateComponents alloc] init];
-    NSLog(@"parts-hr:%d,mi:%d", timeComp.hour, timeComp.minute);
-    [combine setYear:dateComp.year];
-    [combine setMonth:dateComp.month];
-    [combine setDay:dateComp.day];
-    [combine setHour:timeComp.hour];
-    [combine setMinute:timeComp.minute];
-    NSDate *checkDate = [gCal dateFromComponents:combine];
-    NSLog(@"checkDate: %@, now: %@, diff: %f", checkDate, [NSDate date], [checkDate timeIntervalSinceNow]);
-    if ([checkDate timeIntervalSinceNow] <= 0) {
+    [format setDateFormat:@"MMM d, yyyy HH:mm a"];
+    NSString *d = [NSString stringWithFormat:@"%@ %@", self.dateButton.currentTitle, self.timeButton.currentTitle];
+    NSDate *date = [format dateFromString:d];
+    NSDate *now = [NSDate dateWithTimeIntervalSinceNow:-7200];
+    NSLog(@"checkDate: %@, now: %@, diff: %f", date, now, [date timeIntervalSinceDate:now]);
+    if ([date timeIntervalSinceDate:now] <= 3600) {
         incomplete = YES;
         errs[5] = 1;
     }
@@ -348,32 +334,35 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     CLLocationCoordinate2D newCoord = [self geoCodeUsingAddress:newEvent.location];
     newEvent.latitude = [NSNumber numberWithDouble:newCoord.latitude];
     newEvent.longitude = [NSNumber numberWithDouble:newCoord.longitude];
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MMM d, yyyy"];
-    NSCalendar *gCal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    [gCal setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
-    NSDate *date = [format dateFromString:self.dateButton.currentTitle];
-    [format setDateFormat:@"HH:mm a"];
-    NSDate *time = [format dateFromString:self.timeButton.currentTitle];
-    NSDateComponents *dateComp = [gCal components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
-    NSDateComponents *timeComp = [gCal components:NSHourCalendarUnit | NSMinuteCalendarUnit |NSSecondCalendarUnit fromDate:time];
-    NSDateComponents *combine = [[NSDateComponents alloc] init];
-    [combine setYear:dateComp.year];
-    [combine setMonth:dateComp.month];
-    [combine setDay:dateComp.day];
-    [combine setHour:timeComp.hour];
-    [combine setMinute:timeComp.minute];
-    newEvent.eventDate = [gCal dateFromComponents:combine];
+    
+    NSString *d = [NSString stringWithFormat:@"%@ %@", self.dateButton.currentTitle, self.timeButton.currentTitle];
+    newEvent.eventDate = d;
+    NSLog(@"Date: %@", newEvent.eventDate);
     newEvent.players = [@[appDelegate.user] copy];
     newEvent.host = appDelegate.user;
     newEvent.equipment = equipList;
     
-    NSDictionary *params = @{@"host" : newEvent.host, @"eventName" : newEvent.eventName, @"eventDate" : [format stringFromDate:newEvent.eventDate], @"location" : newEvent.location, @"latitude" : newEvent.latitude, @"longitude" : newEvent.longitude, @"players" : newEvent.players, @"equipment" : newEvent.equipment};
-    [conn addEvent:params];
-    //[appDelegate.events insertObject:newEvent atIndex:0];
+    NSDictionary *params = @{@"host" : newEvent.host, @"eventName" : newEvent.eventName, @"eventSport" : newEvent.eventSport, @"eventDate" : newEvent.eventDate, @"location" : newEvent.location, @"latitude" : newEvent.latitude, @"longitude" : newEvent.longitude, @"players" : newEvent.players, @"equipment" : newEvent.equipment};
     
-    UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"YOUR EVENT HAS BEEN CREATED" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
-    [helpSheet showInView:self.view];
+    NSLog(@"params:%@", params);
+    
+    [conn addEvent:params];
+    [self performSelector:@selector(finishAddEvent) withObject:nil afterDelay:0.5];
+}
+
+-(void)finishAddEvent{
+    if (appDelegate.success) {
+        UIActionSheet *helpSheet =[[UIActionSheet alloc] initWithTitle:@"YOUR EVENT HAS BEEN CREATED" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+        [helpSheet showInView:self.view];
+    }
+    else{
+        UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Problem Creating Event"
+                                                        message:@"There was a problem creating your event"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [error show];
+    }
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{

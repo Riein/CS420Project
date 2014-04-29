@@ -156,15 +156,21 @@
     _picker.datePickerMode = UIDatePickerModeDate;
     [_customView addSubview:_picker];
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(130, 220, 80, 30)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(50, 220, 80, 30)];
     [button setTitle:@"Save" forState:UIControlStateNormal];
     //[button setBackgroundColor:[UIColor whiteColor]];
     [button addTarget:self action:@selector(setDateForButton:)forControlEvents:UIControlEventTouchUpInside];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button setBackgroundImage:[UIImage imageNamed:@"mybutton.png"] forState:UIControlStateNormal];
     
-
+    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 220, 80, 30)];
+    [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(cancelDateForButton:) forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [cancelButton setBackgroundImage:[UIImage imageNamed:@"mybutton.png"] forState:UIControlStateNormal];
+    
     [_customView addSubview:button];
+    [_customView addSubview:cancelButton];
     
     [self.view addSubview:_customView];
     
@@ -178,6 +184,11 @@
     [formatter setDateFormat:@"MMMM d, yyyy"];
     NSString *newDate = [formatter stringFromDate:self.picker.date];
     [self.dateBut setTitle:newDate forState:UIControlStateNormal];
+    [_customView removeFromSuperview];
+}
+
+-(void)cancelDateForButton:(id)sender{
+    [self.dateBut setTitle:@"Select a Date" forState:UIControlStateNormal];
     [_customView removeFromSuperview];
 }
 
@@ -197,15 +208,21 @@
     _picker.datePickerMode = UIDatePickerModeTime;
     [_customView addSubview:_picker];
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(130, 220, 80, 30)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(50, 220, 80, 30)];
     [button setTitle:@"Save" forState:UIControlStateNormal];
     //[button setBackgroundColor:[UIColor lightGrayColor]];
     [button addTarget:self action:@selector(setTimeForButton:)forControlEvents:UIControlEventTouchUpInside];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button setBackgroundImage:[UIImage imageNamed:@"mybutton.png"] forState:UIControlStateNormal];
     
-
+    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 220, 80, 30)];
+    [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(cancelTimeForButton:) forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [cancelButton setBackgroundImage:[UIImage imageNamed:@"mybutton.png"] forState:UIControlStateNormal];
+    
     [_customView addSubview:button];
+    [_customView addSubview:cancelButton];
     
     [self.view addSubview:_customView];
     
@@ -220,6 +237,11 @@
     [formatter setDateFormat:@"hh:mm a"];
     NSString *newDate = [formatter stringFromDate:self.picker.date];
     [self.timeBut setTitle:newDate forState:UIControlStateNormal];
+    [_customView removeFromSuperview];
+}
+
+-(void)cancelTimeForButton:(id)sender{
+    [self.timeBut setTitle:@"Select a Time" forState:UIControlStateNormal];
     [_customView removeFromSuperview];
 }
 
@@ -240,6 +262,10 @@
     for (int i = 0; i < temp.count; i++) {
         remove[i] = 0;
     }
+    for (Event* e in appDelegate.events) {
+        NSLog(@"Event Sport = %s", [e.eventSport cStringUsingEncoding:NSStringEncodingConversionAllowLossy]);
+    }
+    
     // Need to remove events that don't match constraints from temp
     if ([_sports[[self.sportPicker selectedRowInComponent:0]] isEqualToString:@"All"]
             && [self.location.text  isEqual: @""] && [self.eventName.text  isEqual: @""] &&
@@ -251,6 +277,7 @@
             NSLog(@"not all sports");
             for (int i = 0; i < temp.count; i++) {
                 Event *event = [temp objectAtIndex:i];
+                NSLog(@"Event %d Sport = %s", i, [event.eventSport cStringUsingEncoding:NSStringEncodingConversionAllowLossy]);
                 if ([_sports[[self.sportPicker selectedRowInComponent:0]] isEqualToString:event.eventSport]) {
                     NSLog(@"is %@", _sports[[self.sportPicker selectedRowInComponent:0]]);
                     remove[i] = 0;
@@ -271,17 +298,23 @@
                 NSLog(@"location differs");
                 remove[i] = 1;
             }
-            NSDateFormatter *format = [[NSDateFormatter alloc] init];
-            [format setDateFormat:@"MMMM d, yyyy"];
-            if (![self.dateBut.currentTitle isEqualToString:[format stringFromDate:event.eventDate]] && ![self.dateBut.currentTitle isEqualToString:@"Select a Date"]) {
+            
+            NSArray *dateAndTime = [event.eventDate componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            NSString *date = [NSString stringWithFormat:@"%@ %@ %@", [dateAndTime objectAtIndex:0], [dateAndTime objectAtIndex:1], [dateAndTime objectAtIndex:2]];
+            NSString *time= [NSString stringWithFormat:@"%@ %@", [dateAndTime objectAtIndex:3], [dateAndTime objectAtIndex:4]];
+            NSLog(@"event.eventDate: %@", event.eventDate); // Good
+            NSLog(@"butTitle: %@", self.dateBut.currentTitle);
+            NSLog(@"date before check: %@", date);
+            if (![self.dateBut.currentTitle isEqualToString:date] && ![self.dateBut.currentTitle isEqualToString:@"Select a Date"]) {
                 NSLog(@"date differs");
-                NSLog(@"%@ : %@", self.dateBut.currentTitle, [format stringFromDate:event.eventDate]);
+                //NSLog(@"%@ : %@", self.dateBut.currentTitle, date);
                 remove[i] = 1;
             }
-            [format setDateFormat:@"HH:mm"];
-            if (![self.timeBut.currentTitle isEqualToString:[format stringFromDate:event.eventDate]] && ![self.timeBut.currentTitle isEqualToString:@"Select a Time"]) {
+            NSLog(@"butTitle: %@", self.timeBut.currentTitle);
+            NSLog(@"time: %@", time);
+            if (![self.timeBut.currentTitle isEqualToString:time] && ![self.timeBut.currentTitle isEqualToString:@"Select a Time"]) {
                 NSLog(@"time differs");
-                NSLog(@"%@ : %@", self.timeBut.currentTitle, [format stringFromDate:event.eventDate]);
+                //NSLog(@"%@ : %@", self.timeBut.currentTitle, time);
                 remove[i] = 1;
             }
         }

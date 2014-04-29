@@ -65,9 +65,17 @@
     temp = [self.events objectAtIndex:indexPath.row];
     cell.textLabel.text = temp.eventName;
     NSDateFormatter *dateForm = [[NSDateFormatter alloc] init];
-    [dateForm setDateFormat:@"MMMM d, yyyy : hh:mm a"];
+    [dateForm setDateFormat:@"MMMM d, yyyy : HH:mm a"];
     [dateForm setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
-    cell.detailTextLabel.text = [dateForm stringFromDate:temp.eventDate];
+    NSDateFormatter *tempFormat = [[NSDateFormatter alloc] init];
+    [tempFormat setDateFormat:@"MMM d, yyyy, HH:mm:ss a"];
+    [tempFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    NSDate *tempDate = [tempFormat dateFromString:temp.eventDate];
+    NSString *date = [dateForm stringFromDate:tempDate];
+    NSLog(@"eventDate: %@", temp.eventDate);
+    NSLog(@"tempDate: %@", tempDate);
+    NSLog(@"date: %@", date);
+    cell.detailTextLabel.text = date;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;

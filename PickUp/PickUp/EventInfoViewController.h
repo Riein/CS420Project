@@ -24,9 +24,9 @@
 @property (strong, nonatomic)  UIScrollView *scrollView;
 @property (strong, nonatomic)  UIView *insideView;
 
-@property (weak, nonatomic) Event *info;
+@property (strong, nonatomic) Event *info;
 
-
+-(void)deleteEvent;
 
 
 @end
